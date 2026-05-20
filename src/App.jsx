@@ -30,6 +30,8 @@ import SeniorDirectory from './pages/senior/Directory';
 import SeniorProfile from './pages/senior/Profile';
 import SeniorAnnouncements from './pages/senior/Announcements';
 import SeniorAnnouncementDetail from './pages/senior/AnnouncementDetail';
+import SeniorSurveys from './pages/senior/Surveys';
+import SurveyParticipate from './pages/senior/SurveyParticipate';
 
 export default function App() {
   return (
@@ -72,6 +74,8 @@ export default function App() {
           <Route path="directory" element={<SeniorDirectory />} />
           <Route path="announcements" element={<SeniorAnnouncements />} />
           <Route path="announcements/:id" element={<SeniorAnnouncementDetail />} />
+          <Route path="surveys" element={<SeniorSurveys />} />
+          <Route path="surveys/:id" element={<SurveyParticipate />} />
           <Route path="profile" element={<SeniorProfile />} />
         </Route>
 

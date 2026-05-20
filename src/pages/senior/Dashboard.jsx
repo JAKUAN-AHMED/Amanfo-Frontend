@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Users, Clock, CheckCircle2 } from 'lucide-react';
+import { Users, Clock, CheckCircle2, ClipboardEdit, ArrowRight } from 'lucide-react';
 import { announcements, TYPE_STYLES } from '../../data/announcements';
+import { surveys, hasResponded } from '../../data/surveys';
 
 const stats = [
   { label: 'Total Senior', value: '200', icon: <Users className="text-blue-500" size={22} />, bg: 'bg-blue-50' },
@@ -10,6 +11,7 @@ const stats = [
 
 export default function SeniorDashboard() {
   const updates = announcements.slice(0, 3);
+  const openSurveys = surveys.filter((s) => new Date(s.endDate) >= new Date() && !hasResponded(s.id));
   return (
     <div className="space-y-7">
       <div>
@@ -28,6 +30,29 @@ export default function SeniorDashboard() {
           </div>
         ))}
       </div>
+
+      {openSurveys.length > 0 && (
+        <div className="bg-gradient-to-r from-brand-dark to-brand text-white rounded-2xl p-6 flex items-center gap-5">
+          <div className="w-14 h-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+            <ClipboardEdit size={26} />
+          </div>
+          <div className="flex-1">
+            <div className="text-xs uppercase tracking-wide opacity-80">Your voice matters</div>
+            <h3 className="text-xl font-bold mt-0.5">
+              {openSurveys.length} open survey{openSurveys.length === 1 ? '' : 's'} waiting for you
+            </h3>
+            <p className="text-sm text-white/80 mt-1">
+              Share your thoughts and help shape the Amanfoɔ '97 community.
+            </p>
+          </div>
+          <Link
+            to="/senior/surveys"
+            className="bg-white text-brand-dark font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 hover:bg-gray-50"
+          >
+            Participate <ArrowRight size={16} />
+          </Link>
+        </div>
+      )}
 
       <div>
         <div className="flex items-center justify-between mb-4">
