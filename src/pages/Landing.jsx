@@ -85,9 +85,12 @@ export default function Landing() {
         <span className="inline-flex items-center gap-1 bg-brand/10 text-brand text-xs font-medium px-3 py-1.5 rounded-full">
           <Star size={12} /> Prempeh College Class of 1997
         </span>
-        <h1 className="mt-6 text-4xl md:text-5xl font-bold text-gray-900 leading-tight" style={{ textWrap: 'balance' }}>
-          Stay Connected with Verified{' '}
-          <span className="text-brand">Amanfoɔ '97</span> Seniors Worldwide
+        <h1 className="mt-6 text-4xl md:text-5xl font-bold text-gray-900 leading-[1.15] tracking-tight">
+          <span className="block">
+            Stay Connected with Verified{' '}
+            <span className="text-brand">Amanfoɔ '97</span>
+          </span>
+          <span className="block">Seniors Worldwide</span>
         </h1>
         <p className="mt-5 text-gray-600 max-w-xl mx-auto">
           A secure platform exclusively for Prempeh College Class of 1997 to connect, discover, and stay engaged.
