@@ -20,6 +20,7 @@ import AdminCreateSurvey from './pages/admin/CreateSurvey';
 import AdminAddMember from './pages/admin/AddMember';
 import AdminMemberDetail from './pages/admin/MemberDetail';
 import AdminProfile from './pages/admin/Profile';
+import AdminFaqs from './pages/admin/Faqs';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminForgot from './pages/admin/AdminForgot';
 import AdminOtp from './pages/admin/AdminOtp';
@@ -61,6 +62,7 @@ export default function App() {
           <Route path="survey" element={<AdminSurvey />} />
           <Route path="survey/new" element={<AdminCreateSurvey />} />
           <Route path="survey/:id" element={<AdminSurveyDetail />} />
+          <Route path="faqs" element={<AdminFaqs />} />
           <Route path="profile" element={<AdminProfile />} />
         </Route>
 

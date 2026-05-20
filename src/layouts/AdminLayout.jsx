@@ -1,13 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import TopBar from '../components/TopBar';
-import { LayoutGrid, Users, Clock, ClipboardEdit } from 'lucide-react';
+import { LayoutGrid, Users, Clock, ClipboardEdit, HelpCircle } from 'lucide-react';
 
 const items = [
   { to: '/admin/dashboard', label: 'Dashboard', icon: <LayoutGrid size={18} /> },
   { to: '/admin/seniors', label: 'Seniors', icon: <Users size={18} /> },
   { to: '/admin/announcement', label: 'Announcement', icon: <Clock size={18} /> },
   { to: '/admin/survey', label: 'Survey', icon: <ClipboardEdit size={18} /> },
+  { to: '/admin/faqs', label: 'FAQs', icon: <HelpCircle size={18} /> },
 ];
 
 export default function AdminLayout() {

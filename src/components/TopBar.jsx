@@ -1,10 +1,18 @@
-import { Bell } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Bell, Home } from 'lucide-react';
 
 export default function TopBar({ title }) {
   return (
     <header className="h-[72px] bg-white border-b border-gray-200 flex items-center justify-between px-8 sticky top-0 z-10">
       <h1 className="text-lg font-medium text-gray-800">{title}</h1>
       <div className="flex items-center gap-5">
+        <Link
+          to="/"
+          title="Go to home"
+          className="text-gray-700 hover:text-brand transition flex items-center gap-1.5 text-sm font-medium"
+        >
+          <Home size={20} /> <span className="hidden md:inline">Home</span>
+        </Link>
         <button className="text-gray-700 hover:text-gray-900">
           <Bell size={22} />
         </button>

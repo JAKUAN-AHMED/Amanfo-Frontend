@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Users, Search, Lock, Globe, Check, Star, Mail, ChevronDown, ShieldCheck, IdCard } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Logo from '../components/Logo';
+import { loadFaqs } from '../data/faqs';
 
 function Step({ n, title, body }) {
   return (
@@ -25,15 +26,21 @@ function Feature({ icon, title, body }) {
   );
 }
 
-const faqs = [
-  ['Who can Join ?', 'Verified members of the Class of 1997 at Prempeh College.'],
-  ['Is this Platform Public ?', 'No. The directory is private and only visible to verified Seniors.'],
-  ['How long does approval take?', 'Typically 1–3 business days after submitting your request.'],
-  ['Can I Control my data?', 'Yes. You can change privacy settings any time from your profile.'],
-  ["What if I'd like to cancel my subscription?", 'You can request cancellation via support at any time.'],
-  ['Can I get a refund?', 'Refunds are handled case-by-case via support@amanfo97.org.'],
-  ['How do I contact customer service?', 'Email support@amanfo97.org. We reply within 24 hours.'],
-];
+function useFaqs() {
+  const [faqs, setFaqs] = useState(() => loadFaqs());
+  useEffect(() => {
+    const reload = () => setFaqs(loadFaqs());
+    window.addEventListener('faqs-updated', reload);
+    window.addEventListener('storage', reload);
+    return () => {
+      window.removeEventListener('faqs-updated', reload);
+      window.removeEventListener('storage', reload);
+    };
+  }, []);
+  return faqs
+    .filter((f) => f.published)
+    .sort((a, b) => (a.order || 0) - (b.order || 0));
+}
 
 function Faq({ q, a }) {
   const [open, setOpen] = useState(false);
@@ -52,6 +59,7 @@ function Faq({ q, a }) {
 }
 
 export default function Landing() {
+  const faqs = useFaqs();
   return (
     <div className="bg-white">
       {/* nav */}
@@ -90,32 +98,53 @@ export default function Landing() {
         >
           Request membership
         </Link>
-        <p className="mt-4 text-sm text-gray-500">500+ Seniors Already Joined</p>
+        <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
+          <div className="flex -space-x-2">
+            {['11', '12', '13', '14'].map((n) => (
+              <img
+                key={n}
+                src={`https://i.pravatar.cc/40?img=${n}`}
+                alt=""
+                className="w-7 h-7 rounded-full border-2 border-white object-cover"
+              />
+            ))}
+          </div>
+          <span>500+ Senior Already Joined</span>
+        </div>
       </section>
 
       {/* exclusive */}
       <section className="bg-cream">
         <div className="max-w-4xl mx-auto px-6 py-14 text-center">
           <h2 className="text-3xl font-bold text-gray-900">
-            Exclusively for Verified <span className="text-brand">Amanfoɔ 97</span> Seniors
+            Exclusively for Verified <br />
+            <span className="text-brand">Amanfoɔ 97</span> Seniors
           </h2>
           <p className="mt-3 text-gray-600 max-w-xl mx-auto">
             We take verification seriously so every member can trust who they're connected with.
           </p>
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
-            {[
-              { label: 'Verified Alumni only', icon: <ShieldCheck size={18} /> },
-              { label: 'Fully Private', icon: <Lock size={18} /> },
-              { label: 'Unique Member ID', icon: <IdCard size={18} /> },
-            ].map((p) => (
-              <div
-                key={p.label}
-                className="bg-white rounded-lg py-3 px-4 text-sm text-gray-700 border border-gray-200 flex items-center justify-center gap-2"
-              >
-                <span className="text-brand">{p.icon}</span>
-                {p.label}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <div className="bg-white rounded-lg py-2.5 px-4 text-sm text-gray-700 border border-gray-200 inline-flex items-center gap-2 whitespace-nowrap shadow-sm">
+              <div className="flex -space-x-2">
+                {['21', '22', '23'].map((n) => (
+                  <img
+                    key={n}
+                    src={`https://i.pravatar.cc/60?img=${n}`}
+                    alt=""
+                    className="w-7 h-7 rounded-full border-2 border-white object-cover"
+                  />
+                ))}
               </div>
-            ))}
+              Verified Alumni can join
+            </div>
+            <div className="bg-white rounded-lg py-2.5 px-4 text-sm text-gray-700 border border-gray-200 inline-flex items-center gap-2 whitespace-nowrap shadow-sm">
+              <Lock size={16} className="text-brand" />
+              Fully Private
+            </div>
+            <div className="bg-white rounded-lg py-2.5 px-4 text-sm text-gray-700 border border-gray-200 inline-flex items-center gap-2 whitespace-nowrap shadow-sm">
+              <IdCard size={16} className="text-brand" />
+              Unique Member ID
+            </div>
           </div>
         </div>
       </section>
@@ -123,13 +152,15 @@ export default function Landing() {
       {/* why */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">Why Join the Platform?</h2>
+          <h2 className="text-3xl font-bold text-gray-900">Why Join Amanfoɔ '97?</h2>
           <p className="mt-2 text-gray-600">
-            Everything you need to stay meaningfully connected with your classmates.
+            Everything you need to stay meaningfully connected
+            <br />
+            with fellow Amanfoɔ '97 Seniors
           </p>
         </div>
         <div className="grid md:grid-cols-4 gap-4 mt-10">
-          <Feature icon={<Users size={20} />} title="Reconnect" body="Rediscover classmates from your Prempeh College days and rekindle old friendships." />
+          <Feature icon={<Users size={20} />} title="Reconnect with fellow Amanfoɔ '97 Seniors and strengthen old friendships." body="Rediscover classmates from your Prempeh College days and rekindle old friendships." />
           <Feature icon={<Search size={20} />} title="Smart Search" body="Find any member quickly with our intelligent directory search." />
           <Feature icon={<Lock size={20} />} title="Privacy Control" body="Decide exactly what information you share and with whom." />
           <Feature icon={<Globe size={20} />} title="Stay Connected" body="Stay engaged with your alumni network no matter where in the world you are." />
@@ -141,15 +172,15 @@ export default function Landing() {
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-900">How It Works</h2>
-            <p className="mt-2 text-gray-600">Four simple steps to joining your exclusive alumni network.</p>
+            <p className="mt-2 text-gray-600">Four simple steps to becoming a verified Amanfoɔ '97 Senior.</p>
           </div>
           <div className="relative mt-12">
             <div className="hidden md:block absolute top-5 left-0 right-0 h-px bg-brand" />
             <div className="grid md:grid-cols-4 gap-6 relative">
               <Step n="1" title="Submit Request" body="Fill out a short membership request form with your details." />
-              <Step n="2" title="Admin Verifies" body="Our admin team verifies your identity as a Class of 1997 alumnus." />
-              <Step n="3" title="Receive Senior ID" body="Get your unique Member ID issued upon approval." />
-              <Step n="4" title="Access Portal" body="Log in and access the full private member portal." />
+              <Step n="2" title="Executive Verification" body="Our admin team verifies your identity as a Class of 1997 alumnus." />
+              <Step n="3" title="Receive Senior ID" body="Get your unique Senior ID after approval." />
+              <Step n="4" title="Access Portal" body="Log in and access the private Senior Portal." />
             </div>
           </div>
         </div>
@@ -159,14 +190,14 @@ export default function Landing() {
       <section className="max-w-3xl mx-auto px-6 py-16 text-center">
         <h2 className="text-3xl font-bold text-gray-900">What You Get</h2>
         <p className="mt-2 text-gray-600">
-          As a verified Amanfoɔ '97 member, you gain access to a suite of features designed around your privacy and community.
+          As a verified Amanfoɔ '97 Senior, you gain access to features designed around privacy, trust, and community.
         </p>
         <ul className="mt-6 text-left max-w-md mx-auto space-y-2 text-gray-700">
           {[
-            'Private member directory',
+            'Private Senior Directory',
             'Personal profile management',
             'Secure login access',
-            'Senior-only communication space (future-ready)',
+            'Senior Community Space (Future Ready)',
           ].map((t) => (
             <li key={t} className="flex items-center gap-2">
               <Check size={18} className="text-brand" /> {t}
@@ -186,13 +217,13 @@ export default function Landing() {
         <div className="max-w-3xl mx-auto px-6 py-16 text-center">
           <h2 className="text-3xl font-bold">Ready to Join Amanfoɔ '97?</h2>
           <p className="mt-3 text-white/80 max-w-xl mx-auto">
-            Submit your request and become part of a trusted alumni network built on verification, privacy, and community.
+            Submit your request and become part of a trusted Senior community built on verification, privacy, and brotherhood.
           </p>
           <Link
             to="/request-membership"
             className="inline-block mt-6 bg-white text-brand-dark font-semibold px-6 py-3 rounded-full"
           >
-            Request Seniorship
+            Request for Membership
           </Link>
           <div className="mt-3 text-sm text-white/80">
             Already a senior?{' '}
@@ -212,15 +243,17 @@ export default function Landing() {
           </h2>
         </div>
         <div>
-          {faqs.map(([q, a]) => (
-            <Faq key={q} q={q} a={a} />
-          ))}
+          {faqs.length === 0 ? (
+            <p className="text-sm text-gray-500">No FAQs available right now.</p>
+          ) : (
+            faqs.map((f) => <Faq key={f.id} q={f.question} a={f.answer} />)
+          )}
         </div>
       </section>
 
       <footer className="bg-cream">
         <div className="max-w-6xl mx-auto px-6 py-6 flex justify-between text-sm">
-          <span className="text-brand font-semibold">Amanfoɔ 97</span>
+          <span className="text-brand font-semibold">Amanfoɔ '97</span>
           <span className="text-gray-600 flex items-center gap-1">
             Contact: <Mail size={14} /> support@amanfo97.org
           </span>

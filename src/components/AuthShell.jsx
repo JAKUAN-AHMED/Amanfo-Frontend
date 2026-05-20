@@ -5,7 +5,9 @@ export default function AuthShell({ title, subtitle, children, footer, back }) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6 py-10">
       <div className="flex flex-col items-center mb-8 text-center">
-        <Logo size={64} />
+        <Link to="/" title="Go to home" className="hover:opacity-80 transition">
+          <Logo size={64} />
+        </Link>
         <h1 className="mt-5 text-3xl font-bold text-brand">{title}</h1>
         {subtitle && <p className="mt-2 text-gray-500 max-w-md">{subtitle}</p>}
       </div>

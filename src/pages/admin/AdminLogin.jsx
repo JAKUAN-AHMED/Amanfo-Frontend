@@ -9,7 +9,9 @@ export default function AdminLogin() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6">
       <div className="flex flex-col items-center mb-8">
-        <Logo size={64} />
+        <Link to="/" title="Go to home" className="hover:opacity-80 transition">
+          <Logo size={64} />
+        </Link>
         <span className="mt-3 inline-flex items-center gap-1.5 bg-brand/10 text-brand text-xs font-semibold px-3 py-1 rounded-full">
           <Shield size={12} /> Admin Access
         </span>

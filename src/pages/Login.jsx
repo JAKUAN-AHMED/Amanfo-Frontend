@@ -14,7 +14,9 @@ export default function Login() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6">
       <div className="flex flex-col items-center mb-8">
-        <Logo size={64} />
+        <Link to="/" title="Go to home" className="hover:opacity-80 transition">
+          <Logo size={64} />
+        </Link>
         <h1 className="mt-5 text-3xl font-bold text-brand">Amanfoɔ '97 Senior Portal</h1>
         <p className="mt-2 text-gray-500">Private access for verified Amanfoɔ '97 Seniors</p>
       </div>

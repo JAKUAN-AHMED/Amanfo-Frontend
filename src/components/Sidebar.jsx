@@ -1,15 +1,25 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutGrid, Users, Clock, ClipboardEdit, LogOut } from 'lucide-react';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { LayoutGrid, Users, Clock, ClipboardEdit, LogOut, Home } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Sidebar({ items, profileLink, logoutTo = '/login' }) {
   const navigate = useNavigate();
   return (
     <aside className="w-64 shrink-0 bg-white border-r border-gray-200 flex flex-col h-screen sticky top-0">
-      <div className="flex items-center gap-2 px-6 py-5 border-b border-gray-100">
+      <Link
+        to="/"
+        className="flex items-center gap-2 px-6 py-5 border-b border-gray-100 hover:bg-gray-50 transition"
+        title="Go to home"
+      >
         <Logo size={36} />
         <span className="font-semibold text-base">Amanfoɔ -97</span>
-      </div>
+      </Link>
+      <Link
+        to="/"
+        className="mx-4 mt-4 flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50"
+      >
+        <Home size={18} /> Home
+      </Link>
       <nav className="flex-1 px-4 py-6 space-y-1">
         {items.map((it) => (
           <NavLink
