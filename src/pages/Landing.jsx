@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Users, Search, Lock, Globe, Check, Star, Mail, ChevronDown } from 'lucide-react';
+import { Users, Search, Lock, Globe, Check, Star, Mail, ChevronDown, ShieldCheck, IdCard } from 'lucide-react';
 import { useState } from 'react';
 import Logo from '../components/Logo';
 
@@ -103,9 +103,17 @@ export default function Landing() {
             We take verification seriously so every member can trust who they're connected with.
           </p>
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
-            {['Verified Alumni only', 'Fully Private', 'Unique Member ID'].map((t) => (
-              <div key={t} className="bg-white rounded-lg py-3 px-4 text-sm text-gray-700 border border-gray-200">
-                {t}
+            {[
+              { label: 'Verified Alumni only', icon: <ShieldCheck size={18} /> },
+              { label: 'Fully Private', icon: <Lock size={18} /> },
+              { label: 'Unique Member ID', icon: <IdCard size={18} /> },
+            ].map((p) => (
+              <div
+                key={p.label}
+                className="bg-white rounded-lg py-3 px-4 text-sm text-gray-700 border border-gray-200 flex items-center justify-center gap-2"
+              >
+                <span className="text-brand">{p.icon}</span>
+                {p.label}
               </div>
             ))}
           </div>
