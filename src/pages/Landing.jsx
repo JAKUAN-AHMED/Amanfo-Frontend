@@ -90,51 +90,24 @@ export default function Landing() {
         >
           Request membership
         </Link>
-        <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
-          <div className="flex -space-x-2">
-            {[
-              'https://i.pravatar.cc/40?img=11',
-              'https://i.pravatar.cc/40?img=12',
-              'https://i.pravatar.cc/40?img=13',
-              'https://i.pravatar.cc/40?img=14',
-            ].map((src) => (
-              <img key={src} src={src} alt="" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
-            ))}
-          </div>
-          <span>500+ Senior Already Joined</span>
-        </div>
+        <p className="mt-4 text-sm text-gray-500">500+ Seniors Already Joined</p>
       </section>
 
       {/* exclusive */}
       <section className="bg-cream">
-        <div className="max-w-6xl mx-auto px-6 py-14 grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900">
-              Exclusively for Verified <br />
-              <span className="text-brand">Amanfoɔ 97</span> Seniors
-            </h2>
-            <p className="mt-3 text-gray-600">
-              We take verification seriously so every member can trust who they're connected with.
-            </p>
-            <div className="mt-6 grid grid-cols-3 gap-3">
-              {[
-                ['Verified Alumni can join', '👥'],
-                ['Fully Private', '🔒'],
-                ['Unique Member ID', '🪪'],
-              ].map(([t, e]) => (
-                <div key={t} className="bg-white rounded-lg p-3 text-xs text-gray-700 border border-gray-200">
-                  <div className="text-base mb-1">{e}</div>
-                  {t}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="rounded-2xl overflow-hidden aspect-[5/3] bg-gray-200">
-            <img
-              src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"
-              alt="Community"
-              className="w-full h-full object-cover"
-            />
+        <div className="max-w-4xl mx-auto px-6 py-14 text-center">
+          <h2 className="text-3xl font-bold text-gray-900">
+            Exclusively for Verified <span className="text-brand">Amanfoɔ 97</span> Seniors
+          </h2>
+          <p className="mt-3 text-gray-600 max-w-xl mx-auto">
+            We take verification seriously so every member can trust who they're connected with.
+          </p>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
+            {['Verified Alumni only', 'Fully Private', 'Unique Member ID'].map((t) => (
+              <div key={t} className="bg-white rounded-lg py-3 px-4 text-sm text-gray-700 border border-gray-200">
+                {t}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -201,49 +174,23 @@ export default function Landing() {
       </section>
 
       {/* CTA banner */}
-      <section className="bg-brand-dark text-white relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-[1fr_auto_1fr] items-center gap-6">
-          <div className="hidden md:flex flex-col items-end gap-6">
-            <img
-              src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=300&q=80"
-              alt=""
-              className="w-44 h-28 object-cover rounded-md -rotate-6 shadow-lg"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=300&q=80"
-              alt=""
-              className="w-40 h-28 object-cover rounded-md rotate-3 shadow-lg"
-            />
-          </div>
-          <div className="text-center">
-            <h2 className="text-3xl font-bold">Ready to Join Amanfoɔ '97?</h2>
-            <p className="mt-3 text-white/80 max-w-xl mx-auto">
-              Submit your request and become part of a trusted alumni network built on verification, privacy, and community.
-            </p>
-            <Link
-              to="/request-membership"
-              className="inline-block mt-6 bg-white text-brand-dark font-semibold px-6 py-3 rounded-full"
-            >
-              Request Seniorship
+      <section className="bg-brand-dark text-white">
+        <div className="max-w-3xl mx-auto px-6 py-16 text-center">
+          <h2 className="text-3xl font-bold">Ready to Join Amanfoɔ '97?</h2>
+          <p className="mt-3 text-white/80 max-w-xl mx-auto">
+            Submit your request and become part of a trusted alumni network built on verification, privacy, and community.
+          </p>
+          <Link
+            to="/request-membership"
+            className="inline-block mt-6 bg-white text-brand-dark font-semibold px-6 py-3 rounded-full"
+          >
+            Request Seniorship
+          </Link>
+          <div className="mt-3 text-sm text-white/80">
+            Already a senior?{' '}
+            <Link to="/login" className="underline">
+              Login here
             </Link>
-            <div className="mt-3 text-sm text-white/80">
-              Already a senior?{' '}
-              <Link to="/login" className="underline">
-                Login here
-              </Link>
-            </div>
-          </div>
-          <div className="hidden md:flex flex-col items-start gap-6">
-            <img
-              src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=300&q=80"
-              alt=""
-              className="w-44 h-28 object-cover rounded-md rotate-6 shadow-lg"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=300&q=80"
-              alt=""
-              className="w-40 h-28 object-cover rounded-md -rotate-3 shadow-lg"
-            />
           </div>
         </div>
       </section>
