@@ -12,7 +12,7 @@ export default function Sidebar({ items, profileLink, logoutTo = '/login' }) {
         title="Go to home"
       >
         <Logo size={36} />
-        <span className="font-semibold text-base">Amanfoɔ -97</span>
+        <span className="font-semibold text-base">Amanfoɔ - 97</span>
       </Link>
       <Link
         to="/"
