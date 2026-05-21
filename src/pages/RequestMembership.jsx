@@ -87,7 +87,7 @@ export default function RequestMembership() {
           }}
           className="mt-6 bg-white border border-gray-200 rounded-2xl p-7 space-y-6"
         >
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Input label="First Name" placeholder="Kwame" required />
             <Input label="Last Name" placeholder="Mensah" required />
             <Input label="Nickname" placeholder="KM" />

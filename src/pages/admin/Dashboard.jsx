@@ -5,11 +5,11 @@ import StatCards, { defaultStats } from '../../components/StatCards';
 
 const pending = [
   {
-    name: 'Mahmudul Hasan',
-    email: 'mahmudul14286@gmail.com',
-    phone: '+8801892683582',
+    name: 'Yaw Owusu',
+    email: 'yaw.owusu@email.com',
+    phone: '+233 244 765 432',
     class: 'A3',
-    location: 'Narayanganj, Netherlands',
+    location: 'Accra, Ghana',
     houseGroup: 'Butler',
     house: 'Ramseyer',
   },
@@ -25,12 +25,12 @@ export default function AdminDashboard() {
   const [tab, setTab] = useState('pending');
   return (
     <div className="space-y-6">
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-bold text-brand">Welcome back, admin</h2>
-          <p className="text-gray-500 mt-1">Here's what's happening in your network</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-brand">Welcome back, Admin</h2>
+          <p className="text-gray-500 mt-1">Here's what's happening across Amanfoɔ '97.</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-wrap">
           <button className="border border-gray-300 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-gray-50">
             Export CSV
           </button>
@@ -38,7 +38,7 @@ export default function AdminDashboard() {
             to="/admin/seniors/new"
             className="bg-brand-dark hover:bg-brand text-white px-4 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2"
           >
-            <Plus size={16} /> Add Member
+            <Plus size={16} /> Add Senior
           </Link>
         </div>
       </div>
@@ -49,12 +49,12 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-2 border-b border-gray-100">
           {[
             ['pending', `Pending Requests (${pending.length})`],
-            ['active', `Active Members (${active.length})`],
+            ['active', `Active Seniors (${active.length})`],
           ].map(([k, label]) => (
             <button
               key={k}
               onClick={() => setTab(k)}
-              className={`py-4 font-semibold text-sm ${
+              className={`py-4 font-semibold text-xs sm:text-sm px-2 ${
                 tab === k ? 'bg-brand-dark text-white' : 'text-gray-700'
               }`}
             >
@@ -67,24 +67,24 @@ export default function AdminDashboard() {
           <div className="p-5 space-y-4">
             {pending.map((p) => (
               <div key={p.email} className="border border-gray-200 rounded-xl p-5">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <div className="flex items-center gap-2">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="text-brand font-semibold">{p.name}</h3>
                       <span className="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-full">
                         Pending
                       </span>
                     </div>
-                    <div className="grid grid-cols-2 gap-x-10 gap-y-1 mt-3 text-sm text-gray-700">
-                      <div>Email: {p.email}</div>
+                    <div className="grid sm:grid-cols-2 gap-x-10 gap-y-1 mt-3 text-sm text-gray-700">
+                      <div className="break-all">Email: {p.email}</div>
                       <div>Phone: {p.phone}</div>
                       <div>Class: {p.class}</div>
                       <div>Location: {p.location}</div>
-                      <div>House/Group : {p.houseGroup}</div>
+                      <div>House/Group: {p.houseGroup}</div>
                       <div>House: {p.house}</div>
                     </div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 shrink-0">
                     <button className="bg-brand-dark hover:bg-brand text-white px-4 py-2 rounded-lg text-sm flex items-center gap-1.5">
                       <UserPlus size={16} /> Approve
                     </button>
@@ -97,20 +97,20 @@ export default function AdminDashboard() {
             ))}
           </div>
         ) : (
-          <MembersTable rows={active} />
+          <SeniorsTable rows={active} />
         )}
       </div>
     </div>
   );
 }
 
-export function MembersTable({ rows }) {
+export function SeniorsTable({ rows }) {
   return (
     <div className="overflow-x-auto">
-      <table className="w-full text-sm">
+      <table className="w-full text-sm min-w-[720px]">
         <thead>
           <tr className="text-left text-gray-500 border-b border-gray-100">
-            <th className="px-6 py-4 font-medium">Member ID</th>
+            <th className="px-6 py-4 font-medium">Senior ID</th>
             <th className="px-6 py-4 font-medium">Name</th>
             <th className="px-6 py-4 font-medium">Email</th>
             <th className="px-6 py-4 font-medium">House</th>
@@ -150,3 +150,6 @@ export function MembersTable({ rows }) {
     </div>
   );
 }
+
+// Backwards compatible export so other files still importing MembersTable keep working.
+export const MembersTable = SeniorsTable;

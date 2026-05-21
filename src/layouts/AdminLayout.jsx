@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import TopBar from '../components/TopBar';
@@ -12,12 +13,19 @@ const items = [
 ];
 
 export default function AdminLayout() {
+  const [open, setOpen] = useState(false);
   return (
     <div className="flex min-h-screen">
-      <Sidebar items={items} profileLink="/admin/profile" logoutTo="/admin/login" />
-      <div className="flex-1 flex flex-col">
-        <TopBar title="Admin Portal" />
-        <main className="flex-1 p-8 bg-[#F7F8FA]">
+      <Sidebar
+        items={items}
+        profileLink="/admin/profile"
+        logoutTo="/admin/login"
+        open={open}
+        onClose={() => setOpen(false)}
+      />
+      <div className="flex-1 flex flex-col min-w-0">
+        <TopBar title="Admin Portal" onMenuClick={() => setOpen(true)} />
+        <main className="flex-1 p-4 md:p-8 bg-white">
           <Outlet />
         </main>
       </div>

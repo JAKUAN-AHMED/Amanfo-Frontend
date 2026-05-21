@@ -53,7 +53,7 @@ export default function Login() {
           </Link>
         </div>
         <div className="mt-2 text-center">
-          <Link to="/request-membership" className="text-yellow-600 font-medium text-sm">
+          <Link to="/request-membership" className="text-gold-dark font-medium text-sm">
             Request Membership
           </Link>
         </div>

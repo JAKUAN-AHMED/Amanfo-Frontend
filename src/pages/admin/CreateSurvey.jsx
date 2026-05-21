@@ -45,7 +45,7 @@ export default function CreateSurvey() {
             className="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/30"
           />
         </div>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Field label="Start Date" type="date" />
           <Field label="End Date" type="date" />
         </div>

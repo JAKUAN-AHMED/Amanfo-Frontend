@@ -4,16 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Prempeh Green — primary
         brand: {
-          DEFAULT: '#0F7A3D',
-          dark: '#0B5E2E',
-          light: '#E8F4ED',
+          DEFAULT: '#005C32',
+          dark: '#00451F',
+          light: '#E6F0EA',
         },
-        cream: '#F5EFE0',
+        // Accent Gold
+        gold: {
+          DEFAULT: '#D3AF5E',
+          dark: '#A98735',
+          light: '#F7EFD8',
+        },
+        cream: '#D3AF5E',
         ink: '#0F1A2A',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'Noto Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
     },
   },

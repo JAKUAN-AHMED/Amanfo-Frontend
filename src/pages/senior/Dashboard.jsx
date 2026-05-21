@@ -4,9 +4,9 @@ import { announcements, TYPE_STYLES } from '../../data/announcements';
 import { surveys, hasResponded } from '../../data/surveys';
 
 const stats = [
-  { label: 'Total Senior', value: '200', icon: <Users className="text-blue-500" size={22} />, bg: 'bg-blue-50' },
-  { label: 'Pending Seniors', value: '15', icon: <Clock className="text-amber-500" size={22} />, bg: 'bg-amber-50' },
-  { label: 'Active Seniors', value: '175', icon: <CheckCircle2 className="text-emerald-500" size={22} />, bg: 'bg-emerald-50' },
+  { label: 'Total Seniors', value: '312', icon: <Users className="text-blue-500" size={22} />, bg: 'bg-blue-50' },
+  { label: 'Open Announcements', value: '4', icon: <Clock className="text-amber-500" size={22} />, bg: 'bg-amber-50' },
+  { label: 'Active Seniors', value: '254', icon: <CheckCircle2 className="text-emerald-500" size={22} />, bg: 'bg-emerald-50' },
 ];
 
 export default function SeniorDashboard() {
@@ -15,11 +15,11 @@ export default function SeniorDashboard() {
   return (
     <div className="space-y-7">
       <div>
-        <h2 className="text-3xl font-bold text-brand">Welcome back, Senior KM</h2>
-        <p className="text-gray-500 mt-1">Here's what's happening in your network</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-brand">Welcome back, Senior Kwame</h2>
+        <p className="text-gray-500 mt-1">Here's what's happening across Amanfoɔ '97 today.</p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
         {stats.map((d) => (
           <div key={d.label} className="bg-white rounded-2xl p-5 flex items-center gap-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
             <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${d.bg}`}>{d.icon}</div>
@@ -32,13 +32,13 @@ export default function SeniorDashboard() {
       </div>
 
       {openSurveys.length > 0 && (
-        <div className="bg-gradient-to-r from-brand-dark to-brand text-white rounded-2xl p-6 flex items-center gap-5">
-          <div className="w-14 h-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+        <div className="bg-gradient-to-r from-brand-dark to-brand text-white rounded-2xl p-5 md:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+          <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
             <ClipboardEdit size={26} />
           </div>
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <div className="text-xs uppercase tracking-wide opacity-80">Your voice matters</div>
-            <h3 className="text-xl font-bold mt-0.5">
+            <h3 className="text-lg md:text-xl font-bold mt-0.5">
               {openSurveys.length} open survey{openSurveys.length === 1 ? '' : 's'} waiting for you
             </h3>
             <p className="text-sm text-white/80 mt-1">
@@ -47,7 +47,7 @@ export default function SeniorDashboard() {
           </div>
           <Link
             to="/senior/surveys"
-            className="bg-white text-brand-dark font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 hover:bg-gray-50"
+            className="bg-white text-brand-dark font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 hover:bg-gray-50 whitespace-nowrap"
           >
             Participate <ArrowRight size={16} />
           </Link>

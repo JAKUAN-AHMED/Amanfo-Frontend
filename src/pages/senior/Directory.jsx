@@ -62,13 +62,13 @@ export default function Directory() {
               : 'bg-white border-gray-200 text-gray-800'
           }`}
         >
-          <Filter size={16} /> Filter {showFilters ? 'Seniors' : 'Members'}
+          <Filter size={16} /> Filter Seniors
         </button>
       </div>
 
       {showFilters && (
         <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <SelectField label="Class" />
             <SelectField label="House" />
             <SelectField label="Country" />
@@ -78,7 +78,7 @@ export default function Directory() {
         </div>
       )}
 
-      <div className="grid md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {seniors.map((s, i) => (
           <div key={i} className="bg-white rounded-xl border border-gray-200 p-5">
             <div className="flex items-start gap-3">
@@ -91,7 +91,7 @@ export default function Directory() {
                 </span>
               </div>
             </div>
-            <span className="mt-3 inline-block bg-yellow-100 text-yellow-800 text-xs px-2.5 py-0.5 rounded">
+            <span className="mt-3 inline-block bg-gold-light text-gold-dark text-xs px-2.5 py-0.5 rounded">
               {s.group}
             </span>
             <div className="flex items-center gap-1.5 text-sm text-brand mt-3">

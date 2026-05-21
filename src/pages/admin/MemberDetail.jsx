@@ -13,7 +13,7 @@ function Row({ icon, label, value }) {
   );
 }
 
-export default function MemberDetail() {
+export default function SeniorDetail() {
   const nav = useNavigate();
   const { id = 'AM97001' } = useParams();
   return (
@@ -23,7 +23,7 @@ export default function MemberDetail() {
           <button onClick={() => nav(-1)} className="text-gray-600 hover:text-gray-900">
             <ArrowLeft size={20} />
           </button>
-          <h2 className="text-2xl font-bold text-brand">Member Details</h2>
+          <h2 className="text-2xl font-bold text-brand">Senior Details</h2>
         </div>
         <div className="flex gap-2">
           <Link
@@ -63,7 +63,7 @@ export default function MemberDetail() {
           <Row icon={<Phone size={16} />} label="Phone" value="+233 244 123 456" />
           <Row icon={<MapPin size={16} />} label="Location" value="Accra, Ghana" />
 
-          <h3 className="text-brand font-semibold mt-6 mb-3">Alumni</h3>
+          <h3 className="text-brand font-semibold mt-6 mb-3">Class</h3>
           <Row icon={<GraduationCap size={16} />} label="Class" value="A3" />
           <Row icon={<GraduationCap size={16} />} label="House / Group" value="Amanfoɔ" />
 

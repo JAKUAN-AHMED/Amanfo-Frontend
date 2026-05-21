@@ -5,11 +5,11 @@ import { announcements, TYPE_STYLES, PRIORITY_STYLES } from '../../data/announce
 export default function AdminAnnouncement() {
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">Community Updates</h2>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <h2 className="text-xl md:text-2xl font-bold text-gray-900">Community Updates</h2>
         <Link
           to="/admin/announcement/new"
-          className="bg-brand-dark hover:bg-brand text-white px-5 py-2.5 rounded-lg text-sm font-semibold"
+          className="bg-brand-dark hover:bg-brand text-white px-5 py-2.5 rounded-lg text-sm font-semibold inline-block w-fit"
         >
           Create updates
         </Link>

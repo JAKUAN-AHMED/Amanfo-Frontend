@@ -10,7 +10,7 @@ export default function SeniorSurveys() {
         <p className="text-gray-500 mt-1">Share your voice — help shape Amanfoɔ '97.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {surveys.map((s) => {
           const done = hasResponded(s.id);
           const open = new Date(s.endDate) >= new Date();

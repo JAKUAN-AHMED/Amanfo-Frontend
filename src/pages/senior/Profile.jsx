@@ -115,40 +115,40 @@ export default function SeniorProfile() {
       </div>
 
       <Section title="Personal Information">
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Field label="Full Name" defaultValue="Kwame Mensah" hint="Cannot be changed" />
-          <Field label="Member ID" defaultValue="AM97001" hint="Cannot be changed" />
+          <Field label="Senior ID" defaultValue="AM97001" hint="Cannot be changed" />
           <Field label="Nickname" placeholder="KM" />
         </div>
       </Section>
 
       <Section title="Contact Information">
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Field label="Email Address" defaultValue="kwame.mensah@email.com" />
           <Field label="Phone Number" defaultValue="+233244123456" />
         </div>
       </Section>
 
       <Section title="Professional Information">
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Select label="Industry" value="Technology" options={INDUSTRIES} />
           <Select label="Profession" value="Software Engineer" options={PROFESSIONS} />
         </div>
       </Section>
 
       <Section
-        title="Alumni Verification"
+        title="Senior Verification"
         badge={<span className="w-7 h-7 rounded-full bg-brand-dark text-white text-sm font-bold flex items-center justify-center">2</span>}
       >
         <p className="text-xs text-gray-500 -mt-3 mb-4">Confirms you are from Amanfoɔ '97</p>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Select label="Class" value="" required options={CLASSES} />
           <Select label="House / Group" value="" required options={HOUSES} />
         </div>
       </Section>
 
       <Section title="Location">
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Select
             label="Country"
             controlled
@@ -173,11 +173,11 @@ export default function SeniorProfile() {
 
       <Section title="Privacy Settings">
         <p className="text-sm text-gray-500 -mt-3 mb-4">
-          Control what information is visible to other members.
+          Control what information is visible to other Seniors.
         </p>
         <div className="space-y-3">
-          <PrivacyRow label="Show my phone number to other members" />
-          <PrivacyRow label="Show my email address to other members" />
+          <PrivacyRow label="Show my phone number to other Seniors" />
+          <PrivacyRow label="Show my email address to other Seniors" />
         </div>
       </Section>
 

@@ -6,12 +6,12 @@ import { loadFaqs } from '../data/faqs';
 
 function Step({ n, title, body }) {
   return (
-    <div className="flex flex-col items-center text-center px-2">
-      <div className="w-10 h-10 rounded-md bg-brand-dark text-white font-bold flex items-center justify-center">
+    <div className="flex flex-col items-center text-center px-2 relative z-10">
+      <div className="w-10 h-10 rounded-md bg-gold text-white font-bold flex items-center justify-center shadow">
         {n}
       </div>
-      <h4 className="mt-4 font-semibold text-gray-900">{title}</h4>
-      <p className="mt-2 text-sm text-gray-600 max-w-[180px]">{body}</p>
+      <h4 className="mt-4 font-semibold text-white">{title}</h4>
+      <p className="mt-2 text-sm text-white/80 max-w-[180px]">{body}</p>
     </div>
   );
 }
@@ -63,18 +63,18 @@ export default function Landing() {
   return (
     <div className="bg-white">
       {/* nav */}
-      <header className="bg-gray-50 border-b border-gray-100">
+      <header className="bg-brand-dark">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Logo size={36} />
           <div className="flex items-center gap-5">
-            <Link to="/login" className="text-sm font-medium text-gray-800">
+            <Link to="/login" className="text-sm font-medium text-white hover:text-gold">
               Login
             </Link>
             <Link
               to="/request-membership"
-              className="bg-brand-dark hover:bg-brand text-white text-sm font-medium px-4 py-2 rounded-full"
+              className="bg-gold hover:bg-gold-dark text-brand-dark text-sm font-semibold px-4 py-2 rounded-full"
             >
-              Request membership
+              Request Membership
             </Link>
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function Landing() {
           to="/request-membership"
           className="inline-block mt-6 bg-brand-dark hover:bg-brand text-white font-medium px-6 py-3 rounded-full"
         >
-          Request membership
+          Request Membership
         </Link>
         <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
           <div className="flex -space-x-2">
@@ -112,22 +112,22 @@ export default function Landing() {
               />
             ))}
           </div>
-          <span>500+ Senior Already Joined</span>
+          <span>250+ Verified Seniors Already Joined</span>
         </div>
       </section>
 
       {/* exclusive */}
-      <section className="bg-cream">
+      <section className="bg-brand-dark text-white">
         <div className="max-w-4xl mx-auto px-6 py-14 text-center">
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-3xl font-bold">
             Exclusively for Verified <br />
-            <span className="text-brand">Amanfoɔ 97</span> Seniors
+            <span className="text-gold">Amanfoɔ 97</span> Seniors
           </h2>
-          <p className="mt-3 text-gray-600 max-w-xl mx-auto">
-            We take verification seriously so every member can trust who they're connected with.
+          <p className="mt-3 text-white/80 max-w-xl mx-auto">
+            We take verification seriously so every Senior can trust who they're connected with.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <div className="bg-white rounded-lg py-2.5 px-4 text-sm text-gray-700 border border-gray-200 inline-flex items-center gap-2 whitespace-nowrap shadow-sm">
+            <div className="bg-gold rounded-lg py-2.5 px-4 text-sm text-black font-medium inline-flex items-center gap-2 whitespace-nowrap shadow-sm">
               <div className="flex -space-x-2">
                 {['21', '22', '23'].map((n) => (
                   <img
@@ -138,15 +138,15 @@ export default function Landing() {
                   />
                 ))}
               </div>
-              Verified Alumni can join
+              Verified Seniors can join
             </div>
-            <div className="bg-white rounded-lg py-2.5 px-4 text-sm text-gray-700 border border-gray-200 inline-flex items-center gap-2 whitespace-nowrap shadow-sm">
-              <Lock size={16} className="text-brand" />
+            <div className="bg-gold rounded-lg py-2.5 px-4 text-sm text-black font-medium inline-flex items-center gap-2 whitespace-nowrap shadow-sm">
+              <Lock size={16} className="text-black" />
               Fully Private
             </div>
-            <div className="bg-white rounded-lg py-2.5 px-4 text-sm text-gray-700 border border-gray-200 inline-flex items-center gap-2 whitespace-nowrap shadow-sm">
-              <IdCard size={16} className="text-brand" />
-              Unique Member ID
+            <div className="bg-gold rounded-lg py-2.5 px-4 text-sm text-black font-medium inline-flex items-center gap-2 whitespace-nowrap shadow-sm">
+              <IdCard size={16} className="text-black" />
+              Unique Senior ID
             </div>
           </div>
         </div>
@@ -162,24 +162,24 @@ export default function Landing() {
             with fellow Amanfoɔ '97 Seniors
           </p>
         </div>
-        <div className="grid md:grid-cols-4 gap-4 mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-10">
           <Feature icon={<Users size={20} />} title="Reconnect with fellow Amanfoɔ '97 Seniors and strengthen old friendships." body="Rediscover classmates from your Prempeh College days and rekindle old friendships." />
-          <Feature icon={<Search size={20} />} title="Smart Search" body="Find any member quickly with our intelligent directory search." />
+          <Feature icon={<Search size={20} />} title="Smart Search" body="Find any Senior quickly with our intelligent directory search." />
           <Feature icon={<Lock size={20} />} title="Privacy Control" body="Decide exactly what information you share and with whom." />
-          <Feature icon={<Globe size={20} />} title="Stay Connected" body="Stay engaged with your alumni network no matter where in the world you are." />
+          <Feature icon={<Globe size={20} />} title="Stay Connected" body="Stay engaged with your Amanfoɔ '97 Senior network no matter where in the world you are." />
         </div>
       </section>
 
       {/* how it works */}
-      <section className="bg-cream">
+      <section className="bg-brand-dark text-white">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900">How It Works</h2>
-            <p className="mt-2 text-gray-600">Four simple steps to becoming a verified Amanfoɔ '97 Senior.</p>
+            <h2 className="text-3xl font-bold">How It Works</h2>
+            <p className="mt-2 text-white/80">Four simple steps to becoming a verified Amanfoɔ '97 Senior.</p>
           </div>
           <div className="relative mt-12">
-            <div className="hidden md:block absolute top-5 left-0 right-0 h-px bg-brand" />
-            <div className="grid md:grid-cols-4 gap-6 relative">
+            <div className="hidden md:block absolute top-5 left-0 right-0 h-px bg-gold" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 relative">
               <Step n="1" title="Submit Request" body="Fill out a short membership request form with your details." />
               <Step n="2" title="Executive Verification" body="Our admin team verifies your identity as a Class of 1997 alumnus." />
               <Step n="3" title="Receive Senior ID" body="Get your unique Senior ID after approval." />
@@ -226,7 +226,7 @@ export default function Landing() {
             to="/request-membership"
             className="inline-block mt-6 bg-white text-brand-dark font-semibold px-6 py-3 rounded-full"
           >
-            Request for Membership
+            Request Membership
           </Link>
           <div className="mt-3 text-sm text-white/80">
             Already a senior?{' '}
@@ -238,10 +238,10 @@ export default function Landing() {
       </section>
 
       {/* faq */}
-      <section className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10">
+      <section className="max-w-6xl mx-auto px-6 py-12 md:py-16 grid md:grid-cols-2 gap-8 md:gap-10">
         <div>
           <div className="w-12 h-12 bg-brand/10 rounded-xl mb-4" />
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
             Need help? <br />Explore our FAQs
           </h2>
         </div>
@@ -254,11 +254,11 @@ export default function Landing() {
         </div>
       </section>
 
-      <footer className="bg-cream">
-        <div className="max-w-6xl mx-auto px-6 py-6 flex justify-between text-sm">
-          <span className="text-brand font-semibold">Amanfoɔ '97</span>
-          <span className="text-gray-600 flex items-center gap-1">
-            Contact: <Mail size={14} /> support@amanfo97.org
+      <footer className="bg-brand-dark text-white">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row sm:justify-between gap-2 text-sm">
+          <span className="text-gold font-semibold">Amanfoɔ '97</span>
+          <span className="text-white flex items-center gap-1">
+            Contact: <Mail size={14} className="text-gold" /> support@amanfo97.org
           </span>
         </div>
       </footer>

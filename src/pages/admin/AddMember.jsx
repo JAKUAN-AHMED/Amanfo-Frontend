@@ -56,7 +56,7 @@ function Select({ label, options, required, value, onChange, disabled, placehold
   );
 }
 
-export default function AddMember({ mode = 'add' }) {
+export default function AddSenior({ mode = 'add' }) {
   const nav = useNavigate();
   const [country, setCountry] = useState(mode === 'edit' ? 'Ghana' : '');
   const [city, setCity] = useState(mode === 'edit' ? 'Accra' : '');
@@ -70,10 +70,10 @@ export default function AddMember({ mode = 'add' }) {
         </button>
         <div>
           <h2 className="text-2xl font-bold text-brand">
-            {editing ? 'Edit Member' : 'Add New Member'}
+            {editing ? 'Edit Senior' : 'Add New Senior'}
           </h2>
           <p className="text-gray-500 text-sm">
-            {editing ? 'Update member details below.' : 'Create a new senior account in the directory.'}
+            {editing ? 'Update Senior details below.' : 'Create a new Senior account in the directory.'}
           </p>
         </div>
       </div>
@@ -87,25 +87,25 @@ export default function AddMember({ mode = 'add' }) {
       >
         <div>
           <h3 className="text-brand font-semibold mb-4">Personal Information</h3>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Field label="First Name" defaultValue={editing ? 'Kwame' : ''} required />
             <Field label="Last Name" defaultValue={editing ? 'Mensah' : ''} required />
             <Field label="Nickname" defaultValue={editing ? 'KM' : ''} />
-            <Field label="Member ID" defaultValue={editing ? 'AM97001' : 'Auto-generated'} />
+            <Field label="Senior ID" defaultValue={editing ? 'AM97001' : 'Auto-generated'} />
           </div>
         </div>
 
         <div>
           <h3 className="text-brand font-semibold mb-4">Contact Information</h3>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Field label="Email Address" type="email" defaultValue={editing ? 'kwame.mensah@email.com' : ''} required />
             <Field label="Phone Number" defaultValue={editing ? '+233244123456' : ''} required />
           </div>
         </div>
 
         <div>
-          <h3 className="text-brand font-semibold mb-4">Alumni Information</h3>
-          <div className="grid grid-cols-2 gap-5">
+          <h3 className="text-brand font-semibold mb-4">Class Information</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Select label="Class" options={CLASSES} value={editing ? 'A3' : ''} onChange={() => {}} required />
             <Select label="House / Group" options={HOUSES} value={editing ? 'Amanfoɔ' : ''} onChange={() => {}} required />
           </div>
@@ -113,7 +113,7 @@ export default function AddMember({ mode = 'add' }) {
 
         <div>
           <h3 className="text-brand font-semibold mb-4">Professional</h3>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Select label="Industry" options={INDUSTRIES} value={editing ? 'Technology' : ''} onChange={() => {}} />
             <Field label="Profession" defaultValue={editing ? 'Software Engineer' : ''} />
           </div>
@@ -121,7 +121,7 @@ export default function AddMember({ mode = 'add' }) {
 
         <div>
           <h3 className="text-brand font-semibold mb-4">Location</h3>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Select
               label="Country"
               options={Object.keys(COUNTRY_CITIES)}
@@ -151,7 +151,7 @@ export default function AddMember({ mode = 'add' }) {
             type="submit"
             className="bg-brand-dark hover:bg-brand text-white font-semibold px-6 py-2.5 rounded-lg flex items-center gap-2"
           >
-            <Save size={16} /> {editing ? 'Save Changes' : 'Create Member'}
+            <Save size={16} /> {editing ? 'Save Changes' : 'Create Senior'}
           </button>
           <button
             type="button"

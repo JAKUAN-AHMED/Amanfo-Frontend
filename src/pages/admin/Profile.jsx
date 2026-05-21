@@ -28,7 +28,7 @@ export default function AdminProfile() {
           <p className="text-xs text-gray-500 mt-1.5">JPG, PNG or GIF. Max size 2MB</p>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <Field label="First Name" defaultValue="Admin" />
         <Field label="Last Name" defaultValue="User" />
         <Field label="Email Address" defaultValue="admin@business.com" wide />

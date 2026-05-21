@@ -14,7 +14,7 @@ const TYPES = [
 
 const CUSTOM_FIELD_TYPES = ['Text', 'Number', 'Date', 'Long Text', 'URL'];
 
-const AUDIENCES = ['All Members', 'Seniors Only', 'Admins Only', 'Specific Class', 'Specific House'];
+const AUDIENCES = ['All Seniors', 'Active Seniors Only', 'Admins Only', 'Specific Class', 'Specific House'];
 const PRIORITIES = ['Low', 'Normal', 'High', 'Urgent'];
 const CLASSES = ['A1', 'A2', 'A3', 'AV', 'B1', 'B2', 'M1', 'M2', 'M3', 'M4'];
 const HOUSES = ['Amanfoɔ', 'Aggrey', 'Butler', 'Ramseyer', 'Riis', 'Slessor', 'Freeman'];
@@ -44,7 +44,7 @@ const initialRecent = [
     title: 'Class of 97 -30th Anniversary Homecoming',
     desc: 'Save the date. Three days of celebration on Campus',
     day: '20', month: 'Jun',
-    type: 'Executive Announcement', audience: 'All Members', priority: 'High',
+    type: 'Executive Announcement', audience: 'All Seniors', priority: 'High',
   },
   {
     title: 'Q2 Lalasula Drive Opens',
@@ -252,8 +252,8 @@ function CustomFields({ form, update }) {
         </div>
       )}
       {fields.map((f) => (
-        <div key={f.id} className="grid grid-cols-12 gap-3 items-start bg-gray-50 border border-gray-200 rounded-lg p-3">
-          <div className="col-span-4">
+        <div key={f.id} className="grid grid-cols-1 md:grid-cols-12 gap-3 items-start bg-gray-50 border border-gray-200 rounded-lg p-3">
+          <div className="md:col-span-4">
             <input
               value={f.label}
               onChange={(e) => updateField(f.id, { label: e.target.value })}
@@ -261,7 +261,7 @@ function CustomFields({ form, update }) {
               className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand/30"
             />
           </div>
-          <div className="col-span-3">
+          <div className="md:col-span-3">
             <select
               value={f.type}
               onChange={(e) => updateField(f.id, { type: e.target.value, value: '' })}
@@ -272,7 +272,7 @@ function CustomFields({ form, update }) {
               ))}
             </select>
           </div>
-          <div className="col-span-4">
+          <div className="md:col-span-4">
             {f.type === 'Long Text' ? (
               <textarea
                 rows={2}
@@ -294,7 +294,7 @@ function CustomFields({ form, update }) {
           <button
             type="button"
             onClick={() => removeField(f.id)}
-            className="col-span-1 h-9 w-9 mx-auto flex items-center justify-center text-red-500 hover:bg-red-50 rounded-lg"
+            className="md:col-span-1 justify-self-end h-9 w-9 flex items-center justify-center text-red-500 hover:bg-red-50 rounded-lg"
             title="Remove field"
           >
             <X size={16} />
@@ -318,7 +318,7 @@ export default function AnnouncementForm() {
     description: '',
     date: '',
     type: 'Lalasula Contribution',
-    audience: 'All Members',
+    audience: 'All Seniors',
     priority: 'Normal',
     targetClass: '',
     targetHouse: '',
@@ -362,7 +362,7 @@ export default function AnnouncementForm() {
     <div className="space-y-8">
       <form onSubmit={submit} className="bg-white border border-gray-200 rounded-2xl p-7">
         <h2 className="text-xl font-semibold text-gray-900 mb-5">Announcements</h2>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Select label="Announcement Type" value={form.type} onChange={update('type')} options={TYPES} required />
           <Field label="Announcement Date" type="date" value={form.date} onChange={update('date')} />
 
