@@ -3,11 +3,14 @@ import { Pencil, Trash2, Send, ImagePlus, X, Plus } from 'lucide-react';
 import RichTextEditor from '../../components/RichTextEditor';
 
 const TYPES = [
-  'Lalasula Contribution',
+  'Lalasulala Contribution',
   'Legacy Project',
   'Hero Fund',
   'Ayie Announcement',
   'Annual Dues',
+  'Reunion / Homecoming',
+  'Sports / Social Activities',
+  'Welfare / Community',
   'Executive Announcement',
   'Custom Announcement',
 ];
@@ -23,11 +26,14 @@ const PAYMENT_METHODS = ['Mobile Money', 'Bank Transfer', 'Cash', 'Cheque'];
 const CURRENCIES = ['GHS', 'USD', 'GBP', 'EUR', 'NGN'];
 
 const TYPE_STYLES = {
-  'Lalasula Contribution': 'bg-pink-100 text-pink-700',
+  'Lalasulala Contribution': 'bg-pink-100 text-pink-700',
   'Legacy Project': 'bg-purple-100 text-purple-700',
   'Hero Fund': 'bg-amber-100 text-amber-700',
   'Ayie Announcement': 'bg-blue-100 text-blue-700',
   'Annual Dues': 'bg-emerald-100 text-emerald-700',
+  'Reunion / Homecoming': 'bg-orange-100 text-orange-700',
+  'Sports / Social Activities': 'bg-sky-100 text-sky-700',
+  'Welfare / Community': 'bg-teal-100 text-teal-700',
   'Executive Announcement': 'bg-red-100 text-red-700',
   'Custom Announcement': 'bg-indigo-100 text-indigo-700',
 };
@@ -50,7 +56,7 @@ const initialRecent = [
     title: 'Q2 Lalasula Drive Opens',
     desc: 'Contribute toward the welfare fund for current students.',
     day: '01', month: 'Aug',
-    type: 'Lalasula Contribution', audience: 'Seniors Only', priority: 'Normal',
+    type: 'Lalasulala Contribution', audience: 'Seniors Only', priority: 'Normal',
   },
 ];
 
@@ -152,7 +158,7 @@ function ImageUpload({ images, onAdd, onRemove }) {
 
 function TypeFields({ form, update }) {
   switch (form.type) {
-    case 'Lalasula Contribution':
+    case 'Lalasulala Contribution':
       return (
         <>
           <Field label="Beneficiary / Senior" value={form.beneficiary} onChange={update('beneficiary')} placeholder="e.g. Kwame Mensah" required />
@@ -317,7 +323,7 @@ export default function AnnouncementForm() {
     title: '',
     description: '',
     date: '',
-    type: 'Lalasula Contribution',
+    type: 'Lalasulala Contribution',
     audience: 'All Seniors',
     priority: 'Normal',
     targetClass: '',

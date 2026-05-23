@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import RequireAuth from './components/RequireAuth';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
@@ -51,7 +52,14 @@ export default function App() {
         <Route path="/admin/verify-otp" element={<AdminOtp />} />
         <Route path="/admin/reset-password" element={<AdminReset />} />
 
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route
+          path="/admin"
+          element={
+            <RequireAuth role="admin">
+              <AdminLayout />
+            </RequireAuth>
+          }
+        >
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="seniors" element={<AdminSeniors />} />
@@ -68,7 +76,14 @@ export default function App() {
           <Route path="profile" element={<AdminProfile />} />
         </Route>
 
-        <Route path="/senior" element={<SeniorLayout />}>
+        <Route
+          path="/senior"
+          element={
+            <RequireAuth role="senior">
+              <SeniorLayout />
+            </RequireAuth>
+          }
+        >
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<SeniorDashboard />} />
           <Route path="directory" element={<SeniorDirectory />} />

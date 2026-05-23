@@ -33,7 +33,7 @@ function Select({ label, defaultValue, options = [] }) {
 }
 
 const UPDATE_TYPES = [
-  'Lalasula Contribution',
+  'Lalasulala Contribution',
   'Legacy Project',
   'Hero Fund',
   'Ayie Announcement',
@@ -48,7 +48,7 @@ export default function CreateUpdate() {
   return (
     <div className="max-w-3xl bg-white border border-gray-200 rounded-2xl p-7 space-y-5">
       <h2 className="text-xl font-semibold">Create Community Updates</h2>
-      <Select label="Select Update Type" defaultValue="Lalasula Contribution" options={UPDATE_TYPES} />
+      <Select label="Select Update Type" defaultValue="Lalasulala Contribution" options={UPDATE_TYPES} />
       <Input label="Tittle" defaultValue="welfare" />
       <div>
         <label className="text-sm text-gray-700 block mb-1.5">Description</label>

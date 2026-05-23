@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { LogIn, Mail, Lock, Shield, Eye, EyeOff } from 'lucide-react';
 import Logo from '../../components/Logo';
+import { useAuth } from '../../context/AuthContext';
 
 export default function AdminLogin() {
   const nav = useNavigate();
+  const { login } = useAuth();
   const [show, setShow] = useState(false);
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6">
@@ -21,6 +23,7 @@ export default function AdminLogin() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          login({ role: 'admin' });
           nav('/admin/dashboard');
         }}
         className="w-full max-w-md border border-gray-200 rounded-2xl p-7 bg-white"

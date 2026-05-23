@@ -2,14 +2,21 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { LogIn } from 'lucide-react';
 import Logo from '../components/Logo';
+import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
   const [id, setId] = useState('');
   const nav = useNavigate();
+  const { login } = useAuth();
   const submit = (e) => {
     e.preventDefault();
-    if (id.toLowerCase().includes('admin')) nav('/admin/dashboard');
-    else nav('/senior/dashboard');
+    if (id.toLowerCase().includes('admin')) {
+      login({ role: 'admin' });
+      nav('/admin/dashboard');
+    } else {
+      login({ role: 'senior', id: id || 'AM97001' });
+      nav('/senior/dashboard');
+    }
   };
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6">

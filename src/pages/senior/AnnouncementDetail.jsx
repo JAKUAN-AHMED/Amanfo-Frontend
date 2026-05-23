@@ -18,7 +18,7 @@ function Row({ icon, label, value }) {
 function TypeDetails({ a }) {
   const money = (amt) => (amt ? `${a.currency || ''} ${Number(amt).toLocaleString()}`.trim() : null);
   switch (a.type) {
-    case 'Lalasula Contribution':
+    case 'Lalasulala Contribution':
       return (
         <>
           <Row icon={<User size={16} />} label="Beneficiary" value={a.beneficiary} />

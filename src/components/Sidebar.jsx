@@ -1,9 +1,15 @@
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { LayoutGrid, Users, Clock, ClipboardEdit, LogOut, Home, X } from 'lucide-react';
 import Logo from './Logo';
+import { useAuth } from '../context/AuthContext';
 
 export default function Sidebar({ items, profileLink, logoutTo = '/login', open = false, onClose }) {
   const navigate = useNavigate();
+  const { logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+    navigate(logoutTo, { replace: true });
+  };
   return (
     <>
       {/* mobile overlay */}
@@ -23,7 +29,7 @@ export default function Sidebar({ items, profileLink, logoutTo = '/login', open 
         <div className="flex items-center justify-between px-4 lg:px-6 py-5 border-b border-gray-100">
           <Link to="/" className="flex items-center gap-2 hover:opacity-80" onClick={onClose}>
             <Logo size={36} />
-            <span className="font-semibold text-base">Amanfoɔ - 97</span>
+            <span className="font-semibold text-base">Amanfoɔ '97</span>
           </Link>
           <button
             onClick={onClose}

@@ -1,9 +1,12 @@
 export const TYPE_STYLES = {
-  'Lalasula Contribution': 'bg-pink-100 text-pink-700',
+  'Lalasulala Contribution': 'bg-pink-100 text-pink-700',
   'Legacy Project': 'bg-purple-100 text-purple-700',
   'Hero Fund': 'bg-amber-100 text-amber-700',
   'Ayie Announcement': 'bg-blue-100 text-blue-700',
   'Annual Dues': 'bg-emerald-100 text-emerald-700',
+  'Reunion / Homecoming': 'bg-orange-100 text-orange-700',
+  'Sports / Social Activities': 'bg-sky-100 text-sky-700',
+  'Welfare / Community': 'bg-teal-100 text-teal-700',
   'Executive Announcement': 'bg-red-100 text-red-700',
   'Custom Announcement': 'bg-indigo-100 text-indigo-700',
 };
@@ -34,7 +37,7 @@ export const announcements = [
     title: 'Welfare Fund: Q2 Contribution Drive Opens',
     desc: '<p>Renewing the scholarship endowment for current students. Every senior is encouraged to contribute.</p>',
     day: '01', month: 'Aug', year: 2027,
-    type: 'Lalasula Contribution',
+    type: 'Lalasulala Contribution',
     audience: 'Seniors Only',
     priority: 'Normal',
     beneficiary: 'Prempeh College Students',
