@@ -1,9 +1,9 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Logo from '../components/Logo';
 
 const CLASSES = ['A1', 'A2', 'A3', 'AV', 'B1', 'B2', 'M1', 'M2', 'M3', 'M4'];
-const HOUSES = ['Amanfoɔ', 'Aggrey', 'Butler', 'Ramseyer', 'Riis', 'Slessor', 'Freeman'];
+const HOUSES = ['Amanfo', 'Aggrey', 'Butler', 'Freeman', 'Gberg', 'OT', 'Pearson', 'Ramseyer', 'Serwaa', 'DAY'];
 const INDUSTRIES = [
   'Healthcare', 'Technology', 'Finance', 'Education', 'Government / Public Service',
   'Business / Entrepreneurship', 'Construction / Real Estate', 'Transportation / Logistics',
@@ -68,7 +68,7 @@ export default function RequestMembership() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <Logo size={36} />
-            <span className="font-semibold">Amanfoɔ '97</span>
+            <span className="font-semibold">Amanfo '97</span>
           </Link>
           <Link to="/login" className="text-sm font-medium text-gray-800">Login</Link>
         </div>
@@ -94,7 +94,7 @@ export default function RequestMembership() {
             <Input label="Email Address" type="email" placeholder="you@email.com" required />
             <Input label="Phone Number" placeholder="+233244123456" required />
             <Select label="Class" options={CLASSES} required />
-            <Select label="House / Group" options={HOUSES} required />
+            <Select label="House" options={HOUSES} required />
             <Select label="Industry" options={INDUSTRIES} />
             <Select
               label="Country"
@@ -104,12 +104,12 @@ export default function RequestMembership() {
               required
             />
             <Select
-              label="City"
+              label="City / State"
               options={COUNTRY_CITIES[country] || []}
               value={city}
               onChange={setCity}
               disabled={!country}
-              placeholder={country ? 'Select City' : 'Select Country first'}
+              placeholder={country ? 'Select City / State' : 'Select Country first'}
               required
             />
           </div>
@@ -141,3 +141,4 @@ export default function RequestMembership() {
     </div>
   );
 }
+

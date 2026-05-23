@@ -47,7 +47,7 @@ export default function SurveyParticipate() {
           </div>
           <h2 className="text-2xl font-bold text-gray-900">Thank you for your response!</h2>
           <p className="text-gray-500 mt-2">
-            Your input helps shape the future of the Amanfoɔ '97 community.
+            Your input helps shape the future of the Amanfo '97 community.
           </p>
           <Link
             to="/senior/surveys"

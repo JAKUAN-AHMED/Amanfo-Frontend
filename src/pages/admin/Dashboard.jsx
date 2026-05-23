@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserPlus, UserMinus, Eye, Pencil, Trash2, Plus } from 'lucide-react';
-import StatCards, { defaultStats } from '../../components/StatCards';
+import StatCards from '../../components/StatCards';
+import { defaultStats } from '../../data/statCardsData';
 
 const pending = [
   {
@@ -16,9 +17,9 @@ const pending = [
 ];
 
 const active = [
-  { id: 'AM97001', name: 'Kwame Mensah', email: 'kwame.mensah@email.com', house: 'Amanfoɔ', location: 'Accra, Ghana' },
-  { id: 'AM97002', name: 'Kofi Asante', email: 'kofi.asante@email.com', house: 'Amanfoɔ', location: 'New York, United States' },
-  { id: 'AM97003', name: 'Yaw Boateng', email: 'yaw.boateng@email.com', house: 'Amanfoɔ', location: 'London, United Kingdom' },
+  { id: 'AM97001', name: 'Kwame Mensah', email: 'kwame.mensah@email.com', house: 'Amanfo', location: 'Accra, Ghana' },
+  { id: 'AM97002', name: 'Kofi Asante', email: 'kofi.asante@email.com', house: 'Amanfo', location: 'New York, United States' },
+  { id: 'AM97003', name: 'Yaw Boateng', email: 'yaw.boateng@email.com', house: 'Amanfo', location: 'London, United Kingdom' },
 ];
 
 export default function AdminDashboard() {
@@ -28,7 +29,7 @@ export default function AdminDashboard() {
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold text-brand">Welcome back, Admin</h2>
-          <p className="text-gray-500 mt-1">Here's what's happening across Amanfoɔ '97.</p>
+          <p className="text-gray-500 mt-1">Here's what's happening across Amanfo '97.</p>
         </div>
         <div className="flex gap-3 flex-wrap">
           <button className="border border-gray-300 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-gray-50">

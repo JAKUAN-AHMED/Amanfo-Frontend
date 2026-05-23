@@ -1,4 +1,4 @@
-import { useNavigate, useParams, Link } from 'react-router-dom';
+﻿import { useNavigate, useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Mail, Phone, MapPin, Briefcase, GraduationCap, Pencil, Trash2 } from 'lucide-react';
 
 function Row({ icon, label, value }) {
@@ -52,7 +52,7 @@ export default function SeniorDetail() {
           </span>
           <div className="mt-3">
             <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-xs px-2.5 py-1 rounded-full">
-              ✓ Active
+              âœ“ Active
             </span>
           </div>
         </div>
@@ -65,7 +65,7 @@ export default function SeniorDetail() {
 
           <h3 className="text-brand font-semibold mt-6 mb-3">Class</h3>
           <Row icon={<GraduationCap size={16} />} label="Class" value="A3" />
-          <Row icon={<GraduationCap size={16} />} label="House / Group" value="Amanfoɔ" />
+          <Row icon={<GraduationCap size={16} />} label="House" value="Amanfo" />
 
           <h3 className="text-brand font-semibold mt-6 mb-3">Professional</h3>
           <Row icon={<Briefcase size={16} />} label="Industry" value="Technology" />
@@ -75,3 +75,4 @@ export default function SeniorDetail() {
     </div>
   );
 }
+

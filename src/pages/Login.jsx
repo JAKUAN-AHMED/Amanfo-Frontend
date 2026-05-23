@@ -24,8 +24,8 @@ export default function Login() {
         <Link to="/" title="Go to home" className="hover:opacity-80 transition">
           <Logo size={64} />
         </Link>
-        <h1 className="mt-5 text-3xl font-bold text-brand">Amanfoɔ '97 Senior Portal</h1>
-        <p className="mt-2 text-gray-500">Private access for verified Amanfoɔ '97 Seniors</p>
+        <h1 className="mt-5 text-3xl font-bold text-brand">Amanfo '97 Senior Portal</h1>
+        <p className="mt-2 text-gray-500">Private access for verified Amanfo '97 Seniors</p>
       </div>
       <form
         onSubmit={submit}

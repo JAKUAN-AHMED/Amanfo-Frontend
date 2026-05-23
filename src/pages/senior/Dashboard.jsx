@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Users, Clock, CheckCircle2, ClipboardEdit, ArrowRight } from 'lucide-react';
+import { Users, Clock, CheckCircle2, ClipboardEdit, ArrowRight, Cake, MessageSquareHeart, WalletCards } from 'lucide-react';
 import { announcements, TYPE_STYLES } from '../../data/announcements';
 import { surveys, hasResponded } from '../../data/surveys';
+import { birthdaysThisWeek } from '../../data/community';
 
 const stats = [
   { label: 'Total Seniors', value: '312', icon: <Users className="text-blue-500" size={22} />, bg: 'bg-blue-50' },
@@ -16,7 +17,7 @@ export default function SeniorDashboard() {
     <div className="space-y-7">
       <div>
         <h2 className="text-2xl md:text-3xl font-bold text-brand">Welcome back, Senior Kwame</h2>
-        <p className="text-gray-500 mt-1">Here's what's happening across Amanfoɔ '97 today.</p>
+        <p className="text-gray-500 mt-1">Here's what's happening across Amanfo '97 today.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -31,6 +32,38 @@ export default function SeniorDashboard() {
         ))}
       </div>
 
+      <div className="grid gap-4 lg:grid-cols-3">
+        <section className="rounded-xl border border-gray-200 bg-white p-5 lg:col-span-1">
+          <h3 className="flex items-center gap-2 text-lg font-bold text-gray-900">
+            <Cake size={18} className="text-amber-500" /> Birthdays This Week
+          </h3>
+          <div className="mt-4 space-y-3">
+            {birthdaysThisWeek.map((birthday) => (
+              <div key={birthday.name} className="flex items-center justify-between gap-3 text-sm">
+                <span className="font-medium text-gray-800">{birthday.name}</span>
+                <span className="text-gray-500">{birthday.date}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+        <Link
+          to="/senior/community"
+          className="rounded-xl border border-gray-200 bg-white p-5 hover:border-brand/30 hover:shadow-sm transition"
+        >
+          <MessageSquareHeart className="text-brand" size={22} />
+          <h3 className="mt-4 text-lg font-bold text-gray-900">Community Feed</h3>
+          <p className="mt-1 text-sm text-gray-500">View approved memories, homecoming galleries, and milestones.</p>
+        </Link>
+        <Link
+          to="/senior/contributions"
+          className="rounded-xl border border-gray-200 bg-white p-5 hover:border-brand/30 hover:shadow-sm transition"
+        >
+          <WalletCards className="text-brand" size={22} />
+          <h3 className="mt-4 text-lg font-bold text-gray-900">Contributions</h3>
+          <p className="mt-1 text-sm text-gray-500">Track dues, support funds, receipts, and pending payments.</p>
+        </Link>
+      </div>
+
       {openSurveys.length > 0 && (
         <div className="bg-gradient-to-r from-brand-dark to-brand text-white rounded-2xl p-5 md:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
           <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
@@ -42,7 +75,7 @@ export default function SeniorDashboard() {
               {openSurveys.length} open survey{openSurveys.length === 1 ? '' : 's'} waiting for you
             </h3>
             <p className="text-sm text-white/80 mt-1">
-              Share your thoughts and help shape the Amanfoɔ '97 community.
+              Share your thoughts and help shape the Amanfo '97 community.
             </p>
           </div>
           <Link

@@ -4,7 +4,7 @@ export const surveys = [
   {
     id: '1',
     title: 'Active Status Survey',
-    description: 'Help us understand current engagement levels in the Amanfoɔ ’97 community.',
+    description: `Help us understand current engagement levels in the Amanfo '97 community.`,
     type: 'Single Choice',
     startDate: '2027-06-01',
     endDate: '2027-12-31',
@@ -12,7 +12,7 @@ export const surveys = [
     questions: [
       {
         id: 'q1',
-        text: 'How would you describe your current involvement with Amanfoɔ ’97?',
+        text: `How would you describe your current involvement with Amanfo '97?`,
         type: 'Single Choice',
         options: ['Very Active', 'Active', 'Occasionally Active', 'Inactive'],
       },
@@ -64,7 +64,9 @@ export function loadResponses() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) return JSON.parse(raw);
-  } catch {}
+  } catch {
+    return {};
+  }
   return {};
 }
 
@@ -73,7 +75,10 @@ export function saveResponse(surveyId, answers) {
   all[surveyId] = { answers, submittedAt: new Date().toISOString() };
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
-  } catch {}
+  } catch {
+    return false;
+  }
+  return true;
 }
 
 export function hasResponded(surveyId) {

@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
+/* eslint-disable react-refresh/only-export-components */
+
 const STORAGE_KEY = 'amanfo97_auth';
 
 const AuthContext = createContext(null);
@@ -18,7 +20,9 @@ export function AuthProvider({ children }) {
     try {
       if (user) localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
       else localStorage.removeItem(STORAGE_KEY);
-    } catch {}
+    } catch {
+      // localStorage can be unavailable in restricted browser contexts.
+    }
   }, [user]);
 
   const login = ({ role, name, email, id }) => {
@@ -44,3 +48,4 @@ export function useAuth() {
   if (!ctx) throw new Error('useAuth must be used within AuthProvider');
   return ctx;
 }
+

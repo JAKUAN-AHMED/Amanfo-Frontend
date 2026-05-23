@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Eye, Save } from 'lucide-react';
 
 function Section({ title, children, badge }) {
@@ -76,14 +76,14 @@ const INDUSTRIES = [
 ];
 const PROFESSIONS = ['Software Engineer', 'Doctor', 'Lawyer', 'Teacher', 'Accountant', 'Entrepreneur', 'Banker', 'Consultant', 'Pharmacist', 'Civil Engineer', 'Architect', 'Designer', 'Other'];
 const CLASSES = ['A1', 'A2', 'A3', 'AV', 'B1', 'B2', 'M1', 'M2', 'M3', 'M4'];
-const HOUSES = ['Amanfoɔ', 'Aggrey', 'Butler', 'Ramseyer', 'Riis', 'Slessor', 'Freeman'];
+const HOUSES = ['Amanfo', 'Aggrey', 'Butler', 'Freeman', 'Gberg', 'OT', 'Pearson', 'Ramseyer', 'Serwaa', 'DAY'];
 const COUNTRY_CITIES = {
   Ghana: ['Accra', 'Kumasi', 'Takoradi', 'Tema', 'Cape Coast', 'Tamale', 'Sunyani', 'Ho', 'Koforidua', 'Wa', 'Bolgatanga'],
   Nigeria: ['Lagos', 'Abuja', 'Kano', 'Ibadan', 'Port Harcourt', 'Benin City', 'Kaduna', 'Enugu'],
   'United Kingdom': ['London', 'Manchester', 'Birmingham', 'Leeds', 'Liverpool', 'Glasgow', 'Edinburgh', 'Bristol'],
   'United States': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'Boston', 'Washington D.C.', 'Atlanta'],
   Canada: ['Toronto', 'Montreal', 'Vancouver', 'Calgary', 'Ottawa', 'Edmonton', 'Winnipeg', 'Quebec City'],
-  Germany: ['Berlin', 'Hamburg', 'Munich', 'Cologne', 'Frankfurt', 'Stuttgart', 'Düsseldorf'],
+  Germany: ['Berlin', 'Hamburg', 'Munich', 'Cologne', 'Frankfurt', 'Stuttgart', 'DÃ¼sseldorf'],
   'South Africa': ['Johannesburg', 'Cape Town', 'Durban', 'Pretoria', 'Port Elizabeth', 'Bloemfontein'],
   Netherlands: ['Amsterdam', 'Rotterdam', 'The Hague', 'Utrecht', 'Eindhoven', 'Groningen'],
   Australia: ['Sydney', 'Melbourne', 'Brisbane', 'Perth', 'Adelaide', 'Canberra', 'Gold Coast'],
@@ -140,10 +140,10 @@ export default function SeniorProfile() {
         title="Senior Verification"
         badge={<span className="w-7 h-7 rounded-full bg-brand-dark text-white text-sm font-bold flex items-center justify-center">2</span>}
       >
-        <p className="text-xs text-gray-500 -mt-3 mb-4">Confirms you are from Amanfoɔ '97</p>
+        <p className="text-xs text-gray-500 -mt-3 mb-4">Confirms you are from Amanfo '97</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Select label="Class" value="" required options={CLASSES} />
-          <Select label="House / Group" value="" required options={HOUSES} />
+          <Select label="House" value="" required options={HOUSES} />
         </div>
       </Section>
 
@@ -160,13 +160,13 @@ export default function SeniorProfile() {
             }}
           />
           <Select
-            label="City"
+            label="City / State"
             controlled
             value={city}
             options={cityOptions}
             onChange={setCity}
             disabled={!country}
-            placeholder={country ? 'Select City' : 'Select Country first'}
+            placeholder={country ? 'Select City / State' : 'Select Country first'}
           />
         </div>
       </Section>
@@ -187,3 +187,4 @@ export default function SeniorProfile() {
     </div>
   );
 }
+

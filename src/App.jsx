@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import RequireAuth from './components/RequireAuth';
+import RequireAuth, { RequireRole } from './components/RequireAuth';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
@@ -22,6 +22,8 @@ import AdminAddMember from './pages/admin/AddMember';
 import AdminMemberDetail from './pages/admin/MemberDetail';
 import AdminProfile from './pages/admin/Profile';
 import AdminFaqs from './pages/admin/Faqs';
+import AdminModeration from './pages/admin/Moderation';
+import AdminContributions from './pages/admin/Contributions';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminForgot from './pages/admin/AdminForgot';
 import AdminOtp from './pages/admin/AdminOtp';
@@ -33,6 +35,9 @@ import SeniorAnnouncements from './pages/senior/Announcements';
 import SeniorAnnouncementDetail from './pages/senior/AnnouncementDetail';
 import SeniorSurveys from './pages/senior/Surveys';
 import SurveyParticipate from './pages/senior/SurveyParticipate';
+import SeniorCommunity from './pages/senior/Community';
+import SeniorCommunityUpload from './pages/senior/CommunityUpload';
+import SeniorContributions from './pages/senior/Contributions';
 
 export default function App() {
   return (
@@ -55,9 +60,9 @@ export default function App() {
         <Route
           path="/admin"
           element={
-            <RequireAuth role="admin">
+            <RequireRole role="admin">
               <AdminLayout />
-            </RequireAuth>
+            </RequireRole>
           }
         >
           <Route index element={<Navigate to="dashboard" replace />} />
@@ -72,6 +77,8 @@ export default function App() {
           <Route path="survey" element={<AdminSurvey />} />
           <Route path="survey/new" element={<AdminCreateSurvey />} />
           <Route path="survey/:id" element={<AdminSurveyDetail />} />
+          <Route path="moderation" element={<AdminModeration />} />
+          <Route path="contributions" element={<AdminContributions />} />
           <Route path="faqs" element={<AdminFaqs />} />
           <Route path="profile" element={<AdminProfile />} />
         </Route>
@@ -79,8 +86,10 @@ export default function App() {
         <Route
           path="/senior"
           element={
-            <RequireAuth role="senior">
-              <SeniorLayout />
+            <RequireAuth>
+              <RequireRole role="senior">
+                <SeniorLayout />
+              </RequireRole>
             </RequireAuth>
           }
         >
@@ -89,6 +98,9 @@ export default function App() {
           <Route path="directory" element={<SeniorDirectory />} />
           <Route path="announcements" element={<SeniorAnnouncements />} />
           <Route path="announcements/:id" element={<SeniorAnnouncementDetail />} />
+          <Route path="community" element={<SeniorCommunity />} />
+          <Route path="community/upload" element={<SeniorCommunityUpload />} />
+          <Route path="contributions" element={<SeniorContributions />} />
           <Route path="surveys" element={<SeniorSurveys />} />
           <Route path="surveys/:id" element={<SurveyParticipate />} />
           <Route path="profile" element={<SeniorProfile />} />

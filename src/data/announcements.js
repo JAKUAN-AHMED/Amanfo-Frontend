@@ -62,7 +62,7 @@ export const announcements = [
     deadline: '2027-07-31',
     paymentMethod: 'Bank Transfer',
     penalty: '10% after deadline',
-    instructions: 'Account: Amanfoɔ ‘97 Association — 1234567890 (Stanbic Bank).',
+    instructions: `Account: Amanfo '97 Association — 1234567890 (Stanbic Bank).`,
     ago: '1 week ago',
   },
   {

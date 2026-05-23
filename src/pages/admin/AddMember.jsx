@@ -1,9 +1,9 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Save, ArrowLeft } from 'lucide-react';
 
 const CLASSES = ['A1', 'A2', 'A3', 'AV', 'B1', 'B2', 'M1', 'M2', 'M3', 'M4'];
-const HOUSES = ['Amanfoɔ', 'Aggrey', 'Butler', 'Ramseyer', 'Riis', 'Slessor', 'Freeman'];
+const HOUSES = ['Amanfo', 'Aggrey', 'Butler', 'Freeman', 'Gberg', 'OT', 'Pearson', 'Ramseyer', 'Serwaa', 'DAY'];
 const INDUSTRIES = [
   'Healthcare', 'Technology', 'Finance', 'Education', 'Government / Public Service',
   'Business / Entrepreneurship', 'Construction / Real Estate', 'Transportation / Logistics',
@@ -107,7 +107,7 @@ export default function AddSenior({ mode = 'add' }) {
           <h3 className="text-brand font-semibold mb-4">Class Information</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Select label="Class" options={CLASSES} value={editing ? 'A3' : ''} onChange={() => {}} required />
-            <Select label="House / Group" options={HOUSES} value={editing ? 'Amanfoɔ' : ''} onChange={() => {}} required />
+            <Select label="House" options={HOUSES} value={editing ? 'Amanfo' : ''} onChange={() => {}} required />
           </div>
         </div>
 
@@ -130,12 +130,12 @@ export default function AddSenior({ mode = 'add' }) {
               required
             />
             <Select
-              label="City"
+              label="City / State"
               options={COUNTRY_CITIES[country] || []}
               value={city}
               onChange={setCity}
               disabled={!country}
-              placeholder={country ? 'Select City' : 'Select Country first'}
+              placeholder={country ? 'Select City / State' : 'Select Country first'}
               required
             />
           </div>
@@ -165,3 +165,4 @@ export default function AddSenior({ mode = 'add' }) {
     </div>
   );
 }
+

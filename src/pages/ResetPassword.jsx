@@ -28,7 +28,7 @@ export default function ResetPassword() {
   return (
     <AuthShell
       title="Reset Your Password"
-      subtitle="Create a strong new password to secure your Amanfoɔ '97 account."
+      subtitle="Create a strong new password to secure your Amanfo '97 account."
       back="/verify-otp"
     >
       <form

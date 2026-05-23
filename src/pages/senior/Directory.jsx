@@ -9,7 +9,7 @@ const seniors = [
 
 const FILTER_OPTIONS = {
   Class: ['A1', 'A2', 'A3', 'AV', 'B1', 'B2', 'M1', 'M2', 'M3', 'M4'],
-  House: ['Amanfoɔ', 'Aggrey', 'Butler', 'Ramseyer', 'Riis', 'Slessor', 'Freeman'],
+  House: ['Amanfo', 'Aggrey', 'Butler', 'Freeman', 'Gberg', 'OT', 'Pearson', 'Ramseyer', 'Serwaa', 'DAY'],
   Country: ['Ghana', 'Nigeria', 'United Kingdom', 'United States', 'Canada', 'Germany', 'South Africa', 'Netherlands', 'Australia'],
   Industry: [
     'Healthcare', 'Technology', 'Finance', 'Education', 'Government / Public Service',

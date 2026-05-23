@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Lock, Eye, EyeOff, Check, X, Shield, CheckCircle2 } from 'lucide-react';
 import Logo from '../../components/Logo';
 
@@ -12,7 +12,6 @@ function Rule({ ok, text }) {
 }
 
 export default function AdminReset() {
-  const nav = useNavigate();
   const [pw, setPw] = useState('');
   const [confirm, setConfirm] = useState('');
   const [show, setShow] = useState(false);

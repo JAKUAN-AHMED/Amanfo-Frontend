@@ -7,7 +7,7 @@ export default function SeniorSurveys() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-brand">Surveys</h2>
-        <p className="text-gray-500 mt-1">Share your voice — help shape Amanfoɔ '97.</p>
+        <p className="text-gray-500 mt-1">Share your voice — help shape Amanfo '97.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

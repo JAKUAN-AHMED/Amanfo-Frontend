@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Users, Search, Lock, Globe, Check, Star, Mail, ChevronDown, ShieldCheck, IdCard } from 'lucide-react';
+import { Users, Search, Lock, Globe, Check, Star, Mail, ChevronDown, IdCard } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Logo from '../components/Logo';
 import { loadFaqs } from '../data/faqs';
@@ -88,7 +88,7 @@ export default function Landing() {
         <h1 className="mt-6 text-4xl md:text-5xl font-bold text-gray-900 leading-[1.15] tracking-tight">
           <span className="block">
             Stay Connected with Verified{' '}
-            <span className="text-brand">Amanfoɔ '97</span>
+            <span className="text-brand">Amanfo '97</span>
           </span>
           <span className="block">Seniors Worldwide</span>
         </h1>
@@ -121,7 +121,7 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto px-6 py-14 text-center">
           <h2 className="text-3xl font-bold">
             Exclusively for Verified <br />
-            <span className="text-gold">Amanfoɔ 97</span> Seniors
+            <span className="text-gold">Amanfo 97</span> Seniors
           </h2>
           <p className="mt-3 text-white/80 max-w-xl mx-auto">
             We take verification seriously so every Senior can trust who they're connected with.
@@ -155,18 +155,18 @@ export default function Landing() {
       {/* why */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">Why Join Amanfoɔ '97?</h2>
+          <h2 className="text-3xl font-bold text-gray-900">Why Join Amanfo '97?</h2>
           <p className="mt-2 text-gray-600">
             Everything you need to stay meaningfully connected
             <br />
-            with fellow Amanfoɔ '97 Seniors
+            with fellow Amanfo '97 Seniors
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-10">
-          <Feature icon={<Users size={20} />} title="Reconnect with fellow Amanfoɔ '97 Seniors and strengthen old friendships." body="Rediscover classmates from your Prempeh College days and rekindle old friendships." />
+          <Feature icon={<Users size={20} />} title="Reconnect with fellow Amanfo '97 Seniors and strengthen old friendships." body="Rediscover classmates from your Prempeh College days and rekindle old friendships." />
           <Feature icon={<Search size={20} />} title="Smart Search" body="Find any Senior quickly with our intelligent directory search." />
           <Feature icon={<Lock size={20} />} title="Privacy Control" body="Decide exactly what information you share and with whom." />
-          <Feature icon={<Globe size={20} />} title="Stay Connected" body="Stay engaged with your Amanfoɔ '97 Senior network no matter where in the world you are." />
+          <Feature icon={<Globe size={20} />} title="Stay Connected" body="Stay engaged with your Amanfo '97 Senior network no matter where in the world you are." />
         </div>
       </section>
 
@@ -175,7 +175,7 @@ export default function Landing() {
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="text-center">
             <h2 className="text-3xl font-bold">How It Works</h2>
-            <p className="mt-2 text-white/80">Four simple steps to becoming a verified Amanfoɔ '97 Senior.</p>
+            <p className="mt-2 text-white/80">Four simple steps to becoming a verified Amanfo '97 Senior.</p>
           </div>
           <div className="relative mt-12">
             <div className="hidden md:block absolute top-5 left-0 right-0 h-px bg-gold" />
@@ -193,7 +193,7 @@ export default function Landing() {
       <section className="max-w-3xl mx-auto px-6 py-16 text-center">
         <h2 className="text-3xl font-bold text-gray-900">What You Get</h2>
         <p className="mt-2 text-gray-600">
-          As a verified Amanfoɔ '97 Senior, you gain access to features designed around privacy, trust, and community.
+          As a verified Amanfo '97 Senior, you gain access to features designed around privacy, trust, and community.
         </p>
         <ul className="mt-6 text-left max-w-md mx-auto space-y-2 text-gray-700">
           {[
@@ -218,7 +218,7 @@ export default function Landing() {
       {/* CTA banner */}
       <section className="bg-brand-dark text-white">
         <div className="max-w-3xl mx-auto px-6 py-16 text-center">
-          <h2 className="text-3xl font-bold">Ready to Join Amanfoɔ '97?</h2>
+          <h2 className="text-3xl font-bold">Ready to Join Amanfo '97?</h2>
           <p className="mt-3 text-white/80 max-w-xl mx-auto">
             Submit your request and become part of a trusted Senior community built on verification, privacy, and brotherhood.
           </p>
@@ -256,7 +256,7 @@ export default function Landing() {
 
       <footer className="bg-brand-dark text-white">
         <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row sm:justify-between gap-2 text-sm">
-          <span className="text-gold font-semibold">Amanfoɔ '97</span>
+          <span className="text-gold font-semibold">Amanfo '97</span>
           <span className="text-white flex items-center gap-1">
             Contact: <Mail size={14} className="text-gold" /> support@amanfo97.org
           </span>

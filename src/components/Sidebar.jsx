@@ -29,7 +29,7 @@ export default function Sidebar({ items, profileLink, logoutTo = '/login', open 
         <div className="flex items-center justify-between px-4 lg:px-6 py-5 border-b border-gray-100">
           <Link to="/" className="flex items-center gap-2 hover:opacity-80" onClick={onClose}>
             <Logo size={36} />
-            <span className="font-semibold text-base">Amanfoɔ '97</span>
+            <span className="font-semibold text-base">Amanfo '97</span>
           </Link>
           <button
             onClick={onClose}
@@ -62,7 +62,12 @@ export default function Sidebar({ items, profileLink, logoutTo = '/login', open 
               }
             >
               {it.icon}
-              <span>{it.label}</span>
+              <span className="flex-1">{it.label}</span>
+              {it.badge ? (
+                <span className="rounded-full bg-red-500 px-2 py-0.5 text-[11px] font-bold text-white">
+                  {it.badge}
+                </span>
+              ) : null}
             </NavLink>
           ))}
           {profileLink && (
@@ -84,7 +89,7 @@ export default function Sidebar({ items, profileLink, logoutTo = '/login', open 
         </nav>
 
         <button
-          onClick={() => navigate(logoutTo)}
+          onClick={handleLogout}
           className="m-4 flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50"
         >
           <LogOut size={18} /> Logout
