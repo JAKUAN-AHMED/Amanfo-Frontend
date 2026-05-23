@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { Check, Heart, MessageCircle, Pencil, Plus, Reply, Search, Send, Trash2, X } from 'lucide-react';
 import {
-  COMMUNITY_CATEGORIES,
+  POST_TYPES,
   addCommentReply,
   addPostComment,
   countComments,
@@ -13,7 +13,7 @@ import {
 } from '../../data/community';
 import { useAuth } from '../../context/AuthContext';
 
-const filters = ['All', ...COMMUNITY_CATEGORIES];
+const filters = ['All', ...POST_TYPES];
 
 export default function Community() {
   const { user } = useAuth();
@@ -30,13 +30,11 @@ export default function Community() {
 
   const visiblePosts = useMemo(() => {
     return posts.filter((post) => {
-      const matchesFilter = filter === 'All' || post.category === filter;
-      const text = `${post.caption} ${post.author} ${post.category}`.toLowerCase();
+      const matchesFilter = filter === 'All' || post.type === filter;
+      const text = `${post.caption} ${post.author} ${post.type}`.toLowerCase();
       return matchesFilter && text.includes(query.toLowerCase());
     });
   }, [filter, posts, query]);
-
-  const memorialPosts = posts.filter((post) => post.category === 'Memorial').slice(0, 3);
 
   const refreshPosts = () => setPosts(getPublishedPosts());
 
@@ -85,7 +83,7 @@ export default function Community() {
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold text-brand">Community Feed</h2>
-          <p className="text-gray-500 mt-1">Approved memories, milestones, galleries, and memorial updates.</p>
+          <p className="text-gray-500 mt-1">Approved photos, videos and memories shared by Amanfoɔ '97 Seniors.</p>
         </div>
         <Link
           to="/senior/community/upload"
@@ -120,20 +118,6 @@ export default function Community() {
         </div>
       </div>
 
-      {memorialPosts.length > 0 && (
-        <section className="rounded-xl border border-gray-200 bg-gray-50 p-4">
-          <h3 className="text-lg font-bold text-gray-900">Memorial</h3>
-          <div className="mt-3 grid gap-3 md:grid-cols-3">
-            {memorialPosts.map((post) => (
-              <article key={post.id} className="rounded-lg bg-white p-4 text-sm text-gray-700">
-                <p className="line-clamp-3">{post.caption}</p>
-                <div className="mt-3 text-xs font-medium text-gray-500">{post.author}</div>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
-
       <div className="grid gap-4 lg:grid-cols-2">
         {visiblePosts.map((post) => {
           const liked = (post.likedBy || []).includes(currentUser.id);
@@ -149,11 +133,11 @@ export default function Community() {
                   <div>
                     <div className="text-sm font-semibold text-gray-900">{post.author}</div>
                     <div className="mt-1 text-xs text-gray-500">
-                      {new Date(post.createdAt).toLocaleDateString()} · {post.type}
+                      {new Date(post.createdAt).toLocaleDateString()}
                     </div>
                   </div>
                   <span className="rounded-full bg-brand/10 px-2.5 py-1 text-xs font-semibold text-brand">
-                    {post.category}
+                    {post.type}
                   </span>
                 </div>
                 <p className="mt-4 text-sm leading-6 text-gray-700">{post.caption}</p>

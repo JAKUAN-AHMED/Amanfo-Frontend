@@ -1,24 +1,21 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ImagePlus, Send } from 'lucide-react';
-import { COMMUNITY_CATEGORIES, createCommunityPost } from '../../data/community';
+import { ImagePlus, Send, Info } from 'lucide-react';
+import { POST_TYPES, createCommunityPost } from '../../data/community';
 import { useAuth } from '../../context/AuthContext';
-
-const postTypes = ['Photo', 'Video', 'Memory'];
 
 export default function CommunityUpload() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [form, setForm] = useState({
     type: 'Photo',
-    category: 'General',
     caption: '',
     mediaUrl: '',
   });
 
   const submit = (event) => {
     event.preventDefault();
-    createCommunityPost({ ...form, author: user?.name });
+    createCommunityPost({ ...form, author: user?.name, authorId: user?.id });
     navigate('/senior/community');
   };
 
@@ -26,36 +23,29 @@ export default function CommunityUpload() {
     <div className="max-w-3xl space-y-6">
       <div>
         <h2 className="text-2xl md:text-3xl font-bold text-brand">Submit Community Post</h2>
-        <p className="text-gray-500 mt-1">Posts go to admin moderation before they appear in the feed.</p>
+        <p className="text-gray-500 mt-1">Photos, videos and memories go to the Executive for approval before appearing in the feed.</p>
+      </div>
+
+      <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 flex items-start gap-3">
+        <Info size={18} className="text-amber-700 shrink-0 mt-0.5" />
+        <p className="text-sm text-amber-900">
+          Posts are reviewed before they go live. You'll see them appear in the community feed once approved.
+        </p>
       </div>
 
       <form onSubmit={submit} className="rounded-xl border border-gray-200 bg-white p-5 md:p-6 space-y-5">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <label className="block">
-            <span className="text-sm font-medium text-gray-800">Post Type</span>
-            <select
-              value={form.type}
-              onChange={(event) => setForm({ ...form, type: event.target.value })}
-              className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
-            >
-              {postTypes.map((type) => (
-                <option key={type}>{type}</option>
-              ))}
-            </select>
-          </label>
-          <label className="block">
-            <span className="text-sm font-medium text-gray-800">Category</span>
-            <select
-              value={form.category}
-              onChange={(event) => setForm({ ...form, category: event.target.value })}
-              className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
-            >
-              {COMMUNITY_CATEGORIES.map((category) => (
-                <option key={category}>{category}</option>
-              ))}
-            </select>
-          </label>
-        </div>
+        <label className="block">
+          <span className="text-sm font-medium text-gray-800">Post Type</span>
+          <select
+            value={form.type}
+            onChange={(event) => setForm({ ...form, type: event.target.value })}
+            className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
+          >
+            {POST_TYPES.map((type) => (
+              <option key={type}>{type}</option>
+            ))}
+          </select>
+        </label>
 
         <label className="block">
           <span className="text-sm font-medium text-gray-800">Caption</span>
@@ -64,13 +54,13 @@ export default function CommunityUpload() {
             value={form.caption}
             onChange={(event) => setForm({ ...form, caption: event.target.value })}
             rows={5}
-            placeholder="Share the memory, milestone, or update."
+            placeholder="Share the memory or update."
             className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
           />
         </label>
 
         <label className="block">
-          <span className="text-sm font-medium text-gray-800">Media URL</span>
+          <span className="text-sm font-medium text-gray-800">Media URL <span className="text-gray-400 font-normal">(optional)</span></span>
           <div className="relative mt-2">
             <ImagePlus size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <input

@@ -1,136 +1,76 @@
-﻿import { useState } from 'react';
-import { Plus } from 'lucide-react';
-import { getContributionFunds, getPayments, recordPayment } from '../../data/contributions';
+import { useState } from 'react';
+import { getContributionFunds, setFundStatus, VALID_STATUSES } from '../../data/contributions';
+
+const statusStyle = {
+  Paid: 'bg-emerald-50 text-emerald-700',
+  Pending: 'bg-amber-50 text-amber-700',
+  Overdue: 'bg-red-50 text-red-700',
+};
 
 export default function AdminContributions() {
-  const [payments, setPayments] = useState(() => getPayments());
-  const [form, setForm] = useState({
-    senior: 'Kwame Mensah',
-    fund: getContributionFunds()[0].name,
-    amount: 'GHS 300',
-    method: 'MTN MoMo',
-    date: new Date().toISOString().slice(0, 10),
-    reference: '',
-  });
+  const [funds, setFunds] = useState(() => getContributionFunds());
 
-  const submit = (event) => {
-    event.preventDefault();
-    recordPayment(form);
-    setPayments(getPayments());
-    setForm({ ...form, reference: '' });
+  const update = (id, status) => {
+    setFundStatus(id, status);
+    setFunds(getContributionFunds());
   };
 
   return (
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl md:text-3xl font-bold text-brand">Contributions</h2>
-        <p className="text-gray-500 mt-1">Record and review senior contribution payments.</p>
+        <p className="text-gray-500 mt-1">
+          Manage Annual Dues, Hero Fund, Building Fund, Lalasulala and Ayie Support — mark each fund as Paid, Pending or Overdue.
+        </p>
       </div>
 
-      <form onSubmit={submit} className="rounded-xl border border-gray-200 bg-white p-5">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          <label className="block">
-            <span className="text-sm font-medium text-gray-800">Senior</span>
-            <input
-              value={form.senior}
-              onChange={(event) => setForm({ ...form, senior: event.target.value })}
-              className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
-            />
-          </label>
-          <label className="block">
-            <span className="text-sm font-medium text-gray-800">Fund</span>
-            <select
-              value={form.fund}
-              onChange={(event) => setForm({ ...form, fund: event.target.value })}
-              className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
-            >
-              {getContributionFunds().map((fund) => (
-                <option key={fund.id}>{fund.name}</option>
-              ))}
-            </select>
-          </label>
-          <label className="block">
-            <span className="text-sm font-medium text-gray-800">Amount</span>
-            <input
-              value={form.amount}
-              onChange={(event) => setForm({ ...form, amount: event.target.value })}
-              className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
-            />
-          </label>
-          <label className="block">
-            <span className="text-sm font-medium text-gray-800">Method</span>
-            <select
-              value={form.method}
-              onChange={(event) => setForm({ ...form, method: event.target.value })}
-              className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
-            >
-              <option>MTN MoMo</option>
-              <option>Paystack</option>
-              <option>Hubtel</option>
-              <option>Cash</option>
-              <option>Bank Transfer</option>
-            </select>
-          </label>
-          <label className="block">
-            <span className="text-sm font-medium text-gray-800">Date</span>
-            <input
-              type="date"
-              value={form.date}
-              onChange={(event) => setForm({ ...form, date: event.target.value })}
-              className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
-            />
-          </label>
-          <label className="block">
-            <span className="text-sm font-medium text-gray-800">Reference</span>
-            <input
-              value={form.reference}
-              onChange={(event) => setForm({ ...form, reference: event.target.value })}
-              placeholder="Optional"
-              className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
-            />
-          </label>
-        </div>
-        <button className="mt-5 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-brand-dark px-5 py-3 text-sm font-semibold text-white hover:bg-brand">
-          <Plus size={16} /> Record Payment
-        </button>
-      </form>
-
       <section className="rounded-xl border border-gray-200 bg-white">
-        <div className="border-b border-gray-100 p-5">
-          <h3 className="text-lg font-bold text-gray-900">Payment Records</h3>
-        </div>
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[760px] text-sm">
-            <thead className="text-left text-gray-500">
-              <tr>
-                <th className="px-5 py-4 font-medium">Senior</th>
+          <table className="w-full min-w-[640px] text-sm">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-100">
                 <th className="px-5 py-4 font-medium">Fund</th>
                 <th className="px-5 py-4 font-medium">Amount</th>
-                <th className="px-5 py-4 font-medium">Method</th>
-                <th className="px-5 py-4 font-medium">Date</th>
-                <th className="px-5 py-4 font-medium">Reference</th>
+                <th className="px-5 py-4 font-medium">Due Date</th>
                 <th className="px-5 py-4 font-medium">Status</th>
+                <th className="px-5 py-4 font-medium">Update</th>
               </tr>
             </thead>
             <tbody>
-              {payments.map((payment) => (
-                <tr key={payment.id} className="border-t border-gray-50">
-                  <td className="px-5 py-4">{payment.senior}</td>
-                  <td className="px-5 py-4">{payment.fund}</td>
-                  <td className="px-5 py-4">{payment.amount}</td>
-                  <td className="px-5 py-4">{payment.method}</td>
-                  <td className="px-5 py-4">{payment.date}</td>
-                  <td className="px-5 py-4">{payment.reference}</td>
-                  <td className="px-5 py-4">{payment.status || 'Completed'}</td>
+              {funds.map((fund) => (
+                <tr key={fund.id} className="border-b border-gray-50 last:border-0">
+                  <td className="px-5 py-4">
+                    <div className="font-medium text-gray-900">{fund.name}</div>
+                    <div className="text-xs text-gray-500 mt-0.5">{fund.description}</div>
+                  </td>
+                  <td className="px-5 py-4 text-gray-700">{fund.amount}</td>
+                  <td className="px-5 py-4 text-gray-700">{new Date(fund.dueDate).toLocaleDateString()}</td>
+                  <td className="px-5 py-4">
+                    <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${statusStyle[fund.status]}`}>
+                      {fund.status}
+                    </span>
+                  </td>
+                  <td className="px-5 py-4">
+                    <select
+                      value={fund.status}
+                      onChange={(e) => update(fund.id, e.target.value)}
+                      className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand/30"
+                    >
+                      {VALID_STATUSES.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </section>
+
+      <p className="text-xs text-gray-500">
+        Payment provider integration (MTN MoMo, Paystack, Hubtel) and receipt history are planned for a future phase.
+      </p>
     </div>
   );
 }
-
-
-

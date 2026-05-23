@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Users, Clock, CheckCircle2, ClipboardEdit, ArrowRight, Cake, MessageSquareHeart, WalletCards } from 'lucide-react';
+import { Users, Clock, CheckCircle2, ClipboardEdit, ArrowRight, MessageSquareHeart, WalletCards } from 'lucide-react';
 import { announcements, TYPE_STYLES } from '../../data/announcements';
 import { surveys, hasResponded } from '../../data/surveys';
-import { birthdaysThisWeek } from '../../data/community';
 
 const stats = [
   { label: 'Total Seniors', value: '312', icon: <Users className="text-blue-500" size={22} />, bg: 'bg-blue-50' },
@@ -32,27 +31,14 @@ export default function SeniorDashboard() {
         ))}
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-3">
-        <section className="rounded-xl border border-gray-200 bg-white p-5 lg:col-span-1">
-          <h3 className="flex items-center gap-2 text-lg font-bold text-gray-900">
-            <Cake size={18} className="text-amber-500" /> Birthdays This Week
-          </h3>
-          <div className="mt-4 space-y-3">
-            {birthdaysThisWeek.map((birthday) => (
-              <div key={birthday.name} className="flex items-center justify-between gap-3 text-sm">
-                <span className="font-medium text-gray-800">{birthday.name}</span>
-                <span className="text-gray-500">{birthday.date}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+      <div className="grid gap-4 sm:grid-cols-2">
         <Link
           to="/senior/community"
           className="rounded-xl border border-gray-200 bg-white p-5 hover:border-brand/30 hover:shadow-sm transition"
         >
           <MessageSquareHeart className="text-brand" size={22} />
           <h3 className="mt-4 text-lg font-bold text-gray-900">Community Feed</h3>
-          <p className="mt-1 text-sm text-gray-500">View approved memories, homecoming galleries, and milestones.</p>
+          <p className="mt-1 text-sm text-gray-500">View approved photos, videos and memories shared by Amanfoɔ '97 Seniors.</p>
         </Link>
         <Link
           to="/senior/contributions"
@@ -60,7 +46,7 @@ export default function SeniorDashboard() {
         >
           <WalletCards className="text-brand" size={22} />
           <h3 className="mt-4 text-lg font-bold text-gray-900">Contributions</h3>
-          <p className="mt-1 text-sm text-gray-500">Track dues, support funds, receipts, and pending payments.</p>
+          <p className="mt-1 text-sm text-gray-500">Track dues and contribution status with the Executive.</p>
         </Link>
       </div>
 
