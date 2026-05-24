@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { LogIn } from 'lucide-react';
 import Logo from '../components/Logo';
+import NoIndex from '../components/NoIndex';
 import { useAuth } from '../context/AuthContext';
 
 export default function Login() {

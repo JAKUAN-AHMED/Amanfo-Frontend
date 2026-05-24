@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import NoIndex from './NoIndex';
 
 export default function AuthShell({ title, subtitle, children, footer, back }) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6 py-10">
+      <NoIndex />
       <div className="flex flex-col items-center mb-8 text-center">
         <Link to="/" title="Go to home" className="hover:opacity-80 transition">
           <Logo size={64} />

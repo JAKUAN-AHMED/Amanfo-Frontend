@@ -121,7 +121,7 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto px-6 py-14 text-center">
           <h2 className="text-3xl font-bold">
             Exclusively for Verified <br />
-            <span className="text-gold">Amanfo 97</span> Seniors
+            <span className="text-gold">Amanfo '97</span> Seniors
           </h2>
           <p className="mt-3 text-white/80 max-w-xl mx-auto">
             We take verification seriously so every Senior can trust who they're connected with.

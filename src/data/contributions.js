@@ -57,7 +57,9 @@ function getOverrides() {
 function saveOverrides(overrides) {
   try {
     localStorage.setItem(STATUS_STORAGE_KEY, JSON.stringify(overrides));
-  } catch {}
+  } catch {
+    // Ignore storage errors in this prototype
+  }
 }
 
 export function getContributionFunds() {

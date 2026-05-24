@@ -103,7 +103,9 @@ function readPosts() {
 function writePosts(posts) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(posts.map(normalizePost)));
-  } catch {}
+  } catch {
+    // Ignore storage errors in this prototype
+  }
 }
 
 function updateComments(comments, targetId, updater) {
