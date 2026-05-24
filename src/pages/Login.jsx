@@ -21,6 +21,7 @@ export default function Login() {
   };
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6">
+      <NoIndex />
       <div className="flex flex-col items-center mb-8">
         <Link to="/" title="Go to home" className="hover:opacity-80 transition">
           <Logo size={64} />

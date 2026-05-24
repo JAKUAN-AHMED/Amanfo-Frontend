@@ -20,7 +20,7 @@ export const surveys = [
         id: 'q2',
         text: 'Which activities are you most interested in?',
         type: 'Multiple Choice',
-        options: ['Annual Homecoming', 'Welfare / Lalasula', 'Legacy Projects', 'Mentorship', 'Sports / Social'],
+        options: ['Annual Homecoming', 'Welfare / Lalasulala', 'Legacy Projects', 'Mentorship', 'Sports / Social'],
       },
       {
         id: 'q3',

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { LogIn, Mail, Lock, Shield, Eye, EyeOff } from 'lucide-react';
 import Logo from '../../components/Logo';
+import NoIndex from '../../components/NoIndex';
 import { useAuth } from '../../context/AuthContext';
 
 export default function AdminLogin() {
@@ -10,6 +11,7 @@ export default function AdminLogin() {
   const [show, setShow] = useState(false);
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6">
+      <NoIndex />
       <div className="flex flex-col items-center mb-8">
         <Link to="/" title="Go to home" className="hover:opacity-80 transition">
           <Logo size={64} />

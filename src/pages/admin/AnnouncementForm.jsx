@@ -53,10 +53,10 @@ const initialRecent = [
     type: 'Executive Announcement', audience: 'All Seniors', priority: 'High',
   },
   {
-    title: 'Q2 Lalasula Drive Opens',
+    title: 'Q2 Lalasulala Drive Opens',
     desc: 'Contribute toward the welfare fund for current students.',
     day: '01', month: 'Aug',
-    type: 'Lalasulala Contribution', audience: 'Seniors Only', priority: 'Normal',
+    type: 'Lalasulala Contribution', audience: 'All Seniors', priority: 'Normal',
   },
 ];
 

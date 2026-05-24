@@ -1,13 +1,15 @@
 ﻿import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Check, Heart, MessageCircle, Pencil, Plus, Reply, Search, Send, Trash2, X } from 'lucide-react';
+import { Check, Heart, MessageCircle, MoreVertical, Pencil, Plus, Reply, Search, Send, Trash2, X } from 'lucide-react';
 import {
   POST_TYPES,
   addCommentReply,
   addPostComment,
   countComments,
   deleteComment,
+  deletePost,
   editComment,
+  editPost,
   getPublishedPosts,
   togglePostLike,
 } from '../../data/community';
@@ -78,6 +80,16 @@ export default function Community() {
     refreshPosts();
   };
 
+  const handleEditPost = (postId, caption) => {
+    editPost(postId, { caption });
+    refreshPosts();
+  };
+
+  const handleDeletePost = (postId) => {
+    deletePost(postId);
+    refreshPosts();
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
@@ -119,70 +131,22 @@ export default function Community() {
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        {visiblePosts.map((post) => {
-          const liked = (post.likedBy || []).includes(currentUser.id);
-          const comments = post.comments || [];
-
-          return (
-            <article key={post.id} className="rounded-xl border border-gray-200 bg-white overflow-hidden">
-              {post.mediaUrl && (
-                <img src={post.mediaUrl} alt="" className="h-56 w-full object-cover" />
-              )}
-              <div className="p-5">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <div className="text-sm font-semibold text-gray-900">{post.author}</div>
-                    <div className="mt-1 text-xs text-gray-500">
-                      {new Date(post.createdAt).toLocaleDateString()}
-                    </div>
-                  </div>
-                  <span className="rounded-full bg-brand/10 px-2.5 py-1 text-xs font-semibold text-brand">
-                    {post.type}
-                  </span>
-                </div>
-                <p className="mt-4 text-sm leading-6 text-gray-700">{post.caption}</p>
-                <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-gray-500">
-                  <button
-                    onClick={() => handleLike(post.id)}
-                    className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-2 ${
-                      liked ? 'border-brand bg-brand/5 text-brand' : 'border-gray-200 hover:bg-gray-50'
-                    }`}
-                  >
-                    <Heart size={16} fill={liked ? 'currentColor' : 'none'} /> {post.likes || 0}
-                  </button>
-                  <span className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-2">
-                    <MessageCircle size={16} /> {countComments(comments)} comments
-                  </span>
-                </div>
-
-                <div className="mt-5 space-y-4 border-t border-gray-100 pt-4">
-                  {comments.map((comment) => (
-                    <CommentThread
-                      key={comment.id}
-                      comment={comment}
-                      postId={post.id}
-                      currentUser={currentUser}
-                      onReply={submitReply}
-                      onEdit={submitEdit}
-                      onDelete={removeComment}
-                    />
-                  ))}
-                  <form onSubmit={(event) => submitComment(event, post.id)} className="flex flex-col sm:flex-row gap-2">
-                    <input
-                      value={commentDrafts[post.id] || ''}
-                      onChange={(event) => setCommentDrafts((drafts) => ({ ...drafts, [post.id]: event.target.value }))}
-                      placeholder="Write a comment"
-                      className="min-w-0 flex-1 rounded-lg border border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
-                    />
-                    <button className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-dark px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand">
-                      <Send size={15} /> Comment
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </article>
-          );
-        })}
+        {visiblePosts.map((post) => (
+          <PostCard
+            key={post.id}
+            post={post}
+            currentUser={currentUser}
+            commentDraft={commentDrafts[post.id] || ''}
+            onCommentDraftChange={(value) => setCommentDrafts((drafts) => ({ ...drafts, [post.id]: value }))}
+            onLike={handleLike}
+            onEditPost={handleEditPost}
+            onDeletePost={handleDeletePost}
+            onSubmitComment={submitComment}
+            onReply={submitReply}
+            onEditComment={submitEdit}
+            onDeleteComment={removeComment}
+          />
+        ))}
       </div>
 
       {visiblePosts.length === 0 && (
@@ -191,6 +155,137 @@ export default function Community() {
         </div>
       )}
     </div>
+  );
+}
+
+function PostCard({ post, currentUser, commentDraft, onCommentDraftChange, onLike, onEditPost, onDeletePost, onSubmitComment, onReply, onEditComment, onDeleteComment }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [editCaption, setEditCaption] = useState(post.caption);
+  const ownPost = post.authorId === currentUser.id;
+  const liked = (post.likedBy || []).includes(currentUser.id);
+  const comments = post.comments || [];
+
+  const saveEdit = (e) => {
+    e.preventDefault();
+    const text = editCaption.trim();
+    if (!text) return;
+    onEditPost(post.id, text);
+    setEditing(false);
+  };
+
+  return (
+    <article className="rounded-xl border border-gray-200 bg-white overflow-hidden">
+      {post.mediaUrl && (
+        <img src={post.mediaUrl} alt="" className="h-56 w-full object-cover" />
+      )}
+      <div className="p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <div className="text-sm font-semibold text-gray-900">{post.author}</div>
+            <div className="mt-1 text-xs text-gray-500">
+              {new Date(post.createdAt).toLocaleDateString()}
+              {post.updatedAt && <span className="ml-1 text-gray-400">(edited)</span>}
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-brand/10 px-2.5 py-1 text-xs font-semibold text-brand">
+              {post.type}
+            </span>
+            {ownPost && (
+              <div className="relative">
+                <button
+                  onClick={() => setMenuOpen((v) => !v)}
+                  className="p-1 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100"
+                  aria-label="Post options"
+                >
+                  <MoreVertical size={16} />
+                </button>
+                {menuOpen && (
+                  <>
+                    <div className="fixed inset-0 z-10" onClick={() => setMenuOpen(false)} />
+                    <div className="absolute right-0 top-8 z-20 w-36 rounded-lg border border-gray-200 bg-white py-1 shadow-lg">
+                      <button
+                        onClick={() => { setEditing(true); setEditCaption(post.caption); setMenuOpen(false); }}
+                        className="flex w-full items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      >
+                        <Pencil size={14} /> Edit Post
+                      </button>
+                      <button
+                        onClick={() => { onDeletePost(post.id); setMenuOpen(false); }}
+                        className="flex w-full items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50"
+                      >
+                        <Trash2 size={14} /> Delete Post
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {editing ? (
+          <form onSubmit={saveEdit} className="mt-4 space-y-2">
+            <textarea
+              value={editCaption}
+              onChange={(e) => setEditCaption(e.target.value)}
+              rows={3}
+              className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
+            />
+            <div className="flex gap-2">
+              <button className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-dark px-4 py-2 text-sm font-semibold text-white hover:bg-brand">
+                <Check size={15} /> Save
+              </button>
+              <button type="button" onClick={() => setEditing(false)} className="inline-flex items-center justify-center rounded-lg border border-gray-200 px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+                Cancel
+              </button>
+            </div>
+          </form>
+        ) : (
+          <p className="mt-4 text-sm leading-6 text-gray-700">{post.caption}</p>
+        )}
+
+        <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-gray-500">
+          <button
+            onClick={() => onLike(post.id)}
+            className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-2 ${
+              liked ? 'border-brand bg-brand/5 text-brand' : 'border-gray-200 hover:bg-gray-50'
+            }`}
+          >
+            <Heart size={16} fill={liked ? 'currentColor' : 'none'} /> {post.likes || 0}
+          </button>
+          <span className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-2">
+            <MessageCircle size={16} /> {countComments(comments)} comments
+          </span>
+        </div>
+
+        <div className="mt-5 space-y-4 border-t border-gray-100 pt-4">
+          {comments.map((comment) => (
+            <CommentThread
+              key={comment.id}
+              comment={comment}
+              postId={post.id}
+              currentUser={currentUser}
+              onReply={onReply}
+              onEdit={onEditComment}
+              onDelete={onDeleteComment}
+            />
+          ))}
+          <form onSubmit={(event) => onSubmitComment(event, post.id)} className="flex flex-col sm:flex-row gap-2">
+            <input
+              value={commentDraft}
+              onChange={(event) => onCommentDraftChange(event.target.value)}
+              placeholder="Write a comment"
+              className="min-w-0 flex-1 rounded-lg border border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
+            />
+            <button className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-dark px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand">
+              <Send size={15} /> Comment
+            </button>
+          </form>
+        </div>
+      </div>
+    </article>
   );
 }
 

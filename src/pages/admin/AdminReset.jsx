@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Lock, Eye, EyeOff, Check, X, Shield, CheckCircle2 } from 'lucide-react';
 import Logo from '../../components/Logo';
+import NoIndex from '../../components/NoIndex';
 
 function Rule({ ok, text }) {
   return (
@@ -29,6 +30,7 @@ export default function AdminReset() {
   if (done) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6">
+        <NoIndex />
         <div className="flex flex-col items-center mb-6 text-center">
           <Logo size={64} />
           <h1 className="mt-5 text-3xl font-bold text-brand">Password Reset Successful</h1>
@@ -53,6 +55,7 @@ export default function AdminReset() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6">
+      <NoIndex />
       <div className="flex flex-col items-center mb-8 text-center">
         <Logo size={64} />
         <span className="mt-3 inline-flex items-center gap-1.5 bg-brand/10 text-brand text-xs font-semibold px-3 py-1 rounded-full">

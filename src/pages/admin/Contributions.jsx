@@ -67,10 +67,6 @@ export default function AdminContributions() {
           </table>
         </div>
       </section>
-
-      <p className="text-xs text-gray-500">
-        Payment provider integration (MTN MoMo, Paystack, Hubtel) and receipt history are planned for a future phase.
-      </p>
     </div>
   );
 }

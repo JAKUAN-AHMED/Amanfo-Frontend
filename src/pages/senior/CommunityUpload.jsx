@@ -1,23 +1,46 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ImagePlus, Send, Info } from 'lucide-react';
+import { ImagePlus, Film, Send, Info, X } from 'lucide-react';
 import { POST_TYPES, createCommunityPost } from '../../data/community';
 import { useAuth } from '../../context/AuthContext';
 
 export default function CommunityUpload() {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const fileRef = useRef(null);
   const [form, setForm] = useState({
     type: 'Photo',
     caption: '',
-    mediaUrl: '',
+    file: null,
+    preview: '',
   });
+
+  const handleFile = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const preview = URL.createObjectURL(file);
+    setForm((f) => ({ ...f, file, preview }));
+  };
+
+  const clearFile = () => {
+    if (form.preview) URL.revokeObjectURL(form.preview);
+    setForm((f) => ({ ...f, file: null, preview: '' }));
+    if (fileRef.current) fileRef.current.value = '';
+  };
 
   const submit = (event) => {
     event.preventDefault();
-    createCommunityPost({ ...form, author: user?.name, authorId: user?.id });
+    createCommunityPost({
+      ...form,
+      mediaUrl: form.preview,
+      author: user?.name,
+      authorId: user?.id,
+    });
     navigate('/senior/community');
   };
+
+  const isVideo = form.type === 'Video';
+  const acceptTypes = isVideo ? 'video/mp4,video/webm,video/quicktime' : 'image/*';
 
   return (
     <div className="max-w-3xl space-y-6">
@@ -38,7 +61,10 @@ export default function CommunityUpload() {
           <span className="text-sm font-medium text-gray-800">Post Type</span>
           <select
             value={form.type}
-            onChange={(event) => setForm({ ...form, type: event.target.value })}
+            onChange={(event) => {
+              setForm({ ...form, type: event.target.value, file: null, preview: '' });
+              if (fileRef.current) fileRef.current.value = '';
+            }}
             className="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
           >
             {POST_TYPES.map((type) => (
@@ -59,18 +85,63 @@ export default function CommunityUpload() {
           />
         </label>
 
-        <label className="block">
-          <span className="text-sm font-medium text-gray-800">Media URL <span className="text-gray-400 font-normal">(optional)</span></span>
-          <div className="relative mt-2">
-            <ImagePlus size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+        {form.type !== 'Memory' && (
+          <div>
+            <span className="text-sm font-medium text-gray-800 block mb-2">
+              {isVideo ? 'Upload Video' : 'Upload Image'} <span className="text-gray-400 font-normal">(optional)</span>
+            </span>
+
+            {!form.preview ? (
+              <div
+                onClick={() => fileRef.current?.click()}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  const file = e.dataTransfer.files?.[0];
+                  if (!file) return;
+                  const preview = URL.createObjectURL(file);
+                  setForm((f) => ({ ...f, file, preview }));
+                }}
+                className="border-2 border-dashed border-gray-200 rounded-lg p-8 bg-gray-50 hover:border-brand cursor-pointer text-center transition"
+              >
+                {isVideo ? (
+                  <Film size={32} className="mx-auto text-gray-400" />
+                ) : (
+                  <ImagePlus size={32} className="mx-auto text-gray-400" />
+                )}
+                <div className="text-sm text-gray-700 mt-3 font-medium">
+                  Click to upload or drag & drop
+                </div>
+                <div className="text-xs text-gray-400 mt-1">
+                  {isVideo ? 'MP4, WebM, MOV — up to 50 MB' : 'PNG, JPG, GIF — up to 5 MB'}
+                </div>
+              </div>
+            ) : (
+              <div className="relative rounded-lg overflow-hidden border border-gray-200">
+                {isVideo ? (
+                  <video src={form.preview} controls className="w-full max-h-64 object-contain bg-black" />
+                ) : (
+                  <img src={form.preview} alt="Preview" className="w-full max-h-64 object-contain bg-gray-50" />
+                )}
+                <button
+                  type="button"
+                  onClick={clearFile}
+                  className="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/80 transition"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            )}
+
             <input
-              value={form.mediaUrl}
-              onChange={(event) => setForm({ ...form, mediaUrl: event.target.value })}
-              placeholder="https://..."
-              className="w-full rounded-lg border border-gray-300 py-3 pl-10 pr-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
+              ref={fileRef}
+              type="file"
+              accept={acceptTypes}
+              onChange={handleFile}
+              className="hidden"
             />
           </div>
-        </label>
+        )}
 
         <button className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-brand-dark px-5 py-3 text-sm font-semibold text-white hover:bg-brand">
           <Send size={16} /> Submit for Review

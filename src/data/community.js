@@ -218,6 +218,22 @@ export function addCommentReply(postId, parentCommentId, input) {
   return reply;
 }
 
+export function editPost(id, updates) {
+  const posts = readPosts().map((post) =>
+    post.id === id
+      ? { ...post, ...updates, updatedAt: new Date().toISOString() }
+      : post,
+  );
+  writePosts(posts);
+  return posts;
+}
+
+export function deletePost(id) {
+  const posts = readPosts().filter((post) => post.id !== id);
+  writePosts(posts);
+  return posts;
+}
+
 export function editComment(postId, commentId, text) {
   const posts = readPosts().map((post) => {
     if (post.id !== postId) return post;
