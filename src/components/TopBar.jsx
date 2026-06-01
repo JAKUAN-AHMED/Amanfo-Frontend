@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Bell, CheckCheck, Home, Menu, Megaphone, WalletCards, MessageSquareHeart, ClipboardEdit } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Bell, CheckCheck, Menu, Megaphone, WalletCards, MessageSquareHeart, ClipboardEdit } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { getNotifications, getUnreadCount, markAsRead, markAllAsRead } from '../data/notifications';
 
@@ -57,14 +57,6 @@ export default function TopBar({ title, onMenuClick }) {
         <h1 className="text-base md:text-lg font-medium text-gray-800 truncate">{title}</h1>
       </div>
       <div className="flex items-center gap-3 md:gap-5">
-        <Link
-          to="/"
-          title="Go to home"
-          className="text-gray-700 hover:text-brand transition flex items-center gap-1.5 text-sm font-medium"
-        >
-          <Home size={20} /> <span className="hidden md:inline">Home</span>
-        </Link>
-
         <div className="relative">
           <button
             onClick={() => { setOpen((v) => !v); refresh(); }}
