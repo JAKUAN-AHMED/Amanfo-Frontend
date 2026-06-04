@@ -95,7 +95,7 @@ export default function Community() {
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold text-brand">Community Feed</h2>
-          <p className="text-gray-500 mt-1">Approved photos, videos and memories shared by Amanfoɔ '97 Seniors.</p>
+          <p className="text-gray-500 mt-1">Approved photos, videos and memories shared by Amanfo '97 Seniors.</p>
         </div>
         <Link
           to="/senior/community/upload"

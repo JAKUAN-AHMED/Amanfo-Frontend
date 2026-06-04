@@ -38,7 +38,7 @@ export default function SeniorDashboard() {
         >
           <MessageSquareHeart className="text-brand" size={22} />
           <h3 className="mt-4 text-lg font-bold text-gray-900">Community Feed</h3>
-          <p className="mt-1 text-sm text-gray-500">View approved photos, videos and memories shared by Amanfoɔ '97 Seniors.</p>
+          <p className="mt-1 text-sm text-gray-500">View approved photos, videos and memories shared by Amanfo '97 Seniors.</p>
         </Link>
         <Link
           to="/senior/contributions"
