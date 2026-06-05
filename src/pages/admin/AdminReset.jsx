@@ -43,7 +43,7 @@ export default function AdminReset() {
             Your executive password has been updated. You can now log in with your new credentials.
           </p>
           <Link
-            to="/admin/login"
+            to="/executive/login"
             className="mt-6 inline-block w-full bg-brand-dark hover:bg-brand text-white font-semibold py-3 rounded-lg"
           >
             Back to Executive Login

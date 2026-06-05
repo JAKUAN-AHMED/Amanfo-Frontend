@@ -26,7 +26,7 @@ export default function AdminLogin() {
         onSubmit={(e) => {
           e.preventDefault();
           login({ role: 'admin' });
-          nav('/admin/dashboard');
+          nav('/executive/dashboard');
         }}
         className="w-full max-w-md border border-gray-200 rounded-2xl p-7 bg-white"
       >
@@ -35,7 +35,7 @@ export default function AdminLogin() {
           <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
           <input
             type="email"
-            placeholder="admin@amanfo97.org"
+            placeholder="executive@amanfo97.org"
             className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/30"
           />
         </div>
@@ -70,7 +70,7 @@ export default function AdminLogin() {
         </button>
 
         <div className="mt-5 text-center">
-          <Link to="/admin/forgot-password" className="text-brand font-medium text-sm">
+          <Link to="/executive/forgot-password" className="text-brand font-medium text-sm">
             Forgot your password?
           </Link>
         </div>

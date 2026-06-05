@@ -1,16 +1,18 @@
 import { useState, useMemo } from 'react';
 import { Search, Filter, MapPin, Lock, Unlock, ChevronDown, Mail, Phone } from 'lucide-react';
 
+const PERSON_PHOTO = '/Person.jpeg';
+
 const seniors = [
-  { name: 'Kwame Mensah', nick: 'KM', id: 'AM97-0001', group: 'Aggrey', cls: 'A1', location: 'Accra, Ghana', email: 'kwame.mensah@email.com', phone: '+233 24 123 4567', industry: 'Finance', avatar: 'https://i.pravatar.cc/120?img=12' },
-  { name: 'Kofi Asante', nick: 'KA', id: 'AM97-0002', group: 'Amanfo', cls: 'B1', location: 'New York, United States', email: 'kofi.asante@email.com', phone: '+1 212 555 0190', industry: 'Technology', avatar: 'https://i.pravatar.cc/120?img=13' },
-  { name: 'Yaw Boateng', nick: 'YB', id: 'AM97-0003', group: 'Freeman', cls: 'A2', location: 'London, United Kingdom', email: 'yaw.boateng@email.com', phone: '+44 20 7946 0958', industry: 'Healthcare', avatar: 'https://i.pravatar.cc/120?img=14' },
-  { name: 'Akosua Boateng', nick: 'AB', id: 'AM97-0021', group: 'Butler', cls: 'M1', location: 'Kumasi, Ghana', email: 'akosua.b@email.com', phone: '+233 20 987 6543', industry: 'Education', avatar: 'https://i.pravatar.cc/120?img=25' },
-  { name: 'Nana Osei', nick: 'NO', id: 'AM97-0042', group: 'Ramseyer', cls: 'A3', location: 'Toronto, Canada', email: 'nana.osei@email.com', phone: '+1 416 555 0147', industry: 'Business / Entrepreneurship', avatar: 'https://i.pravatar.cc/120?img=15' },
-  { name: 'Ama Darko', nick: 'AD', id: 'AM97-0055', group: 'Serwaa', cls: 'B2', location: 'Berlin, Germany', email: 'ama.darko@email.com', phone: '+49 30 1234 5678', industry: 'Legal / Law', avatar: 'https://i.pravatar.cc/120?img=26' },
-  { name: 'Kweku Frimpong', nick: 'KF', id: 'AM97-0061', group: 'Pearson', cls: 'AV', location: 'Johannesburg, South Africa', email: 'kweku.f@email.com', phone: '+27 11 555 0199', industry: 'Construction / Real Estate', avatar: 'https://i.pravatar.cc/120?img=16' },
-  { name: 'Abena Owusu', nick: 'AO', id: 'AM97-0078', group: 'OT', cls: 'M2', location: 'Amsterdam, Netherlands', email: 'abena.owusu@email.com', phone: '+31 20 555 0134', industry: 'Media / Communications', avatar: 'https://i.pravatar.cc/120?img=27' },
-  { name: 'Kojo Appiah', nick: 'KApp', id: 'AM97-0099', group: 'Gberg', cls: 'M3', location: 'Takoradi, Ghana', email: 'kojo.appiah@email.com', phone: '+233 31 222 3344', industry: 'Energy / Utilities', avatar: 'https://i.pravatar.cc/120?img=17' },
+  { name: 'Kwame Mensah', nick: 'KM', id: 'AM97-0001', group: 'Aggrey', cls: 'A1', location: 'Accra, Ghana', email: 'kwame.mensah@email.com', phone: '+233 24 123 4567', industry: 'Finance', avatar: PERSON_PHOTO },
+  { name: 'Kofi Asante', nick: 'KA', id: 'AM97-0002', group: 'Amanfo', cls: 'B1', location: 'New York, United States', email: 'kofi.asante@email.com', phone: '+1 212 555 0190', industry: 'Technology', avatar: PERSON_PHOTO },
+  { name: 'Yaw Boateng', nick: 'YB', id: 'AM97-0003', group: 'Freeman', cls: 'A2', location: 'London, United Kingdom', email: 'yaw.boateng@email.com', phone: '+44 20 7946 0958', industry: 'Healthcare', avatar: PERSON_PHOTO },
+  { name: 'Akosua Boateng', nick: 'AB', id: 'AM97-0021', group: 'Butler', cls: 'M1', location: 'Kumasi, Ghana', email: 'akosua.b@email.com', phone: '+233 20 987 6543', industry: 'Education', avatar: PERSON_PHOTO },
+  { name: 'Nana Osei', nick: 'NO', id: 'AM97-0042', group: 'Ramseyer', cls: 'A3', location: 'Toronto, Canada', email: 'nana.osei@email.com', phone: '+1 416 555 0147', industry: 'Business / Entrepreneurship', avatar: PERSON_PHOTO },
+  { name: 'Ama Darko', nick: 'AD', id: 'AM97-0055', group: 'Serwaa', cls: 'B2', location: 'Berlin, Germany', email: 'ama.darko@email.com', phone: '+49 30 1234 5678', industry: 'Legal / Law', avatar: PERSON_PHOTO },
+  { name: 'Kweku Frimpong', nick: 'KF', id: 'AM97-0061', group: 'Pearson', cls: 'AV', location: 'Johannesburg, South Africa', email: 'kweku.f@email.com', phone: '+27 11 555 0199', industry: 'Construction / Real Estate', avatar: PERSON_PHOTO },
+  { name: 'Abena Owusu', nick: 'AO', id: 'AM97-0078', group: 'OT', cls: 'M2', location: 'Amsterdam, Netherlands', email: 'abena.owusu@email.com', phone: '+31 20 555 0134', industry: 'Media / Communications', avatar: PERSON_PHOTO },
+  { name: 'Kojo Appiah', nick: 'KApp', id: 'AM97-0099', group: 'Gberg', cls: 'M3', location: 'Takoradi, Ghana', email: 'kojo.appiah@email.com', phone: '+233 31 222 3344', industry: 'Energy / Utilities', avatar: PERSON_PHOTO },
 ];
 
 const FILTER_OPTIONS = {

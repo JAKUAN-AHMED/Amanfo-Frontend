@@ -27,7 +27,7 @@ export default function SeniorDetail() {
         </div>
         <div className="flex gap-2">
           <Link
-            to={`/admin/seniors/${id}/edit`}
+            to={`/executive/seniors/${id}/edit`}
             className="border border-gray-300 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 flex items-center gap-2"
           >
             <Pencil size={16} /> Edit

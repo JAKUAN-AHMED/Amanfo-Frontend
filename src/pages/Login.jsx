@@ -11,9 +11,9 @@ export default function Login() {
   const { login } = useAuth();
   const submit = (e) => {
     e.preventDefault();
-    if (id.toLowerCase().includes('admin')) {
+    if (id.toLowerCase().includes('admin') || id.toLowerCase().includes('executive')) {
       login({ role: 'admin' });
-      nav('/admin/dashboard');
+      nav('/executive/dashboard');
     } else {
       login({ role: 'senior', id: id || 'AM97001' });
       nav('/senior/dashboard');
@@ -68,7 +68,7 @@ export default function Login() {
         </div>
         <div className="mt-4 pt-4 border-t border-gray-100 text-center text-sm text-gray-500">
           Executive?{' '}
-          <Link to="/admin/login" className="text-brand font-medium">
+          <Link to="/executive/login" className="text-brand font-medium">
             Executive Login
           </Link>
         </div>

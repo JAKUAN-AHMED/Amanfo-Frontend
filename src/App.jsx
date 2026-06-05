@@ -44,13 +44,13 @@ export default function App() {
         <Route path="/request-membership" element={<RequestMembership />} />
         <Route path="/request-success" element={<RequestSuccess />} />
 
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/forgot-password" element={<AdminForgot />} />
-        <Route path="/admin/verify-otp" element={<AdminOtp />} />
-        <Route path="/admin/reset-password" element={<AdminReset />} />
+        <Route path="/executive/login" element={<AdminLogin />} />
+        <Route path="/executive/forgot-password" element={<AdminForgot />} />
+        <Route path="/executive/verify-otp" element={<AdminOtp />} />
+        <Route path="/executive/reset-password" element={<AdminReset />} />
 
         <Route
-          path="/admin"
+          path="/executive"
           element={
             <RequireRole role="admin">
               <AdminLayout />

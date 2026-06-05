@@ -42,7 +42,7 @@ export default function AdminOtp() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          nav('/admin/reset-password');
+          nav('/executive/reset-password');
         }}
         className="w-full max-w-md border border-gray-200 rounded-2xl p-7 bg-white"
       >
@@ -79,7 +79,7 @@ export default function AdminOtp() {
           )}
         </div>
         <div className="mt-2 text-center text-sm text-gray-600">
-          <Link to="/admin/login" className="text-brand font-medium">
+          <Link to="/executive/login" className="text-brand font-medium">
             Back to Executive Login
           </Link>
         </div>

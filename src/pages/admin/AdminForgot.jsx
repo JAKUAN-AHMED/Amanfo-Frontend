@@ -23,7 +23,7 @@ export default function AdminForgot() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          nav('/admin/verify-otp', { state: { email } });
+          nav('/executive/verify-otp', { state: { email } });
         }}
         className="w-full max-w-md border border-gray-200 rounded-2xl p-7 bg-white"
       >
@@ -34,7 +34,7 @@ export default function AdminForgot() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="admin@amanfo97.org"
+            placeholder="executive@amanfo97.org"
             className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/30"
           />
         </div>
@@ -46,7 +46,7 @@ export default function AdminForgot() {
         </button>
         <div className="mt-5 text-center text-sm text-gray-600">
           Remember your password?{' '}
-          <Link to="/admin/login" className="text-brand font-medium">
+          <Link to="/executive/login" className="text-brand font-medium">
             Executive Login
           </Link>
         </div>

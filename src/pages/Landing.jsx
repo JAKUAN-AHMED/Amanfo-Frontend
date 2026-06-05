@@ -103,10 +103,10 @@ export default function Landing() {
         </Link>
         <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
           <div className="flex -space-x-2">
-            {['11', '12', '13', '14'].map((n) => (
+            {['a', 'b', 'c', 'd'].map((n) => (
               <img
                 key={n}
-                src={`https://i.pravatar.cc/40?img=${n}`}
+                src="/Person.jpeg"
                 alt=""
                 className="w-7 h-7 rounded-full border-2 border-white object-cover"
               />
@@ -129,10 +129,10 @@ export default function Landing() {
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <div className="bg-gold rounded-lg py-2.5 px-4 text-sm text-black font-medium inline-flex items-center gap-2 whitespace-nowrap shadow-sm">
               <div className="flex -space-x-2">
-                {['21', '22', '23'].map((n) => (
+                {['a', 'b', 'c'].map((n) => (
                   <img
                     key={n}
-                    src={`https://i.pravatar.cc/60?img=${n}`}
+                    src="/Person.jpeg"
                     alt=""
                     className="w-7 h-7 rounded-full border-2 border-white object-cover"
                   />

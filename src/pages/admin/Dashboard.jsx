@@ -36,7 +36,7 @@ export default function AdminDashboard() {
             Export CSV
           </button>
           <Link
-            to="/admin/seniors/new"
+            to="/executive/seniors/new"
             className="bg-brand-dark hover:bg-brand text-white px-4 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2"
           >
             <Plus size={16} /> Add Senior
@@ -135,10 +135,10 @@ export function SeniorsTable({ rows }) {
               </td>
               <td className="px-6 py-4">
                 <div className="flex gap-3 text-gray-500">
-                  <Link to={`/admin/seniors/${r.id}`}>
+                  <Link to={`/executive/seniors/${r.id}`}>
                     <Eye size={16} className="cursor-pointer hover:text-gray-800" />
                   </Link>
-                  <Link to={`/admin/seniors/${r.id}/edit`}>
+                  <Link to={`/executive/seniors/${r.id}/edit`}>
                     <Pencil size={16} className="cursor-pointer hover:text-gray-800" />
                   </Link>
                   <Trash2 size={16} className="cursor-pointer text-red-500 hover:text-red-700" />

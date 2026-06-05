@@ -29,7 +29,7 @@ export function AuthProvider({ children }) {
     setUser({
       role: role || 'senior',
       name: name || (role === 'admin' ? 'Executive User' : 'Senior Kwame'),
-      email: email || (role === 'admin' ? 'admin@amanfo97.org' : 'kwame.mensah@amanfo97.org'),
+      email: email || (role === 'admin' ? 'executive@amanfo97.org' : 'kwame.mensah@amanfo97.org'),
       id: id || (role === 'admin' ? 'ADMIN001' : 'AM97001'),
     });
   };

@@ -17,12 +17,12 @@ export function RequireRole({ role, children }) {
   const location = useLocation();
 
   if (!user) {
-    const loginPath = role === 'admin' ? '/admin/login' : '/login';
+    const loginPath = role === 'admin' ? '/executive/login' : '/login';
     return <Navigate to={loginPath} state={{ from: location.pathname }} replace />;
   }
 
   if (role && user.role !== role) {
-    const correctHome = user.role === 'admin' ? '/admin/dashboard' : '/senior/dashboard';
+    const correctHome = user.role === 'admin' ? '/executive/dashboard' : '/senior/dashboard';
     return <Navigate to={correctHome} replace />;
   }
 

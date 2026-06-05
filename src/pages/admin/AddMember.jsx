@@ -81,7 +81,7 @@ export default function AddSenior({ mode = 'add' }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          nav('/admin/seniors');
+          nav('/executive/seniors');
         }}
         className="bg-white border border-gray-200 rounded-2xl p-7 space-y-6"
       >
