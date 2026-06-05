@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Users, Clock, CheckCircle2, ClipboardEdit, ArrowRight, MessageSquareHeart, WalletCards } from 'lucide-react';
+import { Users, Clock, CheckCircle2, WalletCards } from 'lucide-react';
 import { announcements, TYPE_STYLES } from '../../data/announcements';
-import { surveys, hasResponded } from '../../data/surveys';
 
 const stats = [
   { label: 'Total Seniors', value: '312', icon: <Users className="text-blue-500" size={22} />, bg: 'bg-blue-50' },
@@ -11,7 +10,6 @@ const stats = [
 
 export default function SeniorDashboard() {
   const updates = announcements.slice(0, 3);
-  const openSurveys = surveys.filter((s) => new Date(s.endDate) >= new Date() && !hasResponded(s.id));
   return (
     <div className="space-y-7">
       <div>
@@ -33,12 +31,12 @@ export default function SeniorDashboard() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Link
-          to="/senior/community"
+          to="/senior/directory"
           className="rounded-xl border border-gray-200 bg-white p-5 hover:border-brand/30 hover:shadow-sm transition"
         >
-          <MessageSquareHeart className="text-brand" size={22} />
-          <h3 className="mt-4 text-lg font-bold text-gray-900">Community Feed</h3>
-          <p className="mt-1 text-sm text-gray-500">View approved photos, videos and memories shared by Amanfo '97 Seniors.</p>
+          <Users className="text-brand" size={22} />
+          <h3 className="mt-4 text-lg font-bold text-gray-900">Senior Directory</h3>
+          <p className="mt-1 text-sm text-gray-500">Browse verified Amanfo '97 Seniors and their Senior IDs.</p>
         </Link>
         <Link
           to="/senior/contributions"
@@ -49,29 +47,6 @@ export default function SeniorDashboard() {
           <p className="mt-1 text-sm text-gray-500">Track dues and contribution status with the Executive.</p>
         </Link>
       </div>
-
-      {openSurveys.length > 0 && (
-        <div className="bg-gradient-to-r from-brand-dark to-brand text-white rounded-2xl p-5 md:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
-          <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
-            <ClipboardEdit size={26} />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="text-xs uppercase tracking-wide opacity-80">Your voice matters</div>
-            <h3 className="text-lg md:text-xl font-bold mt-0.5">
-              {openSurveys.length} open survey{openSurveys.length === 1 ? '' : 's'} waiting for you
-            </h3>
-            <p className="text-sm text-white/80 mt-1">
-              Share your thoughts and help shape the Amanfo '97 community.
-            </p>
-          </div>
-          <Link
-            to="/senior/surveys"
-            className="bg-white text-brand-dark font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 hover:bg-gray-50 whitespace-nowrap"
-          >
-            Participate <ArrowRight size={16} />
-          </Link>
-        </div>
-      )}
 
       <div>
         <div className="flex items-center justify-between mb-4">

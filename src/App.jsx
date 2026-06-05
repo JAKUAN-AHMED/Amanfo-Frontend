@@ -15,14 +15,10 @@ import AdminSeniors from './pages/admin/Seniors';
 import AdminAnnouncement from './pages/admin/Announcement';
 import AdminCreateUpdate from './pages/admin/CreateUpdate';
 import AdminAnnouncementForm from './pages/admin/AnnouncementForm';
-import AdminSurvey from './pages/admin/Survey';
-import AdminSurveyDetail from './pages/admin/SurveyDetail';
-import AdminCreateSurvey from './pages/admin/CreateSurvey';
 import AdminAddMember from './pages/admin/AddMember';
 import AdminMemberDetail from './pages/admin/MemberDetail';
 import AdminProfile from './pages/admin/Profile';
 import AdminFaqs from './pages/admin/Faqs';
-import AdminModeration from './pages/admin/Moderation';
 import AdminContributions from './pages/admin/Contributions';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminForgot from './pages/admin/AdminForgot';
@@ -33,10 +29,6 @@ import SeniorDirectory from './pages/senior/Directory';
 import SeniorProfile from './pages/senior/Profile';
 import SeniorAnnouncements from './pages/senior/Announcements';
 import SeniorAnnouncementDetail from './pages/senior/AnnouncementDetail';
-import SeniorSurveys from './pages/senior/Surveys';
-import SurveyParticipate from './pages/senior/SurveyParticipate';
-import SeniorCommunity from './pages/senior/Community';
-import SeniorCommunityUpload from './pages/senior/CommunityUpload';
 import SeniorContributions from './pages/senior/Contributions';
 
 export default function App() {
@@ -74,10 +66,6 @@ export default function App() {
           <Route path="announcement" element={<AdminAnnouncement />} />
           <Route path="announcement/new" element={<AdminAnnouncementForm />} />
           <Route path="announcement/create-update" element={<AdminCreateUpdate />} />
-          <Route path="survey" element={<AdminSurvey />} />
-          <Route path="survey/new" element={<AdminCreateSurvey />} />
-          <Route path="survey/:id" element={<AdminSurveyDetail />} />
-          <Route path="moderation" element={<AdminModeration />} />
           <Route path="contributions" element={<AdminContributions />} />
           <Route path="faqs" element={<AdminFaqs />} />
           <Route path="profile" element={<AdminProfile />} />
@@ -98,11 +86,7 @@ export default function App() {
           <Route path="directory" element={<SeniorDirectory />} />
           <Route path="announcements" element={<SeniorAnnouncements />} />
           <Route path="announcements/:id" element={<SeniorAnnouncementDetail />} />
-          <Route path="community" element={<SeniorCommunity />} />
-          <Route path="community/upload" element={<SeniorCommunityUpload />} />
           <Route path="contributions" element={<SeniorContributions />} />
-          <Route path="surveys" element={<SeniorSurveys />} />
-          <Route path="surveys/:id" element={<SurveyParticipate />} />
           <Route path="profile" element={<SeniorProfile />} />
         </Route>
 

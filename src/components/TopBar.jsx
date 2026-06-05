@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Bell, CheckCheck, Menu, Megaphone, WalletCards, MessageSquareHeart, ClipboardEdit } from 'lucide-react';
+import { Bell, CheckCheck, Menu, Megaphone, WalletCards } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { getNotifications, getUnreadCount, markAsRead, markAllAsRead } from '../data/notifications';
+import { getNotifications, markAsRead, markAllAsRead } from '../data/notifications';
 
 const typeIcon = {
   announcement: <Megaphone size={16} className="text-red-500" />,
   contribution: <WalletCards size={16} className="text-emerald-600" />,
-  community: <MessageSquareHeart size={16} className="text-blue-500" />,
-  survey: <ClipboardEdit size={16} className="text-amber-600" />,
 };
 
 function timeAgo(dateStr) {

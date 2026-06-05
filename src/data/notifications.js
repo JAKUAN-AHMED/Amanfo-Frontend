@@ -20,24 +20,6 @@ const seedNotifications = [
     link: '/senior/contributions',
   },
   {
-    id: 'n3',
-    type: 'community',
-    title: 'Your post was approved',
-    message: 'Your community post "Memories from the old assembly hall" has been approved and is now visible in the feed.',
-    read: false,
-    createdAt: '2026-05-22T10:15:00.000Z',
-    link: '/senior/community',
-  },
-  {
-    id: 'n4',
-    type: 'survey',
-    title: 'New Survey: Senior Engagement',
-    message: 'A new survey has been published. Your input helps shape the future of the community.',
-    read: true,
-    createdAt: '2026-05-21T09:00:00.000Z',
-    link: '/senior/surveys',
-  },
-  {
     id: 'n5',
     type: 'announcement',
     title: 'Ayie: Senior Kofi Asante (Mother)',
@@ -54,15 +36,6 @@ const seedNotifications = [
     read: true,
     createdAt: '2026-05-19T11:00:00.000Z',
     link: '/senior/contributions',
-  },
-  {
-    id: 'n7',
-    type: 'community',
-    title: 'New comment on your post',
-    message: 'Akosua Boateng commented: "These photos bring back great energy. Please share more."',
-    read: true,
-    createdAt: '2026-05-18T13:45:00.000Z',
-    link: '/senior/community',
   },
 ];
 

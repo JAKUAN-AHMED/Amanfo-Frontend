@@ -3,15 +3,13 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import TopBar from '../components/TopBar';
 import NoIndex from '../components/NoIndex';
-import { LayoutGrid, Users, Megaphone, ClipboardEdit, MessageSquareHeart, WalletCards } from 'lucide-react';
+import { LayoutGrid, Users, Megaphone, WalletCards } from 'lucide-react';
 
 const items = [
   { to: '/senior/dashboard', label: 'Dashboard', icon: <LayoutGrid size={18} /> },
   { to: '/senior/directory', label: 'Senior Directory', icon: <Users size={18} /> },
   { to: '/senior/announcements', label: 'Announcements', icon: <Megaphone size={18} /> },
-  { to: '/senior/community', label: 'Community', icon: <MessageSquareHeart size={18} /> },
   { to: '/senior/contributions', label: 'Contributions', icon: <WalletCards size={18} /> },
-  { to: '/senior/surveys', label: 'Surveys', icon: <ClipboardEdit size={18} /> },
 ];
 
 export default function SeniorLayout() {

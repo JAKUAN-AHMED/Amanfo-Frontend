@@ -200,7 +200,7 @@ export default function Landing() {
             'Private Senior Directory',
             'Personal profile management',
             'Secure login access',
-            'Senior Community Space (Future Ready)',
+            'Contribution tracking & receipts',
           ].map((t) => (
             <li key={t} className="flex items-center gap-2">
               <Check size={18} className="text-brand" /> {t}

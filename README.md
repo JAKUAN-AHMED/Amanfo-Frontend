@@ -1,6 +1,6 @@
 # Bantama3 Frontend
 
-A modern, role-based community management web application built with React 19 and Vite. Bantama3 streamlines administration for senior member directories, announcements, surveys, and membership workflows through a clean, responsive interface.
+A modern, role-based membership and contribution management web application built with React 19 and Vite. Bantama3 streamlines administration for senior member directories, membership approval, contribution tracking, and announcements through a clean, responsive interface.
 
 ---
 
@@ -25,8 +25,8 @@ A modern, role-based community management web application built with React 19 an
 
 **Bantama3 Frontend** is the client-side application of the Bantama3 platform — a community management system designed to support two primary user roles:
 
-- **Administrators** — manage members, publish announcements, design surveys, and oversee community operations.
-- **Senior Members** — access dashboards, browse the member directory, view announcements, and manage their personal profile.
+- **Administrators** — approve members, manage contributions, publish announcements, and oversee membership records.
+- **Senior Members** — access dashboards, browse the member directory, view announcements and contributions, and manage their personal profile.
 
 The application provides a complete authentication suite (login, OTP verification, password reset, membership request) and a fully role-segmented experience after sign-in.
 
@@ -37,9 +37,10 @@ The application provides a complete authentication suite (login, OTP verificatio
 - **Role-based dashboards** for Admins and Senior Members
 - **Authentication flows** — login, forgot password, OTP verification, password reset
 - **Membership requests** with success confirmation screens
-- **Member management** — add, edit, view, and list senior members
+- **Member management** — add, edit, view, and list senior members with unique Senior IDs
+- **Membership approval** — executive review of membership requests
+- **Contribution tracking** — record payments and view contribution history
 - **Announcements module** with a rich text editor for creating and updating posts
-- **Survey system** — create, view, and manage surveys with detail views
 - **Profile management** for both Admin and Senior users
 - **Responsive UI** styled with Tailwind CSS
 - **Modern icon system** powered by Lucide React
@@ -153,13 +154,12 @@ The application uses **React Router v7** with the following route map:
 
 - `dashboard`, `seniors`, `seniors/new`, `seniors/:id`, `seniors/:id/edit`
 - `announcement`, `announcement/new`, `announcement/create-update`
-- `survey`, `survey/new`, `survey/:id`
-- `profile`
+- `contributions`, `faqs`, `profile`
 - Auth: `login`, `forgot-password`, `verify-otp`, `reset-password`
 
 ### Senior Routes (`/senior/*`)
 
-- `dashboard`, `directory`, `announcements`, `announcements/:id`, `profile`
+- `dashboard`, `directory`, `announcements`, `announcements/:id`, `contributions`, `profile`
 
 ---
 
