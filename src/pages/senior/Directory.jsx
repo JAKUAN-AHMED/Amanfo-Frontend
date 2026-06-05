@@ -1,32 +1,26 @@
 import { useState, useMemo } from 'react';
-import { Search, Filter, MapPin, Lock, Unlock, ChevronDown, Mail, Phone } from 'lucide-react';
+import { Search, Filter, MapPin, Briefcase, BadgeCheck, ChevronDown } from 'lucide-react';
 
 const PERSON_PHOTO = '/Person.jpeg';
 
 const seniors = [
-  { name: 'Kwame Mensah', nick: 'KM', id: 'AM97-0001', group: 'Aggrey', cls: 'A1', location: 'Accra, Ghana', email: 'kwame.mensah@email.com', phone: '+233 24 123 4567', industry: 'Finance', avatar: PERSON_PHOTO },
-  { name: 'Kofi Asante', nick: 'KA', id: 'AM97-0002', group: 'Amanfo', cls: 'B1', location: 'New York, United States', email: 'kofi.asante@email.com', phone: '+1 212 555 0190', industry: 'Technology', avatar: PERSON_PHOTO },
-  { name: 'Yaw Boateng', nick: 'YB', id: 'AM97-0003', group: 'Freeman', cls: 'A2', location: 'London, United Kingdom', email: 'yaw.boateng@email.com', phone: '+44 20 7946 0958', industry: 'Healthcare', avatar: PERSON_PHOTO },
-  { name: 'Akosua Boateng', nick: 'AB', id: 'AM97-0021', group: 'Butler', cls: 'M1', location: 'Kumasi, Ghana', email: 'akosua.b@email.com', phone: '+233 20 987 6543', industry: 'Education', avatar: PERSON_PHOTO },
-  { name: 'Nana Osei', nick: 'NO', id: 'AM97-0042', group: 'Ramseyer', cls: 'A3', location: 'Toronto, Canada', email: 'nana.osei@email.com', phone: '+1 416 555 0147', industry: 'Business / Entrepreneurship', avatar: PERSON_PHOTO },
-  { name: 'Ama Darko', nick: 'AD', id: 'AM97-0055', group: 'Serwaa', cls: 'B2', location: 'Berlin, Germany', email: 'ama.darko@email.com', phone: '+49 30 1234 5678', industry: 'Legal / Law', avatar: PERSON_PHOTO },
-  { name: 'Kweku Frimpong', nick: 'KF', id: 'AM97-0061', group: 'Pearson', cls: 'AV', location: 'Johannesburg, South Africa', email: 'kweku.f@email.com', phone: '+27 11 555 0199', industry: 'Construction / Real Estate', avatar: PERSON_PHOTO },
-  { name: 'Abena Owusu', nick: 'AO', id: 'AM97-0078', group: 'OT', cls: 'M2', location: 'Amsterdam, Netherlands', email: 'abena.owusu@email.com', phone: '+31 20 555 0134', industry: 'Media / Communications', avatar: PERSON_PHOTO },
-  { name: 'Kojo Appiah', nick: 'KApp', id: 'AM97-0099', group: 'Gberg', cls: 'M3', location: 'Takoradi, Ghana', email: 'kojo.appiah@email.com', phone: '+233 31 222 3344', industry: 'Energy / Utilities', avatar: PERSON_PHOTO },
+  { id: 'AMFO97001', name: 'Aboagye Kwarteng', nick: 'Paa Slim', cls: 'A3', group: 'OT', country: 'Ghana', city: 'Konongo', role: 'President', industry: 'Events & Property Consult', avatar: PERSON_PHOTO },
+  { id: 'AMFO97002', name: 'Bill Okyere', nick: 'Billy Ocean', cls: 'M1', group: 'Pearson', country: 'USA', city: 'Virginia', role: 'Vice President', industry: 'Engineering/Entrepreneur', avatar: PERSON_PHOTO },
+  { id: 'AMFO97003', name: 'Solomon Owusu', nick: 'Sonny Rocky', cls: 'A3', group: 'Serwaa', country: 'Ghana', city: 'Accra', role: 'Welfare Chairman', industry: 'Transport', avatar: PERSON_PHOTO },
+  { id: 'AMFO97004', name: 'Kofi Karikari', nick: 'Custom Waxy', cls: 'A1', group: 'Freeman', country: 'UK', city: 'Manchester', role: 'Senior', industry: 'Healthcare', avatar: PERSON_PHOTO },
+  { id: 'AMFO97005', name: 'Akwasi Afrifa Acheampong', nick: 'Opia', cls: 'M4', group: 'Butler', country: 'Ghana', city: 'Kumasi', role: 'Senior', industry: 'Education & Construction', avatar: PERSON_PHOTO },
 ];
 
+const uniqueSorted = (key) => [...new Set(seniors.map((s) => s[key]))].sort();
+
 const FILTER_OPTIONS = {
-  Class: ['A1', 'A2', 'A3', 'AV', 'B1', 'B2', 'M1', 'M2', 'M3', 'M4'],
-  House: ['Amanfo', 'Aggrey', 'Butler', 'Freeman', 'Gberg', 'OT', 'Pearson', 'Ramseyer', 'Serwaa', 'DAY'],
-  Country: ['Ghana', 'Nigeria', 'United Kingdom', 'United States', 'Canada', 'Germany', 'South Africa', 'Netherlands', 'Australia'],
-  Industry: [
-    'Healthcare', 'Technology', 'Finance', 'Education', 'Government / Public Service',
-    'Business / Entrepreneurship', 'Construction / Real Estate', 'Transportation / Logistics',
-    'Agriculture / Agribusiness', 'Legal / Law', 'Media / Communications', 'Energy / Utilities',
-    'Hospitality / Tourism', 'Manufacturing / Industrial', 'Nonprofit / NGO', 'Military / Security',
-    'Arts / Entertainment', 'Religious / Ministry', 'Student / Continuing Education', 'Retired', 'Other',
-  ],
+  Class: uniqueSorted('cls'),
+  House: uniqueSorted('group'),
+  Country: uniqueSorted('country'),
+  Industry: uniqueSorted('industry'),
 };
+
+const FILTER_KEYS = { Class: 'cls', House: 'group', Country: 'country', Industry: 'industry' };
 
 function SelectField({ label, value, onChange }) {
   return (
@@ -49,18 +43,7 @@ function SelectField({ label, value, onChange }) {
   );
 }
 
-function mask(text) {
-  if (!text) return '••••••';
-  if (text.includes('@')) {
-    const [local, domain] = text.split('@');
-    return local.slice(0, 2) + '•••@' + domain;
-  }
-  return text.slice(0, 6) + '•••••';
-}
-
 function SeniorCard({ senior }) {
-  const [unlocked, setUnlocked] = useState(false);
-
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-5">
       <div className="flex items-start gap-3">
@@ -68,18 +51,9 @@ function SeniorCard({ senior }) {
         <div className="min-w-0 flex-1">
           <h3 className="text-brand font-semibold">{senior.name}</h3>
           <div className="text-xs text-gray-500">"{senior.nick}"</div>
-          <button
-            onClick={() => setUnlocked((v) => !v)}
-            className={`mt-1.5 inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full font-medium transition ${
-              unlocked
-                ? 'bg-emerald-100 text-emerald-700'
-                : 'bg-amber-100 text-amber-700'
-            }`}
-            title={unlocked ? 'Click to hide details' : 'Click to reveal details'}
-          >
-            {unlocked ? <Unlock size={10} /> : <Lock size={10} />}
-            {unlocked ? senior.id : '••••••••'}
-          </button>
+          <span className="mt-1.5 inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full font-medium bg-gray-100 text-gray-700">
+            {senior.id}
+          </span>
         </div>
       </div>
 
@@ -92,25 +66,17 @@ function SeniorCard({ senior }) {
             Class {senior.cls}
           </span>
         )}
+        <span className="inline-flex items-center gap-1 bg-brand/5 text-brand text-xs px-2.5 py-0.5 rounded">
+          <BadgeCheck size={12} /> {senior.role}
+        </span>
       </div>
 
-      <div className="flex items-center gap-1.5 text-sm text-brand mt-3">
-        <MapPin size={14} /> {senior.location}
-      </div>
-
-      <div className="border-t border-gray-100 mt-4 pt-3 space-y-2">
-        <div className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full ${
-          unlocked ? 'bg-emerald-50 text-emerald-700' : 'bg-gray-100 text-gray-600'
-        }`}>
-          <Mail size={11} />
-          {unlocked ? senior.email : mask(senior.email)}
+      <div className="border-t border-gray-100 mt-4 pt-3 space-y-2 text-sm text-gray-600">
+        <div className="flex items-center gap-1.5">
+          <MapPin size={14} className="text-brand shrink-0" /> {senior.city}, {senior.country}
         </div>
-        <br />
-        <div className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full ${
-          unlocked ? 'bg-emerald-50 text-emerald-700' : 'bg-gray-100 text-gray-600'
-        }`}>
-          <Phone size={11} />
-          {unlocked ? senior.phone : mask(senior.phone)}
+        <div className="flex items-center gap-1.5">
+          <Briefcase size={14} className="text-brand shrink-0" /> {senior.industry}
         </div>
       </div>
     </div>
@@ -128,12 +94,11 @@ export default function Directory() {
   const filtered = useMemo(() => {
     return seniors.filter((s) => {
       const q = query.toLowerCase();
-      const matchesQuery = !q || `${s.name} ${s.nick} ${s.industry}`.toLowerCase().includes(q);
-      const matchesClass = !filters.Class || s.cls === filters.Class;
-      const matchesHouse = !filters.House || s.group === filters.House;
-      const matchesCountry = !filters.Country || s.location.includes(filters.Country);
-      const matchesIndustry = !filters.Industry || s.industry === filters.Industry;
-      return matchesQuery && matchesClass && matchesHouse && matchesCountry && matchesIndustry;
+      const matchesQuery = !q || `${s.name} ${s.nick} ${s.role} ${s.industry}`.toLowerCase().includes(q);
+      return (
+        matchesQuery &&
+        Object.entries(filters).every(([label, value]) => !value || s[FILTER_KEYS[label]] === value)
+      );
     });
   }, [query, filters]);
 
@@ -150,7 +115,7 @@ export default function Directory() {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search by name, nickname, or profession"
+            placeholder="Search by name, nickname, role, or industry"
             className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-200 bg-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/20"
           />
         </div>
