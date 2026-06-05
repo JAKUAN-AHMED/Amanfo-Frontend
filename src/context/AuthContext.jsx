@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
   const login = ({ role, name, email, id }) => {
     setUser({
       role: role || 'senior',
-      name: name || (role === 'admin' ? 'Admin User' : 'Senior Kwame'),
+      name: name || (role === 'admin' ? 'Executive User' : 'Senior Kwame'),
       email: email || (role === 'admin' ? 'admin@amanfo97.org' : 'kwame.mensah@amanfo97.org'),
       id: id || (role === 'admin' ? 'ADMIN001' : 'AM97001'),
     });

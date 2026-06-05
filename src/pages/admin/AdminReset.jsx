@@ -40,13 +40,13 @@ export default function AdminReset() {
             <CheckCircle2 size={36} />
           </div>
           <p className="text-gray-600">
-            Your admin password has been updated. You can now log in with your new credentials.
+            Your executive password has been updated. You can now log in with your new credentials.
           </p>
           <Link
             to="/admin/login"
             className="mt-6 inline-block w-full bg-brand-dark hover:bg-brand text-white font-semibold py-3 rounded-lg"
           >
-            Back to Admin Login
+            Back to Executive Login
           </Link>
         </div>
       </div>
@@ -59,11 +59,11 @@ export default function AdminReset() {
       <div className="flex flex-col items-center mb-8 text-center">
         <Logo size={64} />
         <span className="mt-3 inline-flex items-center gap-1.5 bg-brand/10 text-brand text-xs font-semibold px-3 py-1 rounded-full">
-          <Shield size={12} /> Admin Access
+          <Shield size={12} /> Executive Access
         </span>
-        <h1 className="mt-3 text-3xl font-bold text-brand">Reset Admin Password</h1>
+        <h1 className="mt-3 text-3xl font-bold text-brand">Reset Executive Password</h1>
         <p className="mt-2 text-gray-500 max-w-md">
-          Choose a strong new password to secure your administrator account.
+          Choose a strong new password to secure your executive account.
         </p>
       </div>
       <form

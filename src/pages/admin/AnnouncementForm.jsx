@@ -17,7 +17,7 @@ const TYPES = [
 
 const CUSTOM_FIELD_TYPES = ['Text', 'Number', 'Date', 'Long Text', 'URL'];
 
-const AUDIENCES = ['All Seniors', 'Active Seniors Only', 'Admins Only', 'Specific Class', 'Specific House'];
+const AUDIENCES = ['All Seniors', 'Active Seniors Only', 'Executives Only', 'Specific Class', 'Specific House'];
 const PRIORITIES = ['Low', 'Normal', 'High', 'Urgent'];
 const CLASSES = ['A1', 'A2', 'A3', 'AV', 'B1', 'B2', 'M1', 'M2', 'M3', 'M4'];
 const HOUSES = ['Amanfo', 'Aggrey', 'Butler', 'Freeman', 'Gberg', 'OT', 'Pearson', 'Ramseyer', 'Serwaa', 'DAY'];

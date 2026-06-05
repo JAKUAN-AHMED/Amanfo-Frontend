@@ -10,7 +10,7 @@ export default function RequestSuccess() {
           <Clock size={36} />
         </div>
         <p className="text-gray-600">
-          Thanks! Your membership request has been received. Our admin team will review your
+          Thanks! Your membership request has been received. Our executive team will review your
           details and notify you by email within 1–3 business days.
         </p>
         <Link

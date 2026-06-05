@@ -181,7 +181,7 @@ export default function Landing() {
             <div className="hidden md:block absolute top-5 left-0 right-0 h-px bg-gold" />
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 relative">
               <Step n="1" title="Submit Request" body="Fill out a short membership request form with your details." />
-              <Step n="2" title="Executive Verification" body="Our admin team verifies your identity as a Class of 1997 alumnus." />
+              <Step n="2" title="Executive Verification" body="Our executive team verifies your identity as a Class of 1997 alumnus." />
               <Step n="3" title="Receive Senior ID" body="Get your unique Senior ID after approval." />
               <Step n="4" title="Access Portal" body="Log in and access the private Senior Portal." />
             </div>

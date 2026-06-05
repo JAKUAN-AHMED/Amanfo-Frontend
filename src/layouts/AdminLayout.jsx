@@ -25,7 +25,7 @@ export default function AdminLayout() {
         onClose={() => setOpen(false)}
       />
       <div className="flex-1 flex flex-col min-w-0">
-        <TopBar title="Admin Portal" onMenuClick={() => setOpen(true)} />
+        <TopBar title="Executive Portal" onMenuClick={() => setOpen(true)} />
         <main className="flex-1 p-4 md:p-8 bg-white">
           <Outlet />
         </main>

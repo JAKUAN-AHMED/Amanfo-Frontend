@@ -7,7 +7,7 @@ import NoIndex from '../../components/NoIndex';
 export default function AdminOtp() {
   const nav = useNavigate();
   const loc = useLocation();
-  const email = loc.state?.email || 'your admin email';
+  const email = loc.state?.email || 'your executive email';
   const [digits, setDigits] = useState(Array(6).fill(''));
   const refs = useRef([]);
   const [seconds, setSeconds] = useState(60);
@@ -32,7 +32,7 @@ export default function AdminOtp() {
       <div className="flex flex-col items-center mb-8 text-center">
         <Logo size={64} />
         <span className="mt-3 inline-flex items-center gap-1.5 bg-brand/10 text-brand text-xs font-semibold px-3 py-1 rounded-full">
-          <Shield size={12} /> Admin Access
+          <Shield size={12} /> Executive Access
         </span>
         <h1 className="mt-3 text-3xl font-bold text-brand">Verify Your Code</h1>
         <p className="mt-2 text-gray-500 max-w-md">
@@ -80,7 +80,7 @@ export default function AdminOtp() {
         </div>
         <div className="mt-2 text-center text-sm text-gray-600">
           <Link to="/admin/login" className="text-brand font-medium">
-            Back to Admin Login
+            Back to Executive Login
           </Link>
         </div>
       </form>

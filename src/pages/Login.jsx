@@ -67,9 +67,9 @@ export default function Login() {
           </Link>
         </div>
         <div className="mt-4 pt-4 border-t border-gray-100 text-center text-sm text-gray-500">
-          Administrator?{' '}
+          Executive?{' '}
           <Link to="/admin/login" className="text-brand font-medium">
-            Admin Login
+            Executive Login
           </Link>
         </div>
       </form>

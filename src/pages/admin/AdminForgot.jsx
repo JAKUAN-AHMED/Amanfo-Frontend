@@ -13,11 +13,11 @@ export default function AdminForgot() {
       <div className="flex flex-col items-center mb-8 text-center">
         <Logo size={64} />
         <span className="mt-3 inline-flex items-center gap-1.5 bg-brand/10 text-brand text-xs font-semibold px-3 py-1 rounded-full">
-          <Shield size={12} /> Admin Access
+          <Shield size={12} /> Executive Access
         </span>
         <h1 className="mt-3 text-3xl font-bold text-brand">Forgot Password?</h1>
         <p className="mt-2 text-gray-500 max-w-md">
-          Enter your admin email. We'll send a verification code to reset your password.
+          Enter your executive email. We'll send a verification code to reset your password.
         </p>
       </div>
       <form
@@ -27,7 +27,7 @@ export default function AdminForgot() {
         }}
         className="w-full max-w-md border border-gray-200 rounded-2xl p-7 bg-white"
       >
-        <label className="text-sm font-medium text-gray-800 block mb-2">Admin Email</label>
+        <label className="text-sm font-medium text-gray-800 block mb-2">Executive Email</label>
         <div className="relative">
           <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
           <input
@@ -47,7 +47,7 @@ export default function AdminForgot() {
         <div className="mt-5 text-center text-sm text-gray-600">
           Remember your password?{' '}
           <Link to="/admin/login" className="text-brand font-medium">
-            Admin Login
+            Executive Login
           </Link>
         </div>
       </form>

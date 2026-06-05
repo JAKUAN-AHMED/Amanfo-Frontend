@@ -29,7 +29,7 @@ export default function AdminProfile() {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <Field label="First Name" defaultValue="Admin" />
+        <Field label="First Name" defaultValue="Executive" />
         <Field label="Last Name" defaultValue="User" />
         <Field label="Email Address" defaultValue="admin@business.com" wide />
         <Field label="Password" defaultValue="23434" type="password" wide />

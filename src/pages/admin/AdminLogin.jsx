@@ -17,10 +17,10 @@ export default function AdminLogin() {
           <Logo size={64} />
         </Link>
         <span className="mt-3 inline-flex items-center gap-1.5 bg-brand/10 text-brand text-xs font-semibold px-3 py-1 rounded-full">
-          <Shield size={12} /> Admin Access
+          <Shield size={12} /> Executive Access
         </span>
-        <h1 className="mt-3 text-3xl font-bold text-brand">Amanfo '97 Admin Portal</h1>
-        <p className="mt-2 text-gray-500">Restricted access for administrators only</p>
+        <h1 className="mt-3 text-3xl font-bold text-brand">Amanfo '97 Executive Portal</h1>
+        <p className="mt-2 text-gray-500">Restricted access for executives only</p>
       </div>
       <form
         onSubmit={(e) => {
@@ -30,7 +30,7 @@ export default function AdminLogin() {
         }}
         className="w-full max-w-md border border-gray-200 rounded-2xl p-7 bg-white"
       >
-        <label className="text-sm font-medium text-gray-800 block mb-2">Admin Email</label>
+        <label className="text-sm font-medium text-gray-800 block mb-2">Executive Email</label>
         <div className="relative">
           <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
           <input
@@ -66,7 +66,7 @@ export default function AdminLogin() {
           type="submit"
           className="mt-6 w-full bg-brand-dark hover:bg-brand text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2"
         >
-          <LogIn size={18} /> Login as Admin
+          <LogIn size={18} /> Login as Executive
         </button>
 
         <div className="mt-5 text-center">
@@ -75,7 +75,7 @@ export default function AdminLogin() {
           </Link>
         </div>
         <div className="mt-2 text-center text-sm text-gray-500">
-          Not an admin?{' '}
+          Not an executive?{' '}
           <Link to="/login" className="text-brand font-medium">
             Senior Login
           </Link>

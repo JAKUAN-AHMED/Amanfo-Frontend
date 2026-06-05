@@ -28,7 +28,7 @@ export default function AdminDashboard() {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-brand">Welcome back, Admin</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-brand">Welcome back, Executive</h2>
           <p className="text-gray-500 mt-1">Here's what's happening across Amanfo '97.</p>
         </div>
         <div className="flex gap-3 flex-wrap">
