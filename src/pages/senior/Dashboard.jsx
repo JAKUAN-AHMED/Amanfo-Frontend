@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Users, Clock, CheckCircle2, WalletCards } from 'lucide-react';
 import { announcements, TYPE_STYLES } from '../../data/announcements';
+import { useAuth } from '../../context/AuthContext';
 
 const stats = [
   { label: 'Total Seniors', value: '312', icon: <Users className="text-blue-500" size={22} />, bg: 'bg-blue-50' },
@@ -9,11 +10,12 @@ const stats = [
 ];
 
 export default function SeniorDashboard() {
+  const { user } = useAuth();
   const updates = announcements.slice(0, 3);
   return (
     <div className="space-y-7">
       <div>
-        <h2 className="text-2xl md:text-3xl font-bold text-brand">Welcome back, Senior Kwame</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-brand">Welcome back, {user?.name || 'Senior'}</h2>
         <p className="text-gray-500 mt-1">Here's what's happening across Amanfo '97 today.</p>
       </div>
 

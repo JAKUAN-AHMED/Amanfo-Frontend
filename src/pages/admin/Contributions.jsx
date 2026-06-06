@@ -241,8 +241,8 @@ export default function AdminContributions() {
             </div>
             <form onSubmit={submit} className="p-6 space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Field label="Senior ID" value={form.seniorId} onChange={setField('seniorId')} placeholder="AM97001" required />
-                <Field label="Member Name" value={form.seniorName} onChange={setField('seniorName')} placeholder="Kwame Mensah" required />
+                <Field label="Senior ID" value={form.seniorId} onChange={setField('seniorId')} placeholder="AMFO97001" required />
+                <Field label="Member Name" value={form.seniorName} onChange={setField('seniorName')} placeholder="Aboagye Kwarteng" required />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>

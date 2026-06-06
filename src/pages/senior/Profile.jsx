@@ -78,7 +78,7 @@ const PROFESSIONS = ['Software Engineer', 'Doctor', 'Lawyer', 'Teacher', 'Accoun
 const CLASSES = ['A1', 'A2', 'A3', 'AV', 'B1', 'B2', 'M1', 'M2', 'M3', 'M4'];
 const HOUSES = ['Amanfo', 'Aggrey', 'Butler', 'Freeman', 'Gberg', 'OT', 'Pearson', 'Ramseyer', 'Serwaa', 'DAY'];
 const COUNTRY_CITIES = {
-  Ghana: ['Accra', 'Kumasi', 'Takoradi', 'Tema', 'Cape Coast', 'Tamale', 'Sunyani', 'Ho', 'Koforidua', 'Wa', 'Bolgatanga'],
+  Ghana: ['Accra', 'Kumasi', 'Konongo', 'Takoradi', 'Tema', 'Cape Coast', 'Tamale', 'Sunyani', 'Ho', 'Koforidua', 'Wa', 'Bolgatanga'],
   Nigeria: ['Lagos', 'Abuja', 'Kano', 'Ibadan', 'Port Harcourt', 'Benin City', 'Kaduna', 'Enugu'],
   'United Kingdom': ['London', 'Manchester', 'Birmingham', 'Leeds', 'Liverpool', 'Glasgow', 'Edinburgh', 'Bristol'],
   'United States': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'Boston', 'Washington D.C.', 'Atlanta'],
@@ -105,7 +105,7 @@ function PrivacyRow({ label }) {
 
 export default function SeniorProfile() {
   const [country, setCountry] = useState('Ghana');
-  const [city, setCity] = useState('Accra');
+  const [city, setCity] = useState('Konongo');
   const cityOptions = COUNTRY_CITIES[country] || [];
   return (
     <div className="space-y-6">
@@ -116,23 +116,23 @@ export default function SeniorProfile() {
 
       <Section title="Personal Information">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <Field label="Full Name" defaultValue="Kwame Mensah" hint="Cannot be changed" />
-          <Field label="Senior ID" defaultValue="AM97001" hint="Cannot be changed" />
-          <Field label="Nickname" placeholder="KM" />
+          <Field label="Full Name" defaultValue="Aboagye Kwarteng" hint="Cannot be changed" />
+          <Field label="Senior ID" defaultValue="AMFO97001" hint="Cannot be changed" />
+          <Field label="Nickname" defaultValue="Paa Slim" />
         </div>
       </Section>
 
       <Section title="Contact Information">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <Field label="Email Address" defaultValue="kwame.mensah@email.com" />
+          <Field label="Email Address" defaultValue="aboagye.kwarteng@email.com" />
           <Field label="Phone Number" defaultValue="+233244123456" />
         </div>
       </Section>
 
       <Section title="Professional Information">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <Select label="Industry" value="Technology" options={INDUSTRIES} />
-          <Select label="Profession" value="Software Engineer" options={PROFESSIONS} />
+          <Select label="Industry" value="Events & Property Consult" options={INDUSTRIES} />
+          <Select label="Profession" value="Entrepreneur" options={PROFESSIONS} />
         </div>
       </Section>
 
@@ -142,8 +142,8 @@ export default function SeniorProfile() {
       >
         <p className="text-xs text-gray-500 -mt-3 mb-4">Confirms you are from Amanfo '97</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <Select label="Class" value="" required options={CLASSES} />
-          <Select label="House" value="" required options={HOUSES} />
+          <Select label="Class" value="A3" required options={CLASSES} />
+          <Select label="House" value="OT" required options={HOUSES} />
         </div>
       </Section>
 

@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 /* eslint-disable react-refresh/only-export-components */
 
-const STORAGE_KEY = 'amanfo97_auth';
+const STORAGE_KEY = 'amanfo97_auth_v2';
 
 const AuthContext = createContext(null);
 
@@ -28,9 +28,9 @@ export function AuthProvider({ children }) {
   const login = ({ role, name, email, id }) => {
     setUser({
       role: role || 'senior',
-      name: name || (role === 'admin' ? 'Executive User' : 'Senior Kwame'),
-      email: email || (role === 'admin' ? 'executive@amanfo97.org' : 'kwame.mensah@amanfo97.org'),
-      id: id || (role === 'admin' ? 'ADMIN001' : 'AM97001'),
+      name: name || (role === 'admin' ? 'Executive User' : 'Aboagye Kwarteng'),
+      email: email || (role === 'admin' ? 'executive@amanfo97.org' : 'aboagye.kwarteng@amanfo97.org'),
+      id: id || (role === 'admin' ? 'ADMIN001' : 'AMFO97001'),
     });
   };
 

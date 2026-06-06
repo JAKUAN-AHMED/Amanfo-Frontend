@@ -15,7 +15,7 @@ export default function Login() {
       login({ role: 'admin' });
       nav('/executive/dashboard');
     } else {
-      login({ role: 'senior', id: id || 'AM97001' });
+      login({ role: 'senior', id: id || 'AMFO97001' });
       nav('/senior/dashboard');
     }
   };

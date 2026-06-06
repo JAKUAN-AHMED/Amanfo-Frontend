@@ -80,18 +80,20 @@ export function setFundStatus(fundId, status) {
 /*  Payment records & receipts                                         */
 /* ------------------------------------------------------------------ */
 
-const PAYMENTS_STORAGE_KEY = 'amanfo97_payments';
+const PAYMENTS_STORAGE_KEY = 'amanfo97_payments_v2';
 
 // Contribution categories a payment can be recorded against.
 export const CONTRIBUTION_TYPES = contributionFunds.map((f) => f.name);
 
 const seedPayments = [
-  { id: 'PMT-1006', seniorId: 'AM97001', seniorName: 'Kwame Mensah', type: 'Hero Fund', amount: 'GHS 150', date: '2026-05-12', reference: 'MOMO-7741920', notes: 'Mobile Money transfer.' },
-  { id: 'PMT-1005', seniorId: 'AM97001', seniorName: 'Kwame Mensah', type: 'Annual Dues', amount: 'GHS 300', date: '2026-01-18', reference: 'MOMO-7418833', notes: '2026 dues settled in full.' },
-  { id: 'PMT-1004', seniorId: 'AM97002', seniorName: 'Kofi Asante', type: 'Annual Dues', amount: 'GHS 300', date: '2026-02-02', reference: 'BANK-5530021', notes: 'Bank transfer from New York.' },
-  { id: 'PMT-1003', seniorId: 'AM97003', seniorName: 'Yaw Boateng', type: 'Building Fund', amount: 'GHS 500', date: '2026-03-09', reference: 'BANK-4480915', notes: '' },
-  { id: 'PMT-1002', seniorId: 'AM97002', seniorName: 'Kofi Asante', type: 'Hero Fund', amount: 'GHS 150', date: '2026-04-21', reference: 'MOMO-9920184', notes: '' },
-  { id: 'PMT-1001', seniorId: 'AM97001', seniorName: 'Kwame Mensah', type: 'Lalasulala', amount: 'GHS 100', date: '2026-04-30', reference: 'MOMO-3310027', notes: 'Q2 welfare drive.' },
+  { id: 'PMT-1008', seniorId: 'AMFO97001', seniorName: 'Aboagye Kwarteng', type: 'Hero Fund', amount: 'GHS 150', date: '2026-05-12', reference: 'MOMO-7741920', notes: 'Mobile Money transfer.' },
+  { id: 'PMT-1007', seniorId: 'AMFO97001', seniorName: 'Aboagye Kwarteng', type: 'Building Fund', amount: 'GHS 500', date: '2026-03-04', reference: 'BANK-2210564', notes: 'Capital project pledge.' },
+  { id: 'PMT-1006', seniorId: 'AMFO97001', seniorName: 'Aboagye Kwarteng', type: 'Annual Dues', amount: 'GHS 300', date: '2026-01-18', reference: 'MOMO-7418833', notes: '2026 dues settled in full.' },
+  { id: 'PMT-1005', seniorId: 'AMFO97002', seniorName: 'Yaw Okyere', type: 'Annual Dues', amount: 'GHS 300', date: '2026-02-02', reference: 'BANK-5530021', notes: 'Bank transfer from Virginia.' },
+  { id: 'PMT-1004', seniorId: 'AMFO97002', seniorName: 'Yaw Okyere', type: 'Hero Fund', amount: 'GHS 150', date: '2026-04-21', reference: 'MOMO-9920184', notes: '' },
+  { id: 'PMT-1003', seniorId: 'AMFO97003', seniorName: 'Solomon Owusu', type: 'Lalasulala', amount: 'GHS 100', date: '2026-04-30', reference: 'MOMO-3310027', notes: 'Q2 welfare drive.' },
+  { id: 'PMT-1002', seniorId: 'AMFO97004', seniorName: 'Kofi Karikari', type: 'Annual Dues', amount: 'GHS 300', date: '2026-02-15', reference: 'BANK-4480915', notes: 'Paid from Manchester.' },
+  { id: 'PMT-1001', seniorId: 'AMFO97005', seniorName: 'Akwasi Afrifa Acheampong', type: 'Building Fund', amount: 'GHS 500', date: '2026-03-09', reference: 'MOMO-1180233', notes: '' },
 ];
 
 function readPayments() {

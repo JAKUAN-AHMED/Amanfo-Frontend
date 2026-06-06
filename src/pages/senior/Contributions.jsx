@@ -12,7 +12,7 @@ const statusStyle = {
 
 export default function SeniorContributions() {
   const { user } = useAuth();
-  const seniorId = user?.id || 'AM97001';
+  const seniorId = user?.id || 'AMFO97001';
   const [funds, setFunds] = useState(() => getContributionFunds());
   const [payments, setPayments] = useState(() => getPaymentsForSenior(seniorId));
 
