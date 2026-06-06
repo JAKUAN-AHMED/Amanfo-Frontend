@@ -3,6 +3,7 @@ import { Users, Search, Lock, Globe, Check, Star, Mail, ChevronDown, IdCard } fr
 import { useEffect, useState } from 'react';
 import Logo from '../components/Logo';
 import { loadFaqs } from '../data/faqs';
+import { seniors, PERSON_PHOTO } from '../data/seniors';
 
 function Step({ n, title, body }) {
   return (
@@ -103,11 +104,13 @@ export default function Landing() {
         </Link>
         <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
           <div className="flex -space-x-2">
-            {['a', 'b', 'c', 'd'].map((n) => (
+            {seniors.map((s) => (
               <img
-                key={n}
-                src="/Person.jpeg"
-                alt=""
+                key={s.id}
+                src={s.avatar}
+                alt={s.name}
+                title={s.name}
+                onError={(e) => { e.currentTarget.src = PERSON_PHOTO; }}
                 className="w-7 h-7 rounded-full border-2 border-white object-cover"
               />
             ))}
@@ -129,11 +132,13 @@ export default function Landing() {
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <div className="bg-gold rounded-lg py-2.5 px-4 text-sm text-black font-medium inline-flex items-center gap-2 whitespace-nowrap shadow-sm">
               <div className="flex -space-x-2">
-                {['a', 'b', 'c'].map((n) => (
+                {seniors.map((s) => (
                   <img
-                    key={n}
-                    src="/Person.jpeg"
-                    alt=""
+                    key={s.id}
+                    src={s.avatar}
+                    alt={s.name}
+                    title={s.name}
+                    onError={(e) => { e.currentTarget.src = PERSON_PHOTO; }}
                     className="w-7 h-7 rounded-full border-2 border-white object-cover"
                   />
                 ))}
