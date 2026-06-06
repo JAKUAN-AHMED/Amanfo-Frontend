@@ -4,11 +4,11 @@ import { Search, Filter, MapPin, Briefcase, BadgeCheck, ChevronDown } from 'luci
 const PERSON_PHOTO = '/Person.jpeg';
 
 const seniors = [
-  { id: 'AMFO97001', name: 'Aboagye Kwarteng', nick: 'Paa Slim', cls: 'A3', group: 'OT', country: 'Ghana', city: 'Konongo', role: 'President', industry: 'Events & Property Consult', avatar: PERSON_PHOTO },
-  { id: 'AMFO97002', name: 'Bill Okyere', nick: 'Billy Ocean', cls: 'M1', group: 'Pearson', country: 'USA', city: 'Virginia', role: 'Vice President', industry: 'Engineering/Entrepreneur', avatar: PERSON_PHOTO },
+  { id: 'AMFO97001', name: 'Aboagye Kwarteng', nick: 'Paa Slim', cls: 'A3', group: 'OT', country: 'Ghana', city: 'Konongo', role: 'President', industry: 'Events & Property Consult', avatar: '/seniors/AMFO97001.jpg' },
+  { id: 'AMFO97002', name: 'Bill Okyere', nick: 'Billy Ocean', cls: 'M1', group: 'Pearson', country: 'USA', city: 'Virginia', role: 'Vice President', industry: 'Engineering/Entrepreneur', avatar: '/seniors/AMFO97002.jpg' },
   { id: 'AMFO97003', name: 'Solomon Owusu', nick: 'Sonny Rocky', cls: 'A3', group: 'Serwaa', country: 'Ghana', city: 'Accra', role: 'Welfare Chairman', industry: 'Transport', avatar: PERSON_PHOTO },
-  { id: 'AMFO97004', name: 'Kofi Karikari', nick: 'Custom Waxy', cls: 'A1', group: 'Freeman', country: 'UK', city: 'Manchester', role: 'Senior', industry: 'Healthcare', avatar: PERSON_PHOTO },
-  { id: 'AMFO97005', name: 'Akwasi Afrifa Acheampong', nick: 'Opia', cls: 'M4', group: 'Butler', country: 'Ghana', city: 'Kumasi', role: 'Senior', industry: 'Education & Construction', avatar: PERSON_PHOTO },
+  { id: 'AMFO97004', name: 'Kofi Karikari', nick: 'Custom Waxy', cls: 'A1', group: 'Freeman', country: 'UK', city: 'Manchester', role: 'Senior', industry: 'Healthcare', avatar: '/seniors/AMFO97004.jpg' },
+  { id: 'AMFO97005', name: 'Akwasi Afrifa Acheampong', nick: 'Opia', cls: 'M4', group: 'Butler', country: 'Ghana', city: 'Kumasi', role: 'Senior', industry: 'Education & Construction', avatar: '/seniors/AMFO97005.jpg' },
 ];
 
 const uniqueSorted = (key) => [...new Set(seniors.map((s) => s[key]))].sort();
@@ -47,7 +47,12 @@ function SeniorCard({ senior }) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-5">
       <div className="flex items-start gap-3">
-        <img src={senior.avatar} alt={senior.name} className="w-14 h-14 rounded-full object-cover" />
+        <img
+          src={senior.avatar}
+          alt={senior.name}
+          onError={(e) => { e.currentTarget.src = PERSON_PHOTO; }}
+          className="w-14 h-14 rounded-full object-cover"
+        />
         <div className="min-w-0 flex-1">
           <h3 className="text-brand font-semibold">{senior.name}</h3>
           <div className="text-xs text-gray-500">"{senior.nick}"</div>
