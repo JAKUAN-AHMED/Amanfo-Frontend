@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Info, Download, ReceiptText } from 'lucide-react';
-import { getContributionFunds, getPaymentsForSenior } from '../../data/contributions';
+import { getContributionFunds, getPaymentsForSenior, parseAmount, formatAmount } from '../../data/contributions';
 import { downloadReceipt } from '../../utils/receipt';
 import { useAuth } from '../../context/AuthContext';
 
@@ -33,11 +33,23 @@ export default function SeniorContributions() {
     { Paid: 0, Pending: 0, Overdue: 0 },
   );
 
+  const totalPaid = payments.reduce((sum, p) => sum + parseAmount(p.amount), 0);
+
   return (
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl md:text-3xl font-bold text-brand">Contributions</h2>
         <p className="text-gray-500 mt-1">Track your dues and contribution status with the Executive.</p>
+      </div>
+
+      <div className="rounded-2xl bg-gradient-to-r from-brand-dark to-brand text-white p-5 md:p-6 flex items-center justify-between gap-4">
+        <div>
+          <div className="text-xs uppercase tracking-wide opacity-80">Total Contributions Paid</div>
+          <div className="text-3xl md:text-4xl font-bold mt-1">{formatAmount(totalPaid)}</div>
+        </div>
+        <div className="text-right text-sm text-white/80">
+          {payments.length} payment{payments.length === 1 ? '' : 's'}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

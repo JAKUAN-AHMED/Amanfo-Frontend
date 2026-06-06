@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Plus, Download, X } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { Plus, Download, X, Wallet } from 'lucide-react';
 import {
   getContributionFunds,
   setFundStatus,
@@ -7,6 +7,8 @@ import {
   getPayments,
   addPayment,
   CONTRIBUTION_TYPES,
+  parseAmount,
+  formatAmount,
 } from '../../data/contributions';
 import { downloadReceipt } from '../../utils/receipt';
 
@@ -36,6 +38,24 @@ export default function AdminContributions() {
     setFundStatus(id, status);
     setFunds(getContributionFunds());
   };
+
+  const totalsBySenior = useMemo(() => {
+    const map = new Map();
+    for (const p of payments) {
+      const key = p.seniorId || '—';
+      const row = map.get(key) || { seniorId: p.seniorId, seniorName: p.seniorName, count: 0, total: 0 };
+      row.count += 1;
+      row.total += parseAmount(p.amount);
+      if (!row.seniorName && p.seniorName) row.seniorName = p.seniorName;
+      map.set(key, row);
+    }
+    return [...map.values()].sort((a, b) => b.total - a.total);
+  }, [payments]);
+
+  const grandTotal = useMemo(
+    () => payments.reduce((sum, p) => sum + parseAmount(p.amount), 0),
+    [payments],
+  );
 
   const setField = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
@@ -108,6 +128,50 @@ export default function AdminContributions() {
                     </td>
                   </tr>
                 ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Totals by senior */}
+      <section>
+        <div className="flex items-center justify-between mb-3 gap-4 flex-wrap">
+          <h3 className="text-lg font-bold text-gray-900">Total Payments by Senior</h3>
+          <div className="inline-flex items-center gap-2 rounded-xl bg-brand-dark text-white px-4 py-2.5">
+            <Wallet size={18} />
+            <span className="text-sm text-white/80">Grand Total</span>
+            <span className="text-lg font-bold">{formatAmount(grandTotal)}</span>
+          </div>
+        </div>
+        <div className="rounded-xl border border-gray-200 bg-white">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[560px] text-sm">
+              <thead>
+                <tr className="text-left text-gray-500 border-b border-gray-100">
+                  <th className="px-5 py-4 font-medium">Senior ID</th>
+                  <th className="px-5 py-4 font-medium">Member</th>
+                  <th className="px-5 py-4 font-medium text-center">Payments</th>
+                  <th className="px-5 py-4 font-medium text-right">Total Paid</th>
+                </tr>
+              </thead>
+              <tbody>
+                {totalsBySenior.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} className="px-5 py-10 text-center text-gray-400">
+                      No payments recorded yet.
+                    </td>
+                  </tr>
+                ) : (
+                  totalsBySenior.map((row) => (
+                    <tr key={row.seniorId} className="border-b border-gray-50 last:border-0">
+                      <td className="px-5 py-4 text-gray-700">{row.seniorId}</td>
+                      <td className="px-5 py-4 text-gray-900">{row.seniorName}</td>
+                      <td className="px-5 py-4 text-gray-700 text-center">{row.count}</td>
+                      <td className="px-5 py-4 font-bold text-gray-900 text-right whitespace-nowrap">{formatAmount(row.total)}</td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>

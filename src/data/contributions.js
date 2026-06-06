@@ -137,3 +137,43 @@ export function addPayment({ seniorId, seniorName, type, amount, date, reference
   writePayments([payment, ...payments]);
   return payment;
 }
+
+/* ------------------------------------------------------------------ */
+/*  Payment totals                                                     */
+/* ------------------------------------------------------------------ */
+
+const CURRENCY = 'GHS';
+
+// Extracts the numeric value from an amount string like "GHS 300".
+export function parseAmount(amount) {
+  const n = parseFloat(String(amount).replace(/[^0-9.]/g, ''));
+  return Number.isFinite(n) ? n : 0;
+}
+
+export function formatAmount(n) {
+  return `${CURRENCY} ${Number(n).toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
+}
+
+// Total a single senior has paid, as a number.
+export function getSeniorPaymentTotal(seniorId) {
+  return getPaymentsForSenior(seniorId).reduce((sum, p) => sum + parseAmount(p.amount), 0);
+}
+
+// One row per senior: { seniorId, seniorName, count, total } sorted by total desc.
+export function getPaymentTotalsBySenior() {
+  const map = new Map();
+  for (const p of getPayments()) {
+    const key = p.seniorId || '—';
+    const row = map.get(key) || { seniorId: p.seniorId, seniorName: p.seniorName, count: 0, total: 0 };
+    row.count += 1;
+    row.total += parseAmount(p.amount);
+    if (!row.seniorName && p.seniorName) row.seniorName = p.seniorName;
+    map.set(key, row);
+  }
+  return [...map.values()].sort((a, b) => b.total - a.total);
+}
+
+// Grand total across all recorded payments, as a number.
+export function getPaymentsGrandTotal() {
+  return getPayments().reduce((sum, p) => sum + parseAmount(p.amount), 0);
+}
