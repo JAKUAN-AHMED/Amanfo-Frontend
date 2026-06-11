@@ -15,8 +15,8 @@ export default function SeniorDashboard() {
   return (
     <div className="space-y-7">
       <div>
-        <h2 className="text-2xl md:text-3xl font-bold text-brand">Welcome back, {user?.name || 'Senior'}</h2>
-        <p className="text-gray-500 mt-1">Here's what's happening across Amanfo '97 today.</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-brand">Welcome back, {user?.name?.split(' ')[0] || 'Senior'}</h2>
+        <p className="text-gray-500 mt-1">Here's what's happening across Amanfoɔ '97 today.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -38,7 +38,7 @@ export default function SeniorDashboard() {
         >
           <Users className="text-brand" size={22} />
           <h3 className="mt-4 text-lg font-bold text-gray-900">Senior Directory</h3>
-          <p className="mt-1 text-sm text-gray-500">Browse verified Amanfo '97 Seniors and their Senior IDs.</p>
+          <p className="mt-1 text-sm text-gray-500">Browse verified Amanfoɔ '97 Seniors and their Senior IDs.</p>
         </Link>
         <Link
           to="/senior/contributions"

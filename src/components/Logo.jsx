@@ -4,7 +4,7 @@ export default function Logo({ size = 36, className = '' }) {
   return (
     <img
       src={logo}
-      alt="Amanfo '97"
+      alt="Amanfoɔ '97"
       width={size}
       height={size}
       className={className}

@@ -19,7 +19,7 @@ export default function AdminLogin() {
         <span className="mt-3 inline-flex items-center gap-1.5 bg-brand/10 text-brand text-xs font-semibold px-3 py-1 rounded-full">
           <Shield size={12} /> Executive Access
         </span>
-        <h1 className="mt-3 text-3xl font-bold text-brand">Amanfo '97 Executive Portal</h1>
+        <h1 className="mt-3 text-3xl font-bold text-brand">Amanfoɔ '97 Executive Portal</h1>
         <p className="mt-2 text-gray-500">Restricted access for executives only</p>
       </div>
       <form

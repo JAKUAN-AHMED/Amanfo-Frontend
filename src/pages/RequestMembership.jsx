@@ -68,7 +68,7 @@ export default function RequestMembership() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <Logo size={36} />
-            <span className="font-semibold">Amanfo '97</span>
+            <span className="font-semibold">Amanfoɔ '97</span>
           </Link>
           <Link to="/login" className="text-sm font-medium text-gray-800">Login</Link>
         </div>

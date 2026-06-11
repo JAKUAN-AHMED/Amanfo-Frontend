@@ -2,7 +2,7 @@
 // browser download. The receipt is a self-contained HTML file that can be opened
 // and saved as PDF via the browser's "Print → Save as PDF" dialog.
 
-const ORG_NAME = "Amanfo '97";
+const ORG_NAME = "Amanfoɔ '97";
 const ORG_TAGLINE = 'Prempeh College Class of 1997';
 
 function escapeHtml(value) {

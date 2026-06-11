@@ -20,7 +20,7 @@ export default function SeniorAnnouncements() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-brand">Community Updates</h2>
-        <p className="text-gray-500 mt-1">Announcements from the Amanfo '97 executive.</p>
+        <p className="text-gray-500 mt-1">Announcements from the Amanfoɔ '97 executive.</p>
       </div>
 
       <div className="flex flex-wrap gap-3 items-center">

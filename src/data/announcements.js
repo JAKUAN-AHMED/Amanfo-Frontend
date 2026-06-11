@@ -18,6 +18,10 @@ export const PRIORITY_STYLES = {
   Urgent: 'bg-red-100 text-red-700',
 };
 
+// Placeholder shown where an announcement has an image slot; replace with the
+// client-provided artwork when it arrives.
+const PLACEHOLDER_COVER = '/announcement-placeholder.svg';
+
 export const announcements = [
   {
     id: '1',
@@ -29,7 +33,7 @@ export const announcements = [
     priority: 'High',
     issuedBy: 'Executive Committee',
     effectiveDate: '2027-06-20',
-    cover: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80',
+    cover: PLACEHOLDER_COVER,
     ago: '2 days ago',
   },
   {
@@ -46,7 +50,7 @@ export const announcements = [
     deadline: '2027-08-31',
     paymentMethod: 'Mobile Money',
     instructions: 'MoMo: 0244-123-456 (Treasurer). Use your Senior ID as reference.',
-    cover: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=900&q=80',
+    cover: PLACEHOLDER_COVER,
     ago: '5 days ago',
   },
   {
@@ -62,7 +66,7 @@ export const announcements = [
     deadline: '2027-07-31',
     paymentMethod: 'Bank Transfer',
     penalty: '10% after deadline',
-    instructions: `Account: Amanfo '97 Association — 1234567890 (Stanbic Bank).`,
+    instructions: `Account: Amanfoɔ '97 Association — 1234567890 (Stanbic Bank).`,
     ago: '1 week ago',
   },
   {

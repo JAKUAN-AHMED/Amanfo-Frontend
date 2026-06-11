@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
-import { Search, Filter, MapPin, Briefcase, BadgeCheck, ChevronDown } from 'lucide-react';
+import { Search, Filter, MapPin, Briefcase, BadgeCheck, ChevronDown, Phone, Mail, Lock } from 'lucide-react';
 import { seniors, PERSON_PHOTO } from '../../data/seniors';
+import { useAuth } from '../../context/AuthContext';
 
 const uniqueSorted = (key) => [...new Set(seniors.map((s) => s[key]))].sort();
 
@@ -34,7 +35,7 @@ function SelectField({ label, value, onChange }) {
   );
 }
 
-function SeniorCard({ senior }) {
+function SeniorCard({ senior, isMe }) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-5">
       <div className="flex items-start gap-3">
@@ -59,7 +60,7 @@ function SeniorCard({ senior }) {
         </span>
         {senior.cls && (
           <span className="inline-block bg-gray-100 text-gray-600 text-xs px-2.5 py-0.5 rounded">
-            Class {senior.cls}
+            {senior.cls}
           </span>
         )}
         <span className="inline-flex items-center gap-1 bg-brand/5 text-brand text-xs px-2.5 py-0.5 rounded">
@@ -74,12 +75,32 @@ function SeniorCard({ senior }) {
         <div className="flex items-center gap-1.5">
           <Briefcase size={14} className="text-brand shrink-0" /> {senior.industry}
         </div>
+        {isMe ? (
+          <>
+            <div className="flex items-center gap-1.5">
+              <Phone size={14} className="text-brand shrink-0" /> {senior.phone}
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Mail size={14} className="text-brand shrink-0" /> {senior.email}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex items-center gap-1.5 text-gray-400" title="Private">
+              <Lock size={14} className="shrink-0" /> Phone
+            </div>
+            <div className="flex items-center gap-1.5 text-gray-400" title="Private">
+              <Lock size={14} className="shrink-0" /> Email
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
 }
 
 export default function Directory() {
+  const { user } = useAuth();
   const [showFilters, setShowFilters] = useState(false);
   const [query, setQuery] = useState('');
   const [filters, setFilters] = useState({ Class: '', House: '', Country: '', Industry: '' });
@@ -102,7 +123,7 @@ export default function Directory() {
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl md:text-3xl font-bold text-brand">Senior Directory</h2>
-        <p className="text-gray-500 mt-1">Browse and connect with verified Amanfo '97 Seniors.</p>
+        <p className="text-gray-500 mt-1">Browse and connect with verified Amanfoɔ '97 Seniors.</p>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3">
@@ -141,7 +162,7 @@ export default function Directory() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {filtered.map((s) => (
-          <SeniorCard key={s.id} senior={s} />
+          <SeniorCard key={s.id} senior={s} isMe={s.id === user?.id} />
         ))}
       </div>
 

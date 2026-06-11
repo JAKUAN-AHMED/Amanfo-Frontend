@@ -29,7 +29,7 @@ export default function Sidebar({ items, profileLink, logoutTo = '/login', open 
         <div className="flex items-center justify-between px-4 lg:px-6 py-5 border-b border-gray-100">
           <Link to="/" className="flex items-center gap-2 hover:opacity-80" onClick={onClose}>
             <Logo size={36} />
-            <span className="font-semibold text-base">Amanfo '97</span>
+            <span className="font-semibold text-base">Amanfoɔ '97</span>
           </Link>
           <button
             onClick={onClose}

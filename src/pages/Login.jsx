@@ -26,8 +26,8 @@ export default function Login() {
         <Link to="/" title="Go to home" className="hover:opacity-80 transition">
           <Logo size={64} />
         </Link>
-        <h1 className="mt-5 text-3xl font-bold text-brand">Amanfo '97 Senior Portal</h1>
-        <p className="mt-2 text-gray-500">Private access for verified Amanfo '97 Seniors</p>
+        <h1 className="mt-5 text-3xl font-bold text-brand">Amanfoɔ '97 Senior Portal</h1>
+        <p className="mt-2 text-gray-500">Private access for verified Amanfoɔ '97 Seniors</p>
       </div>
       <form
         onSubmit={submit}
@@ -66,10 +66,9 @@ export default function Login() {
             Request Membership
           </Link>
         </div>
-        <div className="mt-4 pt-4 border-t border-gray-100 text-center text-sm text-gray-500">
-          Executive?{' '}
-          <Link to="/executive/login" className="text-brand font-medium">
-            Executive Login
+        <div className="mt-4 pt-4 border-t border-gray-100 text-center">
+          <Link to="/executive/login" className="text-brand font-medium text-sm">
+            Executive Access
           </Link>
         </div>
       </form>

@@ -13,7 +13,7 @@ export default function AdminSeniors() {
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl md:text-3xl font-bold text-brand">Seniors</h2>
-        <p className="text-gray-500 mt-1">Manage verified Amanfo '97 Seniors.</p>
+        <p className="text-gray-500 mt-1">Manage verified Amanfoɔ '97 Seniors.</p>
       </div>
       <StatCards data={defaultStats} />
       <div className="bg-white rounded-2xl shadow-[0_1px_2px_rgba(0,0,0,0.04)]">

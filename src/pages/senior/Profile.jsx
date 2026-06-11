@@ -140,7 +140,7 @@ export default function SeniorProfile() {
         title="Senior Verification"
         badge={<span className="w-7 h-7 rounded-full bg-brand-dark text-white text-sm font-bold flex items-center justify-center">2</span>}
       >
-        <p className="text-xs text-gray-500 -mt-3 mb-4">Confirms you are from Amanfo '97</p>
+        <p className="text-xs text-gray-500 -mt-3 mb-4">Confirms you are from Amanfoɔ '97</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Select label="Class" value="A3" required options={CLASSES} />
           <Select label="House" value="OT" required options={HOUSES} />

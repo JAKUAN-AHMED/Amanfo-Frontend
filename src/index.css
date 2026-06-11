@@ -13,7 +13,7 @@ html, body, #root {
 
 * { box-sizing: border-box; }
 
-/* Ensure Amanfo always renders clearly */
+/* Ensure Amanfoɔ (including the open-o "ɔ") always renders clearly */
 .amanfo, h1, h2, h3, h4, h5 {
   font-family: 'Inter', 'Noto Sans', system-ui, sans-serif;
   font-feature-settings: "ss01" on, "cv11" on;
